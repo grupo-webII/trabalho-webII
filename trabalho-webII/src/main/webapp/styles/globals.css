@@ -1,0 +1,20 @@
+@charset "ISO-8859-1";
+
+.h100Body {
+	height: 100vh;
+}
+
+.col-wrapper {
+	
+}
+
+.beibe-logo {
+	position: relative;
+	width: auto;
+}
+
+.homeH1 {
+	font-family: 'Transpass', sans-serif;
+	font-size: 32px;
+	margin-top: 4rem;
+}
