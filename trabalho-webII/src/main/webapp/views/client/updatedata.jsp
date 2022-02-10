@@ -69,17 +69,17 @@
 							<label for="inputZip">CEP</label> <input type="text"
 								class="form-control" id="inputZip">
 						</div>
-						<div class="form-group mb-3">
+						<div class="form-group col-md-6 mb-3">
 							<label for="inputAddress">Logradouro</label> <input type="text"
 								class="form-control" id="inputAddress" placeholder="Rua, número">
 						</div>
 					</div>
-					<div class="form-group mb-3">
+					<div class="form-group col-md-2 mb-3">
 						<label for="inputAddress2">Número</label> <input type="text"
 							class="form-control" id="inputAddress2"
 							placeholder="334">
 					</div>
-					<div class="form-group mb-3">
+					<div class="form-group col-md-6 mb-3">
 						<label for="inputAddress3">Complemento</label> <input type="text"
 							class="form-control" id="inputAddress3"
 							placeholder="Apartamento, bloco, estúdio">

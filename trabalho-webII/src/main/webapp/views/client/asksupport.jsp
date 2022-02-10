@@ -42,6 +42,37 @@
 	<div class="row">
 		<div class="col-md-8 offset-md-2">
 			<h1 class="mb-5">Solicitar atendimento</h1>
+			<form method="post" action="#" class="mb-5">
+				<div class="form-row">
+					<div class="form-group col-md-6 mb-3">
+						<select class="custom-select">
+							<option selected>Tipo do atendimento</option>
+							<option value="1">Produto danificado</option>
+							<option value="2">Problemas com a entrega</option>
+							<option value="3">Reação alérgica/indesejada</option>
+							<option value="3">Troca/Devolução</option>
+							<option value="3">Sugestão/Feedback</option>
+						</select>
+					</div>
+					<div class="form-group col-md-6 mb-3">
+						<select class="custom-select">
+							<option selected>Produto envolvido</option>
+							<option value="3">N/A</option>
+							<option value="1">Shampoo Hidratante</option>
+							<option value="2">Hidratante Facial</option>
+							<option value="3">Batom</option>
+							<option value="3">Creme Mágico</option>
+							<option value="3">Pó Facial</option>
+						</select>
+					</div>
+					<div class="form-group mb-3">
+						<label class="mb-3" for="exampleFormControlTextarea1">Descreva da maneira mais detalhada possível o seu caso</label>
+						<textarea class="form-control" id="exampleFormControlTextarea1"
+							rows="3"></textarea>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-dark">Enviar</button>
+			</form>
 		</div>
 	</div>
 </body>
