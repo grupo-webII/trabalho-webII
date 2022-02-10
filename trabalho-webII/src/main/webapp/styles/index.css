@@ -1,0 +1,10 @@
+@charset "ISO-8859-1";
+.homeH1 {
+	font-size: 36px;
+	color: #303030;
+}
+
+.form-wrapper {
+	position: relative;
+	width: 40%;
+}
