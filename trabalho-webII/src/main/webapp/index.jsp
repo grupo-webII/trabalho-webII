@@ -32,18 +32,18 @@
 		</div>
 		<div class="d-flex align-items-center flex-row justify-content-center">
 			<form class="form-wrapper bg-light p-4" method="post"
-				action="views/client/main.jsp">
+				action="login">
 				<div class="mb-3">
 					<label for="exampleInputEmail1" class="form-label">E-mail </label>
 					<input type="email" class="form-control" id="exampleInputEmail1"
-						aria-describedby="emailHelp">
+						aria-describedby="emailHelp" name="uemail">
 					<div id="emailHelp" class="form-text">Nós não iremos
 						compartilhar com mais ninguém.</div>
 				</div>
 				<div class="mb-3">
 					<label for="exampleInputPassword1" class="form-label">Senha</label>
 					<input type="password" class="form-control"
-						id="exampleInputPassword1">
+						id="exampleInputPassword1" name="upass">
 				</div>
 				<button type="submit" class="btn btn-dark">Entrar</button>
 				<button type="button" class="btn btn-secondary">Não tenho
