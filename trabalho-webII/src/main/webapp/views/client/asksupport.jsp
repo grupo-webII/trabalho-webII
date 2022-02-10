@@ -35,6 +35,7 @@
 						dados</a></li>
 				<li class="nav-item"><a class="nav-link" href="asksupport.jsp">Solicitar
 						atendimento<span class="sr-only">(atual)</span>
+						<li class="nav-item"><a class="nav-link" href="../../index.jsp"><b>Sair</b></a></li>
 				</a></li>
 			</ul>
 		</div>

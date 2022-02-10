@@ -36,6 +36,7 @@
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="asksupport.jsp">Solicitar
 						atendimento</a></li>
+						<li class="nav-item"><a class="nav-link" href="../../index.jsp"><b>Sair</b></a></li>
 			</ul>
 		</div>
 	</nav>
