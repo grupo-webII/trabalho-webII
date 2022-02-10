@@ -35,8 +35,7 @@
 					<form class="form-wrapper bg-light p-4" method="post"
 						action="views/client/main.jsp">
 						<div class="mb-3">
-							<label for="exampleInputEmail1" class="form-label">Endereço
-								de E-mail </label> <input type="email" class="form-control"
+							<label for="exampleInputEmail1" class="form-label">E-mail </label> <input type="email" class="form-control"
 								id="exampleInputEmail1" aria-describedby="emailHelp">
 							<div id="emailHelp" class="form-text">Nós não iremos
 								compartilhar com mais ninguém.</div>
@@ -46,7 +45,7 @@
 							<input type="password" class="form-control"
 								id="exampleInputPassword1">
 						</div>
-						<button type="submit" class="btn btn-primary">Entrar</button>
+						<button type="submit" class="btn btn-dark">Entrar</button>
 						<button type="button" class="btn btn-secondary">Não tenho
 							cadastro</button>
 					</form>

@@ -43,7 +43,68 @@
 		<div class="row">
 			<div class="col-md-8 offset-md-2">
 				<h1 class="mb-5">Atualizar dados</h1>
+				<form method="post" action="#" class="mb-5">
+					<div class="form-row">
+						<div class="form-group col-md-6 mb-3">
+							<label for="inputCPF">CPF</label> <input type="text"
+								class="form-control" id="inputCPF" placeholder="000.000.000-00"
+								disabled>
+						</div>
+						<div class="form-group col-md-6 mb-3">
+							<label for="inputEmail4">E-mail</label> <input type="email"
+								class="form-control" id="inputEmail4"
+								placeholder="test@email.com" disabled>
+						</div>
+						<div class="form-group col-md-6 mb-3">
+							<label for="inputPassword4">Senha atual</label> <input type="password"
+								class="form-control" id="inputPassword4" placeholder="******" disabled>
+						</div>
+						<div class="form-group col-md-6 mb-3">
+							<label for="inputPassword4">Senha nova</label> <input type="password"
+								class="form-control" id="inputPassword4" placeholder="Senha">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="form-group col-md-2 mb-3">
+							<label for="inputZip">CEP</label> <input type="text"
+								class="form-control" id="inputZip">
+						</div>
+						<div class="form-group mb-3">
+							<label for="inputAddress">Logradouro</label> <input type="text"
+								class="form-control" id="inputAddress" placeholder="Rua, número">
+						</div>
+					</div>
+					<div class="form-group mb-3">
+						<label for="inputAddress2">Número</label> <input type="text"
+							class="form-control" id="inputAddress2"
+							placeholder="334">
+					</div>
+					<div class="form-group mb-3">
+						<label for="inputAddress3">Complemento</label> <input type="text"
+							class="form-control" id="inputAddress3"
+							placeholder="Apartamento, bloco, estúdio">
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6 mb-3">
+							<label for="inputHood">Bairro</label> <input type="text"
+								class="form-control" id="inputHood">
+						</div>
+						<div class="form-group col-md-6 mb-3">
+							<label for="inputCity">Cidade</label> <input type="text"
+								class="form-control" id="inputCity">
+						</div>
+						<div class="form-group col-md-4 mb-3">
+							<label for="inputState">Estado</label> <select id="inputState"
+								class="form-control">
+								<option selected>Paraná - PR</option>
+								<option>...</option>
+							</select>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-dark">Alterar</button>
+				</form>
 			</div>
 		</div>
+	</main>
 </body>
 </html>
