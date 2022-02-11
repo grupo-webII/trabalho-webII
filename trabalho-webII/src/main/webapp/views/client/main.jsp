@@ -10,11 +10,7 @@
 <link href="http://fonts.cdnfonts.com/css/helvetica-255"
 	rel="stylesheet">
 <script src="../../resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-	integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-	crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="../../resources/jquery-3.5.0.min.js"></script>
 <meta charset="ISO-8859-1">
 <title>Dashboard do Cliente</title>
 </head>
@@ -47,7 +43,7 @@
 	<main>
 		<div class="row">
 			<div class="col-md-8 offset-md-2">
-				<h1 class="mb-5">Meus atendimentos</h1>
+				<h1 class="mb-5 h1">Meus atendimentos</h1>
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -66,10 +62,11 @@
 							<td>09/02/2022</td>
 							<td><button type="button" class="btn btn-light"
 									data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-								href="#"><button type="button" class="btn btn-light">
+								href="supportdescription.jsp"><button type="button"
+										class="btn btn-light">
 										<img src="../../images/eye-solid.svg" alt="Eye icon"
-											width="20" height="auto" class=""></a>
-								</button> </a></td>
+											width="20" height="auto" class="">
+									</button></a></td>
 						</tr>
 						<tr>
 							<th scope="row">2</th>
@@ -78,9 +75,10 @@
 							<td>17/08/2021</td>
 							<td><button type="button" class="btn btn-light"
 									data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-								href="#"><button type="button" class="btn btn-light">
+								href="supportdescription.jsp"><button type="button" class="btn btn-light">
 										<img src="../../images/eye-solid.svg" alt="Eye icon"
-											width="20" height="auto" class=""></a></td>
+											width="20" height="auto" class="">
+									</button></a></td>
 						</tr>
 						<tr>
 							<th scope="row">3</th>
@@ -90,7 +88,8 @@
 							<td><button type="button" class="btn btn-dark">Remover</button>&nbsp;<a
 								href="#"><button type="button" class="btn btn-light">
 										<img src="../../images/eye-solid.svg" alt="Eye icon"
-											width="20" height="auto" class=""></a></td>
+											width="20" height="auto" class="">
+									</button></a></td>
 						</tr>
 					</tbody>
 				</table>
