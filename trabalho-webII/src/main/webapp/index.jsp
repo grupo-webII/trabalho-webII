@@ -9,8 +9,10 @@
 <link rel="stylesheet" href="styles/index.css" />
 <link href="http://fonts.cdnfonts.com/css/helvetica-255"
 	rel="stylesheet">
-<script src="resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <script src="resources/jquery-3.5.0.min.js"></script>
+<script
+	src="resources/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+<script src="resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <meta charset="ISO-8859-1">
 <title>BEIBE - Sistema de Atendimento ao Cliente</title>
 </head>
@@ -31,18 +33,18 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-8 offset-md-4">
+			<div class="col-md-7 offset-md-4">
 				<form class="form-wrapper p-4" method="post" action="login">
 
-					<div class="form-group col-md-6 mb-3">
+					<div class="form-group col-md-7 mb-3">
 						<label for="inputEmail4">E-mail</label> <input type="email"
 							class="form-control" id="inputEmail4" name="uemail"
-							placeholder="example@email.com">
+							placeholder="example@email.com" required>
 					</div>
-					<div class="form-group col-md-6 mb-3">
+					<div class="form-group col-md-7 mb-3">
 						<label for="inputPassword3">Senha</label> <input
 							type="password" class="form-control" id="inputPassword4" name="upass"
-							placeholder="******">
+							placeholder="******" required>
 					</div>
 					<button type="submit" class="btn btn-dark">Entrar</button>
 					<a href="register.jsp" type="button" class="btn btn-secondary">Não
