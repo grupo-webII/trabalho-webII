@@ -69,6 +69,11 @@
 							<option value="3" selected>Pó Facial</option>
 						</select>
 					</div>
+					<div class="form-group col-md-6 mb-3">
+						<label for="inputShortDescriptive">Título do atendimento</label> <input
+							type="text" class="form-control" id="inputShortDescriptive"
+							disabled>
+					</div>
 					<div class="form-group mb-3">
 						<label class="mb-3" for="exampleFormControlTextarea1">Descreva
 							da maneira mais detalhada possível o seu caso</label>

@@ -34,7 +34,7 @@
 				<li class="nav-item"><a class="nav-link" href="updatedata.jsp">Atualizar
 						dados</a></li>
 				<li class="nav-item"><a class="nav-link" href="asksupport.jsp">Solicitar
-						atendimento<span class="sr-only">(atual)</span>
+						atendimento <span class="sr-only">(atual)</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="../../index.jsp"><b>Sair</b></a></li>
 			</ul>
@@ -65,6 +65,11 @@
 							<option value="3">Creme Mágico</option>
 							<option value="3">Pó Facial</option>
 						</select>
+					</div>
+					<div class="form-group col-md-6 mb-3">
+						<label for="inputShortDescriptive">Título do atendimento</label> <input
+							type="text" class="form-control" id="inputShortDescriptive"
+							required>
 					</div>
 					<div class="form-group mb-3">
 						<label class="mb-3" for="exampleFormControlTextarea1">Descreva

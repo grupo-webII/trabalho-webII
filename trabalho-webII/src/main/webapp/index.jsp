@@ -22,8 +22,7 @@
 			<a class="navbar-brand" href="index.jsp"> <img
 				src="images/beibe-logo.png" alt="Logotipo BEIBE" width="200"
 				height="auto" class="d-inline-block align-text-center ml-3">
-			</a> <a class="navbar-brand" href="index.jsp"> Sistema de Atendimento
-				ao Cliente </a>
+			</a> Sistema de Atendimento ao Cliente
 		</div>
 	</nav>
 	<main class="container-fluid">

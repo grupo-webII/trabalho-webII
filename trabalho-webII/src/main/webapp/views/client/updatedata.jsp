@@ -165,6 +165,16 @@
 				<form method="post" action="#" class="mb-5">
 					<div class="form-row">
 						<div class="form-group col-md-6 mb-3">
+							<label for="inputFirstName">Primeiro nome</label> <input type="text"
+								class="form-control cpf" id="inputFirstName" placeholder="Maria"
+								required>
+						</div>
+						<div class="form-group col-md-6 mb-3">
+							<label for="inputLastName">Sobrenome</label> <input type="text"
+								class="form-control" id="inputLastName" placeholder="Luceia"
+								required>
+						</div>
+						<div class="form-group col-md-6 mb-3">
 							<label for="inputCPF">CPF</label> <input type="text"
 								class="form-control" id="inputCPF" placeholder="000.000.000-00"
 								disabled>
@@ -198,12 +208,14 @@
 						</div>
 						<div class="form-group col-md-6 mb-3">
 							<label for="inputAddress">Logradouro</label> <input type="text"
-								class="form-control" id="inputAddress" placeholder="Rua, número" required>
+								class="form-control" id="inputAddress" placeholder="Rua, número"
+								required>
 						</div>
 					</div>
 					<div class="form-group col-md-2 mb-3">
 						<label for="inputAddress2">Número</label> <input type="text"
-							class="form-control" id="inputAddress2" placeholder="334" required>
+							class="form-control" id="inputAddress2" placeholder="334"
+							required>
 					</div>
 					<div class="form-group col-md-6 mb-3">
 						<label for="inputAddress3">Complemento</label> <input type="text"

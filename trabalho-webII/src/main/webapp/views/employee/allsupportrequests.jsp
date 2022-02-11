@@ -12,7 +12,7 @@
 <script src="../../resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <script src="../../resources/jquery-3.5.0.min.js"></script>
 <meta charset="ISO-8859-1">
-<title>Dashboard do Funcionário</title>
+<title>Listagem dos atendimentos</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light p-4 mb-5">
@@ -30,10 +30,10 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link" href="main.jsp">Listagem
-						dos atendimentos em aberto<span class="sr-only"> (atual)</span>
+						dos atendimentos em aberto
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="allsupportrequests.jsp">Listagem
-						dos atendimentos</a></li>
+						dos atendimentos <span class="sr-only"> (atual)</span></a></li>
 				<li class="nav-item"><a class="nav-link" href="asksupport.jsp">Listagem
 						de categorias</a></li>
 				<li class="nav-item"><a class="nav-link" href="asksupport.jsp">Listagem
@@ -46,7 +46,7 @@
 	<main>
 		<div class="row">
 			<div class="col-md-8 offset-md-2">
-				<h1 class="mb-5 h1">Atendimentos em aberto</h1>
+				<h1 class="mb-5 h1">Todos os atendimentos</h1>
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -61,10 +61,36 @@
 					<tbody>
 						<tr>
 							<th scope="row">1</th>
-							<td>Em aberto</td>
+							<td style="color:yellow">Em aberto</td>
 							<td>Maria</td>
 							<td>Não recebi o produto no prazo</td>
 							<td>09/02/2022</td>
+							<td><a
+								href="supportdescription.jsp"><button type="button"
+										class="btn btn-light">
+										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
+											width="20" height="auto" class="">
+									</button></a></td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>Fechado</td>
+							<td>Lucas</td>
+							<td>Quero meu dinheiro de volta!</td>
+							<td>07/02/2022</td>
+							<td><a
+								href="supportdescription.jsp"><button type="button"
+										class="btn btn-light">
+										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
+											width="20" height="auto" class="">
+									</button></a></td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>Fechado</td>
+							<td>Akira</td>
+							<td>Caixa amassada</td>
+							<td>06/02/2022</td>
 							<td><a
 								href="supportdescription.jsp"><button type="button"
 										class="btn btn-light">
