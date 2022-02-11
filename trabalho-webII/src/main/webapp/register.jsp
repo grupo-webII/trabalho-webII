@@ -188,12 +188,12 @@
 								placeholder="test@email.com" required>
 						</div>
 						<div class="form-group col-md-6 mb-3">
-							<label for="inputPassword4">Senha</label> <input type="password"
-								class="form-control" id="inputPassword4" placeholder="Senha"
+							<label for="inputPassword5">Senha</label> <input type="password"
+								class="form-control" id="inputPassword5" placeholder="Senha"
 								required>
 						</div>
 						<div class="form-group col-md-6 mb-3">
-							<label for="inputPassword5">Confirmar senha</label> <input
+							<label for="inputPassword6">Confirmar senha</label> <input
 								type="password" class="form-control" id="inputPassword6"
 								placeholder="Senha" required>
 						</div>
@@ -217,7 +217,7 @@
 					<div class="form-group col-md-6 mb-3">
 						<label for="inputAddress3">Complemento</label> <input type="text"
 							class="form-control" id="inputAddress3"
-							placeholder="Apartamento, bloco, estúdio" required>
+							placeholder="Apartamento, bloco, estúdio">
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6 mb-3">
@@ -228,7 +228,7 @@
 							<label for="inputCity">Cidade</label> <input type="text"
 								class="form-control" id="inputCity" required disabled>
 						</div>
-						<div class="form-group col-md-4 mb-3">
+						<div class="form-group col-md-2 mb-3">
 								<label for="inputCity">Estado</label> <input type="text"
 								class="form-control" id="inputState" required disabled>
 						</div>
