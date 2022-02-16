@@ -3,7 +3,6 @@ package com.system.app.web.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -54,8 +53,8 @@ public class LoginServlet extends HttpServlet {
 		} else if (user.equals("funcionario@test.com") && pass.equals("123")) {
 			response.sendRedirect("views/employee/main.jsp");  
 		} else {
-			pwriter.print("Uusário/senha não encontrado!");
-			pwriter.print("<a href=\"index.jsp\">Página inicial</a>");
+			pwriter.print("Uusï¿½rio/senha nï¿½o encontrado!");
+			pwriter.print("<a href=\"index.jsp\">Pï¿½gina inicial</a>");
 		}
 
 		pwriter.close();
