@@ -1,4 +1,4 @@
-package com.system.app.web.models;
+package com.system.app.web.DTO;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
