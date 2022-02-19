@@ -43,19 +43,19 @@ public class UserRepository implements UserRepoInterface {
                 +
                 "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, user.getName());
-        statement.setString(2, user.getLastname());
-        statement.setString(3, user.getCpf());
-        statement.setString(4, user.getPhone());
-        statement.setString(5, user.getEmail());
-        statement.setString(6, user.getPassword());
-        statement.setString(7, user.getCep());
-        statement.setString(8, user.getAddress());
-        statement.setString(9, user.getAdressNumb());
-        statement.setString(10, user.getComplement());
-        statement.setString(11, user.getBairro());
-        statement.setString(12, user.getCity());
-        statement.setString(13, user.getState());
+        statement.setString(1, this.user.getName());
+        statement.setString(2, this.user.getLastname());
+        statement.setString(3, this.user.getCpf());
+        statement.setString(4, this.user.getPhone());
+        statement.setString(5, this.user.getEmail());
+        statement.setString(6, this.user.getPassword());
+        statement.setString(7, this.user.getCep());
+        statement.setString(8, this.user.getAddress());
+        statement.setString(9, this.user.getAdressNumb());
+        statement.setString(10, this.user.getComplement());
+        statement.setString(11, this.user.getBairro());
+        statement.setString(12, this.user.getCity());
+        statement.setString(13, this.user.getState());
         int rowsInserted = statement.executeUpdate();
         if (rowsInserted > 0) {
             System.out.println("Inserido novo user!");
@@ -68,7 +68,7 @@ public class UserRepository implements UserRepoInterface {
     public void delete() throws SQLException {
         sql = "DELETE FROM User WHERE cpf = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, user.getCpf());
+        statement.setString(1, this.user.getCpf());
         int rowsInserted = statement.executeUpdate();
         if (rowsInserted > 0) {
             System.out.println("User deletado!");
@@ -209,4 +209,3 @@ public class UserRepository implements UserRepoInterface {
     }
 
 }
-
