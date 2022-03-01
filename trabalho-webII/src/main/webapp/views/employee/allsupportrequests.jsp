@@ -33,12 +33,11 @@
 						dos atendimentos em aberto
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="allsupportrequests.jsp">Listagem
-						dos atendimentos <span class="sr-only"> (atual)</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="asksupport.jsp">Listagem
+						dos atendimentos<span class="sr-only"> (atual)</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="categories.jsp">Listagem
 						de categorias</a></li>
-				<li class="nav-item"><a class="nav-link" href="asksupport.jsp">Listagem
+				<li class="nav-item"><a class="nav-link" href="products.jsp">Listagem
 						de produtos</a></li>
-				<li class="nav-item"><a class="nav-link" href="asksupport.jsp">Relatórios</a></li>
 				<li class="nav-item"><a class="nav-link" href="../../index.jsp"><b>Sair</b></a></li>
 			</ul>
 		</div>

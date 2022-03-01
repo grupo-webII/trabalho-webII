@@ -12,7 +12,7 @@
 <script src="../../resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <script src="../../resources/jquery-3.5.0.min.js"></script>
 <meta charset="ISO-8859-1">
-<title>Dashboard do Gerente</title>
+<title>Listagem dos atendimentos</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light p-4 mb-5">
@@ -30,89 +30,96 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
                                 <li class="nav-item active"><a class="nav-link" href="main.jsp">Listagem
-                                        dos usuários<span class="sr-only"> (atual)</span>
+                                        dos usuários
 				</a></li>
 				<li class="nav-item active"><a class="nav-link" href="openrequests.jsp">Listagem
 						dos atendimentos em aberto
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="allsupportrequests.jsp">Listagem
-						dos atendimentos</a></li>
+						dos atendimentos<span class="sr-only"> (atual)</span></a></li>
 				<li class="nav-item"><a class="nav-link" href="exports.jsp">Relatórios</a></li>
 				<li class="nav-item"><a class="nav-link" href="../../index.jsp"><b>Sair</b></a></li>
 			</ul>
 		</div>
 	</nav>
-    <main>
+	<main>
 		<div class="row">
 			<div class="col-md-8 offset-md-2">
-				<h1 class="h1">Usuários do sistema</h1>
-                                <a class="mb-5 btn btn-dark" href="newuser.jsp" class="btn btn-dark">Adicionar novo</a>
+				<h1 class="mb-5 h1">Todos os atendimentos</h1>
 				<table class="table table-hover">
 					<thead>
 						<tr>
 							<th scope="col">Hash</th>
-							<th scope="col">Tipo</th>
-							<th scope="col">Nome</th>
-							<th scope="col">E-mail</th>
-							<th scope="col">CPF</th>
+							<th scope="col">Status</th>
+							<th scope="col">Cliente</th>
+							<th scope="col">Descrição</th>
+							<th scope="col">Data</th>
 							<th scope="col">Ações</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<th scope="row">1</th>
-							<td>Funcionário</td>
-							<td>Jenivaldo Aquidaban</td>
-							<td>jenivaldo@test.com</td>
-							<td>000.000.000-00</td>
-							<td><button type="button" class="btn btn-light"
-									data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-								href="userdetails.jsp"><button type="button"
+							<td style="color:yellow">Em aberto</td>
+							<td>Maria</td>
+							<td>Não recebi o produto no prazo</td>
+							<td>09/02/2022</td>
+							<td><a
+								href="supportdescription.jsp"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/eye-solid.svg" alt="Eye icon"
-											width="20" height="auto" class="">
-									</button></a>&nbsp;<a
-								href="userdetails.jsp"><button type="button"
-										class="btn btn-light">
-										<img src="../../images/pen-to-square-solid.svg" alt="Eye icon"
+										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
 											width="20" height="auto" class="">
 									</button></a></td>
 						</tr>
 						<tr>
 							<th scope="row">2</th>
-							<td>Gerente</td>
-							<td>Jenivaldo Aquidaban</td>
-							<td>jenivaldo@test.com</td>
-							<td>000.000.000-00</td>
-							<td><button type="button" class="btn btn-light"
-									data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-								href="userdetails.jsp"><button type="button"
+							<td>Fechado</td>
+							<td>Lucas</td>
+							<td>Quero meu dinheiro de volta!</td>
+							<td>07/02/2022</td>
+							<td><a
+								href="supportdescription.jsp"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/eye-solid.svg" alt="Eye icon"
+										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
 											width="20" height="auto" class="">
-									</button></a>&nbsp;<a
-								href="userdetails.jsp"><button type="button"
+									</button></a></td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>Fechado</td>
+							<td>Akira</td>
+							<td>Caixa amassada</td>
+							<td>06/02/2022</td>
+							<td><a
+								href="supportdescription.jsp"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/pen-to-square-solid.svg" alt="Eye icon"
+										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
+											width="20" height="auto" class="">
+									</button></a></td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td style="color:red">Em aberto</td>
+							<td>Marcel</td>
+							<td>Produto não entrega o resultado de beleza</td>
+							<td>17/08/2021</td>
+							<td><a
+								href="supportdescription.jsp"><button type="button"
+										class="btn btn-light">
+										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
 											width="20" height="auto" class="">
 									</button></a></td>
 						</tr>
 						<tr>
 							<th scope="row">3</th>
-							<td>Funcionário</td>
-							<td>Jenivaldo Aquidaban</td>
-							<td>jenivaldo@test.com</td>
-							<td>000.000.000-00</td>
-							<td><button type="button" class="btn btn-light"
-									data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-								href="userdetails.jsp"><button type="button"
+							<td style="color:red">Em aberto</td>
+							<td>Monique</td>
+							<td>Não gostei do atendimento</td>
+							<td>01/03/2021</td>
+							<td><a
+								href="supportdescription.jsp"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/eye-solid.svg" alt="Eye icon"
-											width="20" height="auto" class="">
-									</button></a>&nbsp;<a
-								href="userdetails.jsp"><button type="button"
-										class="btn btn-light">
-										<img src="../../images/pen-to-square-solid.svg" alt="Eye icon"
+										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
 											width="20" height="auto" class="">
 									</button></a></td>
 						</tr>
