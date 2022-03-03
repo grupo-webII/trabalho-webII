@@ -6,11 +6,11 @@ import java.util.List;
 import com.system.app.web.DTO.User;
 
 public interface UserRepoInterface {
-    public void save() throws SQLException;
+    public void save(User user) throws SQLException;
 
-    public void delete() throws SQLException;
+    public void delete(String cpf) throws SQLException;
 
-    public void update() throws SQLException;
+    public void update(User user) throws SQLException;
 
     public List<User> getAllUsers() throws SQLException;
 

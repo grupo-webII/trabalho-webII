@@ -24,7 +24,7 @@ public class MySqlConnector {
                     "lastname VARCHAR(100) ," +
                     "cpf VARCHAR(11)," +
                     "phone varchar(11)," +
-                    "email varchar(100)," +
+                    "email varchar(100) unique," +
                     "password varchar(200)," +
                     "cep varchar(8)," +
                     "address varchar (200)," +

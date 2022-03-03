@@ -1,6 +1,5 @@
 package com.system.app.web.repo;
 
-import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,23 +13,11 @@ import com.system.app.web.config.MySqlConnector;
 
 public class UserRepository implements UserRepoInterface {
 
-    Field[] fields;
     Connection conn = null;
     String sql = null;
-    User user;
 
     UserRepository() {
         try {
-            this.user = null;
-            this.conn = new MySqlConnector().getConn();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    UserRepository(User user) {
-        try {
-            this.user = user;
             this.conn = new MySqlConnector().getConn();
         } catch (Exception e) {
             System.out.println(e);
@@ -38,24 +25,24 @@ public class UserRepository implements UserRepoInterface {
     }
 
     @Override
-    public void save() throws SQLException {
+    public void save(User user) throws SQLException {
         sql = "INSERT INTO User (name, lastname, cpf, phone, email, password, cep, address, addressNumber, complement, bairro, city, state)"
                 +
                 "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, this.user.getName());
-        statement.setString(2, this.user.getLastname());
-        statement.setString(3, this.user.getCpf());
-        statement.setString(4, this.user.getPhone());
-        statement.setString(5, this.user.getEmail());
-        statement.setString(6, this.user.getPassword());
-        statement.setString(7, this.user.getCep());
-        statement.setString(8, this.user.getAddress());
-        statement.setString(9, this.user.getAdressNumb());
-        statement.setString(10, this.user.getComplement());
-        statement.setString(11, this.user.getBairro());
-        statement.setString(12, this.user.getCity());
-        statement.setString(13, this.user.getState());
+        statement.setString(1, user.getName());
+        statement.setString(2, user.getLastname());
+        statement.setString(3, user.getCpf());
+        statement.setString(4, user.getPhone());
+        statement.setString(5, user.getEmail());
+        statement.setString(6, user.getPassword());
+        statement.setString(7, user.getCep());
+        statement.setString(8, user.getAddress());
+        statement.setString(9, user.getAdressNumb());
+        statement.setString(10, user.getComplement());
+        statement.setString(11, user.getBairro());
+        statement.setString(12, user.getCity());
+        statement.setString(13, user.getState());
         int rowsInserted = statement.executeUpdate();
         if (rowsInserted > 0) {
             System.out.println("Inserido novo user!");
@@ -65,10 +52,10 @@ public class UserRepository implements UserRepoInterface {
     }
 
     @Override
-    public void delete() throws SQLException {
+    public void delete(String cpf) throws SQLException {
         sql = "DELETE FROM User WHERE cpf = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, this.user.getCpf());
+        statement.setString(1, cpf);
         int rowsInserted = statement.executeUpdate();
         if (rowsInserted > 0) {
             System.out.println("User deletado!");
@@ -78,24 +65,24 @@ public class UserRepository implements UserRepoInterface {
     }
 
     @Override
-    public void update() throws SQLException {
+    public void update(User user) throws SQLException {
         String sql = "UPDATE User SET name=?, lastname=?, phone=?, email=?, password=?," +
                 "cep=?, address=?, addressNumber=?, complement=?, bairro=?, city=?, state=? WHERE cpf = ?";
 
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, this.user.getName());
-        statement.setString(2, this.user.getLastname());
-        statement.setString(3, this.user.getPhone());
-        statement.setString(4, this.user.getEmail());
-        statement.setString(5, this.user.getPassword());
-        statement.setString(6, this.user.getCep());
-        statement.setString(7, this.user.getAddress());
-        statement.setString(8, this.user.getAdressNumb());
-        statement.setString(9, this.user.getComplement());
-        statement.setString(10, this.user.getBairro());
-        statement.setString(11, this.user.getCity());
-        statement.setString(12, this.user.getState());
-        statement.setString(13, this.user.getCpf());
+        statement.setString(1, user.getName());
+        statement.setString(2, user.getLastname());
+        statement.setString(3, user.getPhone());
+        statement.setString(4, user.getEmail());
+        statement.setString(5, user.getPassword());
+        statement.setString(6, user.getCep());
+        statement.setString(7, user.getAddress());
+        statement.setString(8, user.getAdressNumb());
+        statement.setString(9, user.getComplement());
+        statement.setString(10, user.getBairro());
+        statement.setString(11, user.getCity());
+        statement.setString(12, user.getState());
+        statement.setString(13, user.getCpf());
         int rowsUpdated = statement.executeUpdate();
         if (rowsUpdated > 0) {
             System.out.println("User atualizado!");
@@ -133,9 +120,9 @@ public class UserRepository implements UserRepoInterface {
             }
         } catch (Exception e) {
             if (e != null) {
-                user = null;
+                userlist = null;
                 System.out.println(e);
-                throw new SQLException("erro no bd");
+                throw new SQLException(e);
             }
         }
         return userlist;
@@ -167,7 +154,7 @@ public class UserRepository implements UserRepoInterface {
         } catch (Exception e) {
             if (e != null) {
                 user = null;
-                throw new SQLException("User não existe");
+                throw new SQLException(e);
             }
         }
 
@@ -201,7 +188,7 @@ public class UserRepository implements UserRepoInterface {
         } catch (Exception e) {
             if (e != null) {
                 user = null;
-                throw new SQLException("User not found!");
+                throw new SQLException(e);
             }
         }
 
