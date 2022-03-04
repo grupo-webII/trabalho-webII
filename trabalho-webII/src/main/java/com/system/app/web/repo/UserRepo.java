@@ -163,4 +163,28 @@ public class UserRepo implements UserRepoInterface {
         return user;
     }
 
+    @Override
+    public User handleLogin(String email, String testPassword) {
+        sql = "SELECT password from User where email = ?";
+        User user = null;
+        try {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, email);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                user = new User();
+                user.setEmail(rs.getString("email"));
+                user.setUser_id(rs.getInt("user_id"));
+            }
+            if (!user.getPassword().equals(testPassword)) {
+                user.setIsAuthenticated(true);
+            }
+        } catch (Exception e) {
+            if (e != null) {
+                user = null;
+            }
+        }
+        return user;
+    }
+
 }

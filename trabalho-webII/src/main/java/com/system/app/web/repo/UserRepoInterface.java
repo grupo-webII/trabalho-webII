@@ -16,4 +16,6 @@ public interface UserRepoInterface {
     public User getUserByEmail(String email) ;
 
     public User getUserByID(Integer id) ;
+
+    public boolean handleLogin(String email, String password);
 }

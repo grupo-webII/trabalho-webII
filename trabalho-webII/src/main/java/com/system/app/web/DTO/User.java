@@ -5,8 +5,10 @@ public class User {
     Integer user_id;
     String email;
     String password;
+    Boolean isAuthenticated;
 
     public User() {
+        this.isAuthenticated = false;
     }
 
     public User(Integer id, String email, String pass) {

@@ -48,21 +48,21 @@ public class LoginServlet extends HttpServlet {
 
 		// Database Validation
 		// UserRepo repo = new UserRepo();
-		// User user = repo.getUserByEmail(uemail);
+		// User user = repo.handleLogin(uemail, upass);
 
-		// if (user.getPassword().equals(upass)) {
+		// if (user.getIsAuthenticated()) {
 		// response.sendRedirect("views/manager/main.jsp");
 		// }
 
 		if (uemail.equals("gerente@test.com") && upass.equals("123")) {
-			response.sendRedirect("views/manager/main.jsp");
+		response.sendRedirect("views/manager/main.jsp");
 		} else if (uemail.equals("cliente@test.com") && upass.equals("123")) {
-			response.sendRedirect("views/client/main.jsp");
+		response.sendRedirect("views/client/main.jsp");
 		} else if (uemail.equals("funcionario@test.com") && upass.equals("123")) {
-			response.sendRedirect("views/employee/main.jsp");
+		response.sendRedirect("views/employee/main.jsp");
 		} else {
-			pwriter.print("Uus�rio/senha n�o encontrado!");
-			pwriter.print("<a href=\"index.jsp\">P�gina inicial</a>");
+		pwriter.print("Uus�rio/senha n�o encontrado!");
+		pwriter.print("<a href=\"index.jsp\">P�gina inicial</a>");
 		}
 
 		pwriter.close();
