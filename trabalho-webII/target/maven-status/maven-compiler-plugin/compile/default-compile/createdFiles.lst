@@ -1,6 +1,0 @@
-com\system\app\web\DTO\User.class
-com\system\app\web\config\MySqlConnector.class
-com\system\app\web\repo\UserRepo.class
-com\system\app\web\controllers\LoginServlet.class
-com\system\app\web\repo\UserRepoInterface.class
-com\system\app\web\service\MysqlService.class

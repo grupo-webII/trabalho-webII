@@ -1,3 +1,0 @@
-mysql.url = jdbc:mysql://{IP DO SERVIDOR}:3306/{TABELA}
-mysql.username = USERNAME
-mysql.password = PASSWORD
