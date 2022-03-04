@@ -1,52 +1,31 @@
 package com.system.app.web.DTO;
 
-
 public class User {
 
-    String name;
-    String lastname;
-    String cpf;
-    String phone;
+    Integer user_id;
     String email;
     String password;
-    String cep;
-    String address;
-    String adressNumb;
-    String complement;
-    String bairro;
-    String city;
-    String state;
 
-    public String getName() {
-        return name;
+    public User() {
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public User(Integer id, String email, String pass) {
+        this.user_id = id;
+        this.email = email;
+        this.password = pass;
     }
 
-    public String getLastname() {
-        return lastname;
+    public User(String email, String pass) {
+        this.email = email;
+        this.password = pass;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public Integer getUser_id() {
+        return user_id;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     public String getEmail() {
@@ -63,62 +42,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getAdressNumb() {
-        return adressNumb;
-    }
-
-    public void setAdressNumb(String adressNumb) {
-        this.adressNumb = adressNumb;
-    }
-
-    public String getComplement() {
-        return complement;
-    }
-
-    public void setComplement(String complement) {
-        this.complement = complement;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
     }
 
 }

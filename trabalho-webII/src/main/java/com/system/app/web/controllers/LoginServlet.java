@@ -43,22 +43,30 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter pwriter = response.getWriter();
 
-		String user = request.getParameter("uemail");
-		String pass = request.getParameter("upass");
+		String uemail = request.getParameter("uemail");
+		String upass = request.getParameter("upass");
 
-		if (user.equals("gerente@test.com") && pass.equals("123")) {
-			response.sendRedirect("views/manager/main.jsp");  
-		} else if (user.equals("cliente@test.com") && pass.equals("123")) {
-			response.sendRedirect("views/client/main.jsp");  
-		} else if (user.equals("funcionario@test.com") && pass.equals("123")) {
-			response.sendRedirect("views/employee/main.jsp");  
+		// Database Validation
+		// UserRepo repo = new UserRepo();
+		// User user = repo.getUserByEmail(uemail);
+
+		// if (user.getPassword().equals(upass)) {
+		// response.sendRedirect("views/manager/main.jsp");
+		// }
+
+		if (uemail.equals("gerente@test.com") && upass.equals("123")) {
+			response.sendRedirect("views/manager/main.jsp");
+		} else if (uemail.equals("cliente@test.com") && upass.equals("123")) {
+			response.sendRedirect("views/client/main.jsp");
+		} else if (uemail.equals("funcionario@test.com") && upass.equals("123")) {
+			response.sendRedirect("views/employee/main.jsp");
 		} else {
 			pwriter.print("Uus�rio/senha n�o encontrado!");
 			pwriter.print("<a href=\"index.jsp\">P�gina inicial</a>");
 		}
 
 		pwriter.close();
-		
+
 		doGet(request, response);
 	}
 
