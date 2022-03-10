@@ -46,4 +46,13 @@ public class User {
         this.password = password;
     }
 
+    public Boolean getIsAuthenticated() {
+        return isAuthenticated;
+    }
+
+    public void setIsAuthenticated(Boolean isAuthenticated) {
+        this.isAuthenticated = isAuthenticated;
+    }
+    
+
 }
