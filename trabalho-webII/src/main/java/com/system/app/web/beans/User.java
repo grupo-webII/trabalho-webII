@@ -1,11 +1,24 @@
-package com.system.app.web.DTO;
+package com.system.app.web.beans;
 
-public class User {
+import java.io.Serializable;
 
-    Integer user_id;
-    String email;
-    String password;
-    Boolean isAuthenticated;
+public class User implements Serializable {
+
+    private Integer user_id;
+    private String email;
+    private String password;
+    private Boolean isAuthenticated;
+    private Role role;
+
+
+    
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public User() {
         this.isAuthenticated = false;

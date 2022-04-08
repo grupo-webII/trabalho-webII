@@ -1,14 +1,16 @@
-package com.system.app.web.service;
+package com.system.app.web.config;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class MysqlService {
+import com.system.app.web.repo.DAOException;
 
+public class MysqlTableInit {
+    
     Connection conn;
 
-    public MysqlService(Connection connection) {
+    public MysqlTableInit(Connection connection) throws DAOException {
         this.conn = connection;
         try {
             Statement stmt = conn.createStatement();
@@ -51,7 +53,7 @@ public class MysqlService {
             }
             stmt.close();
         } catch (SQLException e) {
-            System.out.println(e);
+            throw new DAOException("Failed to Initialize Tables", e);
         }
 
     }

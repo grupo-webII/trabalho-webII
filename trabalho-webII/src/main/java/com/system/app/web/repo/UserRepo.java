@@ -7,24 +7,26 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import com.system.app.web.DTO.User;
+
+import com.system.app.web.beans.Role;
+import com.system.app.web.beans.User;
 import com.system.app.web.config.MySqlConnector;
 
-public class UserRepo implements UserRepoInterface {
+public class UserRepo implements DAOinterface<User> {
 
-    Connection conn = null;
-    String sql = null;
+    private Connection conn = null;
+    private String sql = null;
 
-    public UserRepo() {
+    public UserRepo() throws DAOException {
         try {
             this.conn = new MySqlConnector().getConn();
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (DAOException e) {
+            throw new DAOException("Error establishing connection with DB", e);
         }
     }
 
     @Override
-    public boolean save(User user) {
+    public boolean save(User user) throws DAOException {
         sql = "INSERT INTO user (email, password)"
                 +
                 "VALUES (?,?)";
@@ -37,38 +39,43 @@ public class UserRepo implements UserRepoInterface {
             if (rowsInserted > 0) {
                 isSaved = true;
                 System.out.println("Inserido novo user!");
-            } else {
-                throw new SQLException("Algo de errado no BD");
             }
-        } catch (Exception e) {
-            System.out.println(e);
+            User savedUser = getUserByEmail(user.getEmail());
+            Role newRole = new Role();
+            newRole.setUser_id(savedUser.getUser_id());
+            boolean roleRepo = new RoleRepo().save(newRole);
+            if (roleRepo) {
+                System.out.println("Saved default Role for User: " + savedUser.getUser_id().toString());
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Error INSERTING new User: " + sql + "/" + user.toString(), e);
         }
         return isSaved;
     }
 
     @Override
-    public boolean delete(String email) {
-        sql = "DELETE FROM user WHERE email = ?";
+    public boolean delete(Integer id) throws DAOException {
+        sql = "DELETE FROM user WHERE id = ?";
         boolean isDeleted = false;
         try {
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, email);
+            statement.setInt(1, id);
             int rowsInserted = statement.executeUpdate();
+            RoleRepo roleRepo = new RoleRepo();
+            roleRepo.delete(id);
             if (rowsInserted > 0) {
                 isDeleted = true;
                 System.out.println("User deletado!");
-            } else {
-                throw new SQLException("User não existe");
             }
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (SQLException e) {
+            throw new DAOException("Error DELETING User by id: " + sql + "/" + id.toString(), e);
         }
         return isDeleted;
 
     }
 
     @Override
-    public boolean update(User user) {
+    public boolean update(User user) throws DAOException {
         String sql = "UPDATE user SET email=?, password=? WHERE id = ?";
         boolean isUpdated = false;
         try {
@@ -80,18 +87,16 @@ public class UserRepo implements UserRepoInterface {
             if (rowsUpdated > 0) {
                 isUpdated = true;
                 System.out.println("User atualizado!");
-            } else {
-                throw new SQLException("User não existe");
             }
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (SQLException e) {
+            throw new DAOException("Error UPDATING User: " + sql + "/" + user.toString(), e);
         }
         return isUpdated;
 
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public List<User> getAll() throws DAOException {
         sql = "SELECT * FROM user";
         List<User> userlist = new ArrayList<>();
         try {
@@ -103,20 +108,20 @@ public class UserRepo implements UserRepoInterface {
                 user.setUser_id(rs.getInt("user_id"));
                 user.setEmail(rs.getString("email"));
                 user.setPassword(rs.getString("password"));
+                user.setRole(new RoleRepo().getByID(rs.getInt("user_id")));
                 userlist.add(user);
                 user = null;
             }
-        } catch (Exception e) {
-            if (e != null) {
-                userlist = null;
-                System.out.println(e);
-            }
+        } catch (SQLException e) {
+            userlist = null;
+            throw new DAOException("Error GETTING ALL Users: " + sql, e);
+
         }
         return userlist;
     }
 
     @Override
-    public User getUserByID(Integer id) {
+    public User getByID(Integer id) throws DAOException {
         sql = "SELECT * from user where id = ?";
         User user = new User();
         try {
@@ -127,20 +132,19 @@ public class UserRepo implements UserRepoInterface {
                 user.setUser_id(rs.getInt("user_id"));
                 user.setEmail(rs.getString("email"));
                 user.setPassword(rs.getString("password"));
+                user.setRole(new RoleRepo().getByID(rs.getInt("user_id")));
             }
-        } catch (Exception e) {
-            if (e != null) {
-                user = null;
-                System.out.println(e);
-            }
+        } catch (SQLException e) {
+            user = null;
+            throw new DAOException("Error GETTING User by id: " + sql + "/" + id.toString(), e);
+
         }
 
         return user;
 
     }
 
-    @Override
-    public User getUserByEmail(String email) {
+    public User getUserByEmail(String email) throws DAOException {
         sql = "SELECT * from User where email = ?";
         User user = new User();
         try {
@@ -151,38 +155,37 @@ public class UserRepo implements UserRepoInterface {
                 user.setUser_id(rs.getInt("user_id"));
                 user.setEmail(rs.getString("email"));
                 user.setPassword(rs.getString("password"));
+                user.setRole(new RoleRepo().getByID(rs.getInt("user_id")));
             }
-        } catch (Exception e) {
-            if (e != null) {
-                user = null;
-                System.out.println(e);
-
-            }
+        } catch (SQLException e) {
+            user = null;
+            throw new DAOException("Error GETTING User by email: " + sql + "/" + email.toString(), e);
         }
 
         return user;
     }
 
-    @Override
-    public User handleLogin(String email, String testPassword) {
+    public User handleLogin(String email, String testPassword) throws DAOException {
         sql = "SELECT password from User where email = ?";
         User user = null;
         try {
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, email);
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                user = new User();
-                user.setEmail(rs.getString("email"));
-                user.setUser_id(rs.getInt("user_id"));
-            }
+            // PreparedStatement statement = conn.prepareStatement(sql);
+            // statement.setString(1, email);
+            // ResultSet rs = statement.executeQuery();
+            // while (rs.next()) {
+            // user = new User();
+            // user.setEmail(rs.getString("email"));
+            // user.setUser_id(rs.getInt("user_id"));
+            // user.setRole(new RoleRepo().getByID(rs.getInt("user_id")));
+            // }
+            user = getUserByEmail(email);
             if (!user.getPassword().equals(testPassword)) {
                 user.setIsAuthenticated(true);
+                System.out.println("Authenticated User: " + user.getEmail());
             }
-        } catch (Exception e) {
-            if (e != null) {
-                user = null;
-            }
+        } catch (DAOException e) {
+            user = null;
+            throw new DAOException("Error AUTHENTICATING user: " + sql + "/" + email.toString(), e);
         }
         return user;
     }

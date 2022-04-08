@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.system.app.web.beans.User;
+import com.system.app.web.repo.DAOException;
+import com.system.app.web.repo.UserRepo;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -47,23 +51,34 @@ public class LoginServlet extends HttpServlet {
 		String upass = request.getParameter("upass");
 
 		// Database Validation
-		// UserRepo repo = new UserRepo();
-		// User user = repo.handleLogin(uemail, upass);
-
-		// if (user.getIsAuthenticated()) {
-		// response.sendRedirect("views/manager/main.jsp");
-		// }
-
-		if (uemail.equals("gerente@test.com") && upass.equals("123")) {
-		response.sendRedirect("views/manager/main.jsp");
-		} else if (uemail.equals("cliente@test.com") && upass.equals("123")) {
-		response.sendRedirect("views/client/main.jsp");
-		} else if (uemail.equals("funcionario@test.com") && upass.equals("123")) {
-		response.sendRedirect("views/employee/main.jsp");
-		} else {
-		pwriter.print("Uus�rio/senha n�o encontrado!");
-		pwriter.print("<a href=\"index.jsp\">P�gina inicial</a>");
+		try {
+			System.out.println("Eu existo");
+			User user = new UserRepo().handleLogin(uemail, upass);
+			if (user.getIsAuthenticated()) {
+				if (user.getRole().isROLE_FUNC()) {
+					response.sendRedirect("views/employee/main.jsp");
+				} else if (user.getRole().isROLE_GERENTE()) {
+					response.sendRedirect("views/manager/main.jsp");
+				} else {
+					response.sendRedirect("views/client/main.jsp");
+				}
+			}
+		} catch (DAOException e) {
+			// redirect to error.jsp
+			pwriter.print("Usuário/senha não encontrado!");
+			pwriter.print("<a href=\"index.jsp\">Página inicial</a>");
 		}
+
+		// if (uemail.equals("gerente@test.com") && upass.equals("123")) {
+		// response.sendRedirect("views/manager/main.jsp");
+		// } else if (uemail.equals("cliente@test.com") && upass.equals("123")) {
+		// response.sendRedirect("views/client/main.jsp");
+		// } else if (uemail.equals("funcionario@test.com") && upass.equals("123")) {
+		// response.sendRedirect("views/employee/main.jsp");
+		// } else {
+		// pwriter.print("Uus�rio/senha n�o encontrado!");
+		// pwriter.print("<a href=\"index.jsp\">P�gina inicial</a>");
+		// }
 
 		pwriter.close();
 
