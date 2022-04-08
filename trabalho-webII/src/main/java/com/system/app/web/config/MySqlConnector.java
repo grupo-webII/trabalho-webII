@@ -9,13 +9,13 @@ import java.util.Properties;
 
 import com.system.app.web.repo.DAOException;
 
-public class MySqlConnector implements AutoCloseable {
+public class MySqlConnector  {
     private Connection conn = null;
     private Properties prop = new Properties();
     // Vai ler dados de src/main/resources/mysql.properties. Como se fosse um .env
     // Veja src/main/resources/mysql.properties.EXEMPLO para os dados
     private InputStream mysqlConf = MySqlConnector.class.getClassLoader().getResourceAsStream("mysql.properties");
-    private static String DRIVER = "java.sql.Driver";
+    private static String DRIVER = "com.mysql.cj.jdbc.Driver";
 
     public Connection getConn() throws DAOException {
         try {
@@ -36,17 +36,17 @@ public class MySqlConnector implements AutoCloseable {
         return conn;
     }
 
-    @Override
-    public void close() {
-        if (this.conn != null) {
-            try {
-                this.conn.close();
-                this.conn = null;
-            } catch (Exception e) {
-                System.out.println("Error closing DB connection");
-                e.printStackTrace();
-            }
-        }
-    }
+    // @Override
+    // public void close() {
+    //     if (this.conn != null) {
+    //         try {
+    //             this.conn.close();
+    //             this.conn = null;
+    //         } catch (Exception e) {
+    //             System.out.println("Error closing DB connection");
+    //             e.printStackTrace();
+    //         }
+    //     }
+    // }
 
 }

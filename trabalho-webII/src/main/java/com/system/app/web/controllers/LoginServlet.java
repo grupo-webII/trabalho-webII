@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served attt: ").append(request.getContextPath());
 	}
 
 	/**
@@ -52,33 +52,28 @@ public class LoginServlet extends HttpServlet {
 
 		// Database Validation
 		try {
-			System.out.println("Eu existo");
 			User user = new UserRepo().handleLogin(uemail, upass);
+			System.out.println(user.getIsAuthenticated());
 			if (user.getIsAuthenticated()) {
 				if (user.getRole().isROLE_FUNC()) {
 					response.sendRedirect("views/employee/main.jsp");
 				} else if (user.getRole().isROLE_GERENTE()) {
+					System.out.println("redirecting");
 					response.sendRedirect("views/manager/main.jsp");
 				} else {
 					response.sendRedirect("views/client/main.jsp");
 				}
+			} else {
+				// redirect to error.jsp
+				pwriter.print("Usuário/senha não encontrado!");
+				pwriter.print("<a href=\"index.jsp\">Página inicial</a>");
 			}
 		} catch (DAOException e) {
 			// redirect to error.jsp
+			System.out.println(e);
 			pwriter.print("Usuário/senha não encontrado!");
 			pwriter.print("<a href=\"index.jsp\">Página inicial</a>");
 		}
-
-		// if (uemail.equals("gerente@test.com") && upass.equals("123")) {
-		// response.sendRedirect("views/manager/main.jsp");
-		// } else if (uemail.equals("cliente@test.com") && upass.equals("123")) {
-		// response.sendRedirect("views/client/main.jsp");
-		// } else if (uemail.equals("funcionario@test.com") && upass.equals("123")) {
-		// response.sendRedirect("views/employee/main.jsp");
-		// } else {
-		// pwriter.print("Uus�rio/senha n�o encontrado!");
-		// pwriter.print("<a href=\"index.jsp\">P�gina inicial</a>");
-		// }
 
 		pwriter.close();
 

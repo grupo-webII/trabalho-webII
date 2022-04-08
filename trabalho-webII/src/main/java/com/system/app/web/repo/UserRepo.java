@@ -145,7 +145,7 @@ public class UserRepo implements DAOinterface<User> {
     }
 
     public User getUserByEmail(String email) throws DAOException {
-        sql = "SELECT * from User where email = ?";
+        sql = "SELECT * from user where email = ?";
         User user = new User();
         try {
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -179,7 +179,8 @@ public class UserRepo implements DAOinterface<User> {
             // user.setRole(new RoleRepo().getByID(rs.getInt("user_id")));
             // }
             user = getUserByEmail(email);
-            if (!user.getPassword().equals(testPassword)) {
+            user.setIsAuthenticated(false);
+            if (user.getPassword().equals(testPassword)) {
                 user.setIsAuthenticated(true);
                 System.out.println("Authenticated User: " + user.getEmail());
             }

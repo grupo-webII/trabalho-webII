@@ -46,15 +46,15 @@
 							placeholder="******" required>
 					</div>
 					<button type="submit" class="btn btn-dark">Entrar</button>
-					<a href="register.jsp" type="button" class="btn btn-secondary">Não
+					<a href="register.jsp" type="button" class="btn btn-secondary">NÃ£o
 						tenho cadastro</a>
 
 					<!-- <div class="mb-3">
 						<label for="exampleInputEmail1" class="form-label">E-mail
 						</label> <input type="email" class="form-control" id="exampleInputEmail1"
 							aria-describedby="emailHelp" name="uemail" required>
-						<div id="emailHelp" class="form-text">Nós não iremos
-							compartilhar com mais ninguém.</div>
+						<div id="emailHelp" class="form-text">Nï¿½s nï¿½o iremos
+							compartilhar com mais ninguï¿½m.</div>
 					</div>
 					<div class="mb-3">
 						<label for="exampleInputPassword1" class="form-label">Senha</label>
@@ -62,7 +62,7 @@
 							id="exampleInputPassword1" name="upass" required>
 					</div>
 					<button type="submit" class="btn btn-dark">Entrar</button>
-					<a href="register.jsp" type="button" class="btn btn-secondary">Não
+					<a href="register.jsp" type="button" class="btn btn-secondary">Nï¿½o
 						tenho cadastro</a> -->
 				</form>
 			</div>
