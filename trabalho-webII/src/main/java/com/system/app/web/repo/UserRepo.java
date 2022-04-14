@@ -18,8 +18,8 @@ public class UserRepo implements DAOinterface<User> {
     private String sql = null;
 
     public UserRepo() throws DAOException {
-        try (MySqlConnector Conector = new MySqlConnector()) {
-            this.conn = Conector.getConn();
+        try {
+            this.conn = new MySqlConnector().getConn();
         } catch (DAOException e) {
             throw new DAOException("Error establishing connection with DB", e);
         }
