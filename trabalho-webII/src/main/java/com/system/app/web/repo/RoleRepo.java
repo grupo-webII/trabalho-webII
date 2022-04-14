@@ -17,8 +17,8 @@ public class RoleRepo implements DAOinterface<Role> {
     private String sql = null;
 
     public RoleRepo() throws DAOException {
-        try (MySqlConnector Conector = new MySqlConnector()) {
-            this.conn = Conector.getConn();
+        try {
+            this.conn = new MySqlConnector().getConn();
         } catch (DAOException e) {
             throw new DAOException("Error establishing connection with DB", e);
         }
