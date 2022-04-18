@@ -7,7 +7,7 @@ import java.sql.Statement;
 import com.system.app.web.repo.DAOException;
 
 public class MysqlTableInit {
-    
+
     Connection conn;
 
     public MysqlTableInit(Connection connection) throws DAOException {
@@ -47,7 +47,42 @@ public class MysqlTableInit {
                                     "state varchar(50)," +
                                     "primary key(cpf)," +
                                     "FOREIGN KEY (user_id) REFERENCES user(user_id)" +
-                                    ");" };
+                                    ");",
+                            // CATEGORIA DOS PRODUTOS
+                            "CREATE TABLE IF NOT EXISTS productCategory (" +
+                                    "name VARCHAR(50)," +
+                                    "primary key(name)" +
+                                    ");",
+                            // PRODUTOS
+                            "CREATE TABLE IF NOT EXISTS product (" +
+                                    "product_id int not null auto_increment," +
+                                    "name VARCHAR(50)," +
+                                    "category VARCHAR(50)," +
+                                    "description TEXT," +
+                                    "weight DECIMAL(10, 2)," +
+                                    "primary key(product_id)," +
+                                    "FOREIGN KEY (category) REFERENCES productCategory(name)" +
+                                    ");",
+                            // TIPO DE ATENDIMENTO
+                            "CREATE TABLE IF NOT EXISTS attType (" +
+                                    "name VARCHAR(50)," +
+                                    "primary key(name)" +
+                                    ");",
+                            // ATENDIMENTOS
+                            "CREATE TABLE IF NOT EXISTS att (" +
+                                    "at_id int not null auto_increment," +
+                                    "data TIMESTAMP," +
+                                    "client int not null," +
+                                    "status VARCHAR(10)," +
+                                    "product int not null," +
+                                    "type VARCHAR(50)," +
+                                    "description TEXT," +
+                                    "solution TEXT," +
+                                    "primary key(at_id)," +
+                                    "FOREIGN KEY (type) REFERENCES attType(name)" +
+                                    ");"
+
+                    };
             for (int i = 0; i < sql.length; i++) {
                 stmt.executeUpdate(sql[i]);
             }

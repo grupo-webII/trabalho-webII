@@ -13,22 +13,18 @@ import com.system.app.web.config.MySqlConnector;
 
 public class RoleRepo implements DAOinterface<Role> {
 
-    private Connection conn = null;
     private String sql = null;
+    private MySqlConnector conector = null;
 
-    public RoleRepo() throws DAOException {
-        try {
-            this.conn = new MySqlConnector().getConn();
-        } catch (DAOException e) {
-            throw new DAOException("Error establishing connection with DB", e);
-        }
+    public RoleRepo() {
+        this.conector = new MySqlConnector();
     }
 
     @Override
     public boolean delete(Integer user_id) throws DAOException {
         sql = "DELETE FROM role WHERE user_id = ?";
         boolean isDeleted = false;
-        try {
+        try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, user_id);
             int rowsInserted = statement.executeUpdate();
@@ -46,7 +42,7 @@ public class RoleRepo implements DAOinterface<Role> {
     public List<Role> getAll() throws DAOException {
         sql = "SELECT * FROM role";
         List<Role> rolelist = new ArrayList<>();
-        try {
+        try (Connection conn = conector.getConn()) {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             Role role = new Role();
@@ -71,7 +67,7 @@ public class RoleRepo implements DAOinterface<Role> {
     public Role getByID(Integer user_id) throws DAOException {
         sql = "SELECT * from role where user_id = ?";
         Role role = new Role();
-        try {
+        try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, user_id);
             ResultSet rs = statement.executeQuery();
@@ -94,7 +90,7 @@ public class RoleRepo implements DAOinterface<Role> {
                 +
                 "VALUES (?,?,?,?)";
         boolean isSaved = false;
-        try {
+        try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(2, role.getUser_id());
             statement.setBoolean(2, role.isROLE_CLIENTE());
@@ -115,7 +111,7 @@ public class RoleRepo implements DAOinterface<Role> {
     public boolean update(Role role) throws DAOException {
         String sql = "UPDATE role SET ROLE_CLIENTE=?, ROLE_FUNC=?, ROLE_GERENTE=? WHERE id = ?";
         boolean isUpdated = false;
-        try {
+        try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setBoolean(1, role.isROLE_CLIENTE());
             statement.setBoolean(1, role.isROLE_FUNC());

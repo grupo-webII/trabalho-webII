@@ -9,7 +9,7 @@ import java.util.Properties;
 
 import com.system.app.web.repo.DAOException;
 
-public class MySqlConnector {
+public class MySqlConnector implements AutoCloseable {
     private Connection conn = null;
     private Properties prop = new Properties();
     // Vai ler dados de src/main/resources/mysql.properties. Como se fosse um .env
@@ -21,8 +21,9 @@ public class MySqlConnector {
         try {
             Class.forName(DRIVER);
             this.prop.load(this.mysqlConf);
-            String connStr = String.format("%s?useSSL=false&" + "user=%s&password=%s", this.prop.getProperty("mysql.url"),
-                    this.prop.getProperty("mysql.username"), this.prop.getProperty("mysql.password"),  "&useSSL=false");
+            String connStr = String.format("%s?useSSL=false&" + "user=%s&password=%s",
+                    this.prop.getProperty("mysql.url"),
+                    this.prop.getProperty("mysql.username"), this.prop.getProperty("mysql.password"), "&useSSL=false");
             this.conn = DriverManager.getConnection(connStr);
             new MysqlTableInit(this.conn);
 
@@ -36,17 +37,16 @@ public class MySqlConnector {
         return conn;
     }
 
-    // @Override
-    // public void close() {
-    //     if (this.conn != null) {
-    //         try {
-    //             this.conn.close();
-    //             this.conn = null;
-    //         } catch (Exception e) {
-    //             System.out.println("Error closing DB connection");
-    //             e.printStackTrace();
-    //         }
-    //     }
-    // }
+    @Override
+    public void close() throws DAOException {
+        if (this.conn != null) {
+            try {
+                this.conn.close();
+                this.conn = null;
+            } catch (Exception e) {
+                throw new DAOException("Error closing DB connection", e);
+            }
+        }
+    }
 
 }

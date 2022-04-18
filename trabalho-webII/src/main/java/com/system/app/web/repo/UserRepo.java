@@ -14,15 +14,11 @@ import com.system.app.web.config.MySqlConnector;
 
 public class UserRepo implements DAOinterface<User> {
 
-    private Connection conn = null;
+    private MySqlConnector conector = null;
     private String sql = null;
 
-    public UserRepo() throws DAOException {
-        try {
-            this.conn = new MySqlConnector().getConn();
-        } catch (DAOException e) {
-            throw new DAOException("Error establishing connection with DB", e);
-        }
+    public UserRepo() {
+        this.conector = new MySqlConnector();
     }
 
     @Override
@@ -31,7 +27,7 @@ public class UserRepo implements DAOinterface<User> {
                 +
                 "VALUES (?,?)";
         boolean isSaved = false;
-        try {
+        try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
@@ -55,9 +51,9 @@ public class UserRepo implements DAOinterface<User> {
 
     @Override
     public boolean delete(Integer id) throws DAOException {
-        sql = "DELETE FROM user WHERE id = ?";
+        sql = "DELETE FROM user WHERE user_id = ?";
         boolean isDeleted = false;
-        try {
+        try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, id);
             int rowsInserted = statement.executeUpdate();
@@ -76,9 +72,9 @@ public class UserRepo implements DAOinterface<User> {
 
     @Override
     public boolean update(User user) throws DAOException {
-        String sql = "UPDATE user SET email=?, password=? WHERE id = ?";
+        String sql = "UPDATE user SET email=?, password=? WHERE user_id = ?";
         boolean isUpdated = false;
-        try {
+        try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
@@ -99,7 +95,7 @@ public class UserRepo implements DAOinterface<User> {
     public List<User> getAll() throws DAOException {
         sql = "SELECT * FROM user";
         List<User> userlist = new ArrayList<>();
-        try {
+        try (Connection conn = conector.getConn()) {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             User user = new User();
@@ -122,9 +118,9 @@ public class UserRepo implements DAOinterface<User> {
 
     @Override
     public User getByID(Integer id) throws DAOException {
-        sql = "SELECT * from user where id = ?";
+        sql = "SELECT * from user where user_id = ?";
         User user = new User();
-        try {
+        try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
@@ -147,7 +143,7 @@ public class UserRepo implements DAOinterface<User> {
     public User getUserByEmail(String email) throws DAOException {
         sql = "SELECT * from user where email = ?";
         User user = new User();
-        try {
+        try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, email);
             ResultSet rs = statement.executeQuery();
@@ -169,15 +165,6 @@ public class UserRepo implements DAOinterface<User> {
         sql = "SELECT password from User where email = ?";
         User user = null;
         try {
-            // PreparedStatement statement = conn.prepareStatement(sql);
-            // statement.setString(1, email);
-            // ResultSet rs = statement.executeQuery();
-            // while (rs.next()) {
-            // user = new User();
-            // user.setEmail(rs.getString("email"));
-            // user.setUser_id(rs.getInt("user_id"));
-            // user.setRole(new RoleRepo().getByID(rs.getInt("user_id")));
-            // }
             user = getUserByEmail(email);
             user.setIsAuthenticated(false);
             if (user.getPassword().equals(testPassword)) {
