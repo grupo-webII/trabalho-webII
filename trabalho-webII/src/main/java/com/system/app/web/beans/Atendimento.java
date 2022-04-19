@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Atendimento {
 
+    private Integer at_id;
     private Date data;
     private User client;
     private String status;
@@ -11,6 +12,17 @@ public class Atendimento {
     private AtendType type;
     private String description;
     private String solution;
+
+
+
+    
+    public Integer getAt_id() {
+        return at_id;
+    }
+
+    public void setAt_id(Integer at_id) {
+        this.at_id = at_id;
+    }
 
     public Date getData() {
         return data;
