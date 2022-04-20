@@ -1,6 +1,8 @@
 package com.system.app.web.beans;
 
-public class AtendType {
+import java.io.Serializable;
+
+public class AtendType implements Serializable {
     private String name;
 
     public String getName() {

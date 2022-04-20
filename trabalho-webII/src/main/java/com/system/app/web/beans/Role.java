@@ -1,6 +1,8 @@
 package com.system.app.web.beans;
 
-public class Role {
+import java.io.Serializable;
+
+public class Role implements Serializable {
 
     private Integer user_id;
     private boolean ROLE_CLIENTE;

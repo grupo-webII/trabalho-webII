@@ -1,8 +1,9 @@
 package com.system.app.web.beans;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Atendimento {
+public class Atendimento implements Serializable {
 
     private Integer at_id;
     private Date data;

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.system.app.web.beans.User;
 import com.system.app.web.repo.DAOException;
@@ -55,10 +56,11 @@ public class LoginServlet extends HttpServlet {
 			User user = new UserRepo().handleLogin(uemail, upass);
 			System.out.println(user.getIsAuthenticated());
 			if (user.getIsAuthenticated()) {
+				HttpSession session = request.getSession();
+				session.setAttribute("user", user);
 				if (user.getRole().isROLE_FUNC()) {
 					response.sendRedirect("views/employee/main.jsp");
 				} else if (user.getRole().isROLE_GERENTE()) {
-					System.out.println("redirecting");
 					response.sendRedirect("views/manager/main.jsp");
 				} else {
 					response.sendRedirect("views/client/main.jsp");

@@ -1,6 +1,8 @@
 package com.system.app.web.beans;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable{
 
     private Integer product_id;
     private String name;

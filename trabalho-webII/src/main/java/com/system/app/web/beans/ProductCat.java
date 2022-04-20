@@ -1,6 +1,8 @@
 package com.system.app.web.beans;
 
-public class ProductCat {
+import java.io.Serializable;
+
+public class ProductCat implements Serializable {
 
     private String name;
 
