@@ -29,7 +29,8 @@ public class MysqlTableInit {
                                     "ROLE_FUNC TINYINT(1) DEFAULT 0," +
                                     "ROLE_GERENTE TINYINT(1) DEFAULT 0," +
                                     "PRIMARY KEY (user_id)," +
-                                    "FOREIGN KEY (user_id) REFERENCES user(user_id) " +
+                                    "FOREIGN KEY (user_id) REFERENCES user(user_id) "
+                                    +
                                     ");",
                             // USER DATA TABLE
                             "CREATE TABLE IF NOT EXISTS userData ( " +
@@ -46,10 +47,12 @@ public class MysqlTableInit {
                                     "city varchar(100)," +
                                     "state varchar(50)," +
                                     "primary key(cpf)," +
-                                    "FOREIGN KEY (user_id) REFERENCES user(user_id)" +
+                                    "FOREIGN KEY (user_id) REFERENCES user(user_id)"
+                                    +
                                     ");",
                             // CATEGORIA DOS PRODUTOS
                             "CREATE TABLE IF NOT EXISTS productCategory (" +
+                                    "cat_id int not null auto_increment" +
                                     "name VARCHAR(50)," +
                                     "primary key(name)" +
                                     ");",
@@ -57,14 +60,16 @@ public class MysqlTableInit {
                             "CREATE TABLE IF NOT EXISTS product (" +
                                     "product_id int not null auto_increment," +
                                     "name VARCHAR(50)," +
-                                    "category VARCHAR(50)," +
+                                    "category int," +
                                     "description TEXT," +
                                     "weight DECIMAL(10, 2)," +
                                     "primary key(product_id)," +
-                                    "FOREIGN KEY (category) REFERENCES productCategory(name)" +
+                                    "FOREIGN KEY (category) REFERENCES productCategory(cat_id)"
+                                    +
                                     ");",
                             // TIPO DE ATENDIMENTO
                             "CREATE TABLE IF NOT EXISTS attType (" +
+                                    "type_id int not null auto_increment" +
                                     "name VARCHAR(50)," +
                                     "primary key(name)" +
                                     ");",
@@ -75,11 +80,11 @@ public class MysqlTableInit {
                                     "client int not null," +
                                     "status VARCHAR(10)," +
                                     "product int not null," +
-                                    "type VARCHAR(50)," +
+                                    "type int," +
                                     "description TEXT," +
                                     "solution TEXT," +
                                     "primary key(at_id)," +
-                                    "FOREIGN KEY (type) REFERENCES attType(name)" +
+                                    "FOREIGN KEY (type) REFERENCES attType(type_id)" +
                                     ");"
 
                     };

@@ -26,7 +26,7 @@ public class ProductRepo implements DAOinterface<Product> {
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, product.getName());
-            statement.setString(2, product.getCategory().getName());
+            statement.setInt(2, product.getCategory().getCat_id());
             statement.setString(3, product.getDescription());
             statement.setFloat(4, product.getWeight());
             int rowsInserted = statement.executeUpdate();
@@ -66,7 +66,7 @@ public class ProductRepo implements DAOinterface<Product> {
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, product.getName());
-            statement.setString(2, product.getCategory().getName());
+            statement.setInt(2, product.getCategory().getCat_id());
             statement.setString(3, product.getDescription());
             statement.setFloat(4, product.getWeight());
             statement.setInt(5, product.getProduct_id());
@@ -89,13 +89,13 @@ public class ProductRepo implements DAOinterface<Product> {
         try (Connection conn = conector.getConn()) {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sql);
-            Product product = new Product();
+            Product product;
             while (rs.next()) {
                 product = new Product();
                 product.setProduct_id(rs.getInt("product_id"));
                 product.setName(rs.getString("name"));
-                ProductCat prodCat = new ProductCat();
-                prodCat.setName(rs.getString("category"));
+                CategoryRepo cRepo = new CategoryRepo();
+                ProductCat prodCat = cRepo.getByID(rs.getInt("category"));
                 product.setCategory(prodCat);
                 product.setDescription(rs.getString("description"));
                 product.setWeight(rs.getFloat("weight"));
@@ -121,8 +121,8 @@ public class ProductRepo implements DAOinterface<Product> {
             while (rs.next()) {
                 product.setProduct_id(rs.getInt("product_id"));
                 product.setName(rs.getString("name"));
-                ProductCat prodCat = new ProductCat();
-                prodCat.setName(rs.getString("category"));
+                CategoryRepo cRepo = new CategoryRepo();
+                ProductCat prodCat = cRepo.getByID(rs.getInt("category"));
                 product.setCategory(prodCat);
                 product.setDescription(rs.getString("description"));
                 product.setWeight(rs.getFloat("weight"));
