@@ -52,9 +52,9 @@ public class MysqlTableInit {
                                     ");",
                             // CATEGORIA DOS PRODUTOS
                             "CREATE TABLE IF NOT EXISTS productCategory (" +
-                                    "cat_id int not null auto_increment" +
+                                    "cat_id int not null auto_increment," +
                                     "name VARCHAR(50)," +
-                                    "primary key(name)" +
+                                    "primary key(cat_id)" +
                                     ");",
                             // PRODUTOS
                             "CREATE TABLE IF NOT EXISTS product (" +
@@ -69,9 +69,9 @@ public class MysqlTableInit {
                                     ");",
                             // TIPO DE ATENDIMENTO
                             "CREATE TABLE IF NOT EXISTS attType (" +
-                                    "type_id int not null auto_increment" +
+                                    "type_id int not null auto_increment," +
                                     "name VARCHAR(50)," +
-                                    "primary key(name)" +
+                                    "primary key(type_id )" +
                                     ");",
                             // ATENDIMENTOS
                             "CREATE TABLE IF NOT EXISTS att (" +
