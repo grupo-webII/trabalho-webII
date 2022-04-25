@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.system.app.web.controllers.employee;
+package com.system.app.web.controllers.employee.categories;
 
 import java.io.IOException;
-
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,18 +14,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import com.system.app.web.beans.ProductCat;
 import com.system.app.web.repo.CategoryRepo;
 import com.system.app.web.repo.DAOException;
-
 
 /**
  *
  * @author costiss
  */
-@WebServlet(name = "employeeNewcategory", urlPatterns = { "/employee/newcategory" })
-public class newcategory extends HttpServlet {
+@WebServlet(name = "employeeCategorydetails", urlPatterns = { "/employee/categorydetails" })
+public class categorydetails extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,8 +49,19 @@ public class newcategory extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/newcategory.jsp");
-        rd.forward(request, response);
+        CategoryRepo categoryRepo = new CategoryRepo();
+        try {
+            ProductCat category = categoryRepo.getByID(Integer.parseInt(request.getParameter("id")));
+            request.setAttribute("category", category);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/categorydetails.jsp");
+            rd.forward(request, response);
+        } catch (NumberFormatException e) {
+            // REDIRECT TO ERROR.JSP
+            e.printStackTrace();
+        } catch (DAOException e) {
+            // REDIRECT TO ERROR.JSP
+            e.printStackTrace();
+        }
 
     }
 
@@ -70,11 +78,14 @@ public class newcategory extends HttpServlet {
             throws ServletException, IOException {
 
         CategoryRepo categoryRepo = new CategoryRepo();
-        ProductCat category = new ProductCat();
-        category.setName(request.getParameter("name"));
         try {
-            categoryRepo.save(category);
+            ProductCat category = categoryRepo.getByName(request.getParameter("name"));
+            category.setName(request.getParameter("name"));
+            categoryRepo.update(category);
         } catch (DAOException e) {
+            // REDIRECT TO ERROR.JSP
+            e.printStackTrace();
+        } catch (NullPointerException e) {
             // REDIRECT TO ERROR.JSP
             e.printStackTrace();
         }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.system.app.web.controllers.employee;
+package com.system.app.web.controllers.employee.categories;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,17 +15,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.system.app.web.beans.Atendimento;
-import com.system.app.web.repo.AtendRepo;
+import com.system.app.web.beans.ProductCat;
+import com.system.app.web.repo.CategoryRepo;
 import com.system.app.web.repo.DAOException;
-
 
 /**
  *
  * @author costiss
  */
-@WebServlet(name = "employeeMain", urlPatterns = { "/employee/main" })
-public class main extends HttpServlet {
+@WebServlet(name = "employeeCategories", urlPatterns = { "/employee/categories" })
+public class categories extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,11 +50,11 @@ public class main extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        AtendRepo attRepo = new AtendRepo();
+        CategoryRepo categoryRepo = new CategoryRepo();
         try {
-            List<Atendimento> allAtends = attRepo.getAllOpen();
-            request.setAttribute("atendimentos", allAtends);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/main.jsp");
+            List<ProductCat> allCat = categoryRepo.getAll();
+            request.setAttribute("categories", allCat);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/categories.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
             e.printStackTrace();

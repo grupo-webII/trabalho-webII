@@ -78,7 +78,7 @@ public class MysqlTableInit {
                                     "at_id int not null auto_increment," +
                                     "data TIMESTAMP," +
                                     "client int not null," +
-                                    "status VARCHAR(10)," +
+                                    "status VARCHAR(20)," +
                                     "product int not null," +
                                     "type int," +
                                     "description TEXT," +

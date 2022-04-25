@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.system.app.web.controllers.employee;
+package com.system.app.web.controllers.employee.supports;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,8 +24,8 @@ import com.system.app.web.repo.DAOException;
  *
  * @author costiss
  */
-@WebServlet(name = "employeeAllsupportrequests", urlPatterns = { "/employee/allsupportrequests" })
-public class allsupportrequests extends HttpServlet {
+@WebServlet(name = "employeeMain", urlPatterns = { "/employee/main" })
+public class main extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -53,7 +53,7 @@ public class allsupportrequests extends HttpServlet {
 
         AtendRepo attRepo = new AtendRepo();
         try {
-            List<Atendimento> allAtends = attRepo.getAll();
+            List<Atendimento> allAtends = attRepo.getAllOpen();
             request.setAttribute("atendimentos", allAtends);
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/main.jsp");
             rd.forward(request, response);

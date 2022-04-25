@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.system.app.web.controllers.employee;
+package com.system.app.web.controllers.employee.categories;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,8 +22,8 @@ import com.system.app.web.repo.DAOException;
  *
  * @author costiss
  */
-@WebServlet(name = "employeeCategories", urlPatterns = { "/employee/categories" })
-public class categories extends HttpServlet {
+@WebServlet(name = "employeeNewcategory", urlPatterns = { "/employee/newcategory" })
+public class newcategory extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -50,16 +49,8 @@ public class categories extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        CategoryRepo categoryRepo = new CategoryRepo();
-        try {
-            List<ProductCat> allCat = categoryRepo.getAll();
-            request.setAttribute("categories", allCat);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/categories.jsp");
-            rd.forward(request, response);
-        } catch (DAOException e) {
-            e.printStackTrace();
-            // REDIRECT TO ERROR.JSP
-        }
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/newcategory.jsp");
+        rd.forward(request, response);
 
     }
 
@@ -74,6 +65,16 @@ public class categories extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        CategoryRepo categoryRepo = new CategoryRepo();
+        try {
+            ProductCat category = new ProductCat();
+            category.setName(request.getParameter("name"));
+            categoryRepo.save(category);
+        } catch (DAOException e) {
+            // REDIRECT TO ERROR.JSP
+            e.printStackTrace();
+        }
     }
 
     /**

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.system.app.web.controllers.employee;
+package com.system.app.web.controllers.employee.supports;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,18 +15,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.system.app.web.beans.Product;
-import com.system.app.web.beans.ProductCat;
-import com.system.app.web.repo.CategoryRepo;
+import com.system.app.web.beans.Atendimento;
+import com.system.app.web.repo.AtendRepo;
 import com.system.app.web.repo.DAOException;
-import com.system.app.web.repo.ProductRepo;
+
 
 /**
  *
  * @author costiss
  */
-@WebServlet(name = "employeeNewproduct", urlPatterns = { "/employee/newproduct" })
-public class newproduct extends HttpServlet {
+@WebServlet(name = "employeeAllsupportrequests", urlPatterns = { "/employee/allsupportrequests" })
+public class allsupportrequests extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,15 +51,15 @@ public class newproduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        CategoryRepo categoryRepo = new CategoryRepo();
+        AtendRepo attRepo = new AtendRepo();
         try {
-            List<ProductCat> categories = categoryRepo.getAll();
-            request.setAttribute("categories", categories);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/newproduct.jsp");
+            List<Atendimento> allAtends = attRepo.getAll();
+            request.setAttribute("atendimentos", allAtends);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/main.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
-            // REDIRECT ERROR JSP
             e.printStackTrace();
+            // REDIRECT TO ERROR.JSP
         }
 
     }
@@ -76,30 +75,6 @@ public class newproduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        ProductRepo productRepo = new ProductRepo();
-        Product product = new Product();
-        CategoryRepo categoryRepo = new CategoryRepo();
-        ProductCat category = null;
-        try {
-            category = categoryRepo.getByID(Integer.parseInt(request.getParameter("category")));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            // REDIRECT TO ERROR JSP
-        } catch (DAOException e) {
-            // REDIRECT TO ERROR JSP
-            e.printStackTrace();
-        }
-        product.setCategory(category);
-        product.setName(request.getParameter("name"));
-        product.setDescription(request.getParameter("description"));
-        product.setWeight(Float.parseFloat(request.getParameter("weight")));
-        try {
-            productRepo.save(product);
-        } catch (DAOException e) {
-            // REDIRECT TO ERROR.JSP
-            e.printStackTrace();
-        }
     }
 
     /**

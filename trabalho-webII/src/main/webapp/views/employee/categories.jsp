@@ -1,23 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+
+<!--BEANS:
+    categories: LIST de todas as cetegorias
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet"
-	href="../../resources/bootstrap-5.1.3-dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../../styles/globals.css" />
-<link rel="stylesheet" href="../../styles/index.css" />
+	href="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/globals.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/index.css" />
 <link href="http://fonts.cdnfonts.com/css/helvetica-255"
 	rel="stylesheet">
-<script src="../../resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
-<script src="../../resources/jquery-3.5.0.min.js"></script>
-<meta charset="ISO-8859-1">
+<script src="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/jquery-3.5.0.min.js"></script>
+<meta charset="UTF-8">
 <title>Categorias</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light p-4 mb-5">
-		<a class="navbar-brand" href="../../index.jsp"> <img
-			src="../../images/beibe-logo.png" alt="Logotipo BEIBE" width="200"
+		<a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp"> <img
+			src="${pageContext.request.contextPath}/images/beibe-logo.png" alt="Logotipo BEIBE" width="200"
 			height="auto" class="p-2 d-inline-block align-text-center ml-3">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -38,7 +44,7 @@
 						de categorias<span class="sr-only"> (atual)</span></a></li>
 				<li class="nav-item"><a class="nav-link" href="products.jsp">Listagem
 						de produtos</a></li>
-				<li class="nav-item"><a class="nav-link" href="../../index.jsp"><b>Sair</b></a></li>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/index.jsp"><b>Sair</b></a></li>
 			</ul>
 		</div>
 	</nav>
@@ -62,12 +68,12 @@
 									data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
 								href="categorydetails.jsp"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/eye-solid.svg" alt="Eye icon"
+										<img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
 											width="20" height="auto" class="">
 									</button></a>&nbsp;<a
 								href="categorydetails.jsp"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/pen-to-square-solid.svg" alt="Eye icon"
+										<img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
 											width="20" height="auto" class="">
 									</button></a></td>
 						</tr>
@@ -77,12 +83,12 @@
 							<td><button type="button" class="btn btn-light"
 									data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
 								href="categorydetails.jsp"><button type="button" class="btn btn-light">
-										<img src="../../images/eye-solid.svg" alt="Eye icon"
+										<img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
 											width="20" height="auto" class="">
 									</button></a>&nbsp;<a
 								href="categorydetails.jsp"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/pen-to-square-solid.svg" alt="Eye icon"
+										<img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
 											width="20" height="auto" class="">
 									</button></a></td>
 						</tr>
@@ -91,12 +97,12 @@
 							<td>Maquiagem</td>
 							<td><button type="button" class="btn btn-dark">Remover</button>&nbsp;<a
 								href="categorydetails.jsp"><button type="button" class="btn btn-light">
-										<img src="../../images/eye-solid.svg" alt="Eye icon"
+										<img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
 											width="20" height="auto" class="">
 									</button></a>&nbsp;<a
 								href="categorydetails.jsp"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/pen-to-square-solid.svg" alt="Eye icon"
+										<img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
 											width="20" height="auto" class="">
 									</button></a></td>
 						</tr>
@@ -116,12 +122,12 @@
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
-					<div class="modal-body">Este atendimento ainda n�o foi
+					<div class="modal-body">Este atendimento ainda nï¿½o foi
 						realizado pela empresa. Se decidir esperar, em breve algum de
-						nossos atendentes entrar� em contato.</div>
+						nossos atendentes entrarï¿½ em contato.</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-light"
-							data-bs-dismiss="modal">N�o, vou aguardar</button>
+							data-bs-dismiss="modal">Nï¿½o, vou aguardar</button>
 						<button type="button" class="btn btn-danger">Sim, excluir</button>
 					</div>
 				</div>

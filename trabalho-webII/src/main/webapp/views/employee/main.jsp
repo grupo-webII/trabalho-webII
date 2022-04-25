@@ -2,14 +2,20 @@
          pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+<!--
+BEAN:
+ atendimentos: todos os atendiimentos abertos
+-->
+
     <!DOCTYPE html>
     <html>
-        <c:forEach var="prod" items="${allProducts}">  
-            <c:out value="${prod.product_id}"></c:out>
-            <c:out value="${prod.category.name}"></c:out>
-            <c:out value="${prod.name}"></c:out>
-            <c:out value="${prod.description}"></c:out>
-            <c:out value="${prod.weight}"></c:out>
+        <c:forEach var="att" items="${atendimentos}">  
+            <c:out value="${att.at_id} -"></c:out>
+            <c:out value="${att.data} -"></c:out>
+            <c:out value="${att.client.email} -"></c:out>
+            <c:out value="${att.description} -"></c:out>
+            <c:out value="${att.status} -"></c:out>
         </c:forEach>
         <head>
             <link rel="stylesheet"

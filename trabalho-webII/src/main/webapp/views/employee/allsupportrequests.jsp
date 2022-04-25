@@ -1,23 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!--
+REQUEST BEANS:
+    atendimentos: LIST de todos os atendimentos disponiveis
+-->
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet"
-	href="../../resources/bootstrap-5.1.3-dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../../styles/globals.css" />
-<link rel="stylesheet" href="../../styles/index.css" />
+	href="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/globals.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/index.css" />
 <link href="http://fonts.cdnfonts.com/css/helvetica-255"
 	rel="stylesheet">
-<script src="../../resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
-<script src="../../resources/jquery-3.5.0.min.js"></script>
-<meta charset="ISO-8859-1">
+<script src="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/jquery-3.5.0.min.js"></script>
+<meta charset="UTF-8">
 <title>Listagem dos atendimentos</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light p-4 mb-5">
-		<a class="navbar-brand" href="../../index.jsp"> <img
-			src="../../images/beibe-logo.png" alt="Logotipo BEIBE" width="200"
+		<a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp"> <img
+			src="${pageContext.request.contextPath}/images/beibe-logo.png" alt="Logotipo BEIBE" width="200"
 			height="auto" class="p-2 d-inline-block align-text-center ml-3">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -38,7 +45,7 @@
 						de categorias</a></li>
 				<li class="nav-item"><a class="nav-link" href="products.jsp">Listagem
 						de produtos</a></li>
-				<li class="nav-item"><a class="nav-link" href="../../index.jsp"><b>Sair</b></a></li>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/index.jsp"><b>Sair</b></a></li>
 			</ul>
 		</div>
 	</nav>
@@ -52,9 +59,9 @@
 							<th scope="col">Hash</th>
 							<th scope="col">Status</th>
 							<th scope="col">Cliente</th>
-							<th scope="col">Descri��o</th>
+							<th scope="col">Descriï¿½ï¿½o</th>
 							<th scope="col">Data</th>
-							<th scope="col">A��es</th>
+							<th scope="col">Aï¿½ï¿½es</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -62,12 +69,12 @@
 							<th scope="row">1</th>
 							<td style="color:yellow">Em aberto</td>
 							<td>Maria</td>
-							<td>N�o recebi o produto no prazo</td>
+							<td>Nï¿½o recebi o produto no prazo</td>
 							<td>09/02/2022</td>
 							<td><a
 								href="supportdescription.jsp"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
+										<img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
 											width="20" height="auto" class="">
 									</button></a></td>
 						</tr>
@@ -80,7 +87,7 @@
 							<td><a
 								href="supportdescription.jsp"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
+										<img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
 											width="20" height="auto" class="">
 									</button></a></td>
 						</tr>
@@ -93,7 +100,7 @@
 							<td><a
 								href="supportdescription.jsp"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
+										<img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
 											width="20" height="auto" class="">
 									</button></a></td>
 						</tr>
@@ -101,12 +108,12 @@
 							<th scope="row">2</th>
 							<td style="color:red">Em aberto</td>
 							<td>Marcel</td>
-							<td>Produto n�o entrega o resultado de beleza</td>
+							<td>Produto nï¿½o entrega o resultado de beleza</td>
 							<td>17/08/2021</td>
 							<td><a
 								href="supportdescription.jsp"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
+										<img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
 											width="20" height="auto" class="">
 									</button></a></td>
 						</tr>
@@ -114,12 +121,12 @@
 							<th scope="row">3</th>
 							<td style="color:red">Em aberto</td>
 							<td>Monique</td>
-							<td>N�o gostei do atendimento</td>
+							<td>Nï¿½o gostei do atendimento</td>
 							<td>01/03/2021</td>
 							<td><a
 								href="supportdescription.jsp"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
+										<img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
 											width="20" height="auto" class="">
 									</button></a></td>
 						</tr>
@@ -139,12 +146,12 @@
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
-					<div class="modal-body">Este atendimento ainda n�o foi
+					<div class="modal-body">Este atendimento ainda nï¿½o foi
 						realizado pela empresa. Se decidir esperar, em breve algum de
-						nossos atendentes entrar� em contato.</div>
+						nossos atendentes entrarï¿½ em contato.</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-light"
-							data-bs-dismiss="modal">N�o, vou aguardar</button>
+							data-bs-dismiss="modal">Nï¿½o, vou aguardar</button>
 						<button type="button" class="btn btn-danger">Sim, excluir</button>
 					</div>
 				</div>

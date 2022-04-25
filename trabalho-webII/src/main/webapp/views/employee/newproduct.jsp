@@ -1,23 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+
+<!--
+GET:
+POST: 
+    category: ID DA CATEGORIA DO PRODUTO
+    name:
+    description: 
+    weight:
+REQUEST BEANS:
+    categories: todas as categorias disponiveis
+ -->
+
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet"
-	href="../../resources/bootstrap-5.1.3-dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../../styles/globals.css" />
-<link rel="stylesheet" href="../../styles/index.css" />
+	href="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/globals.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/index.css" />
 <link href="http://fonts.cdnfonts.com/css/helvetica-255"
 	rel="stylesheet">
-<script src="../../resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
-<script src="../../resources/jquery-3.5.0.min.js"></script>
-<meta charset="ISO-8859-1">
+<script src="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/jquery-3.5.0.min.js"></script>
+<meta charset="UTF-8">
 <title>Adicionar Produto</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light p-4 mb-5">
-		<a class="navbar-brand" href="../../index.jsp"> <img
-			src="../../images/beibe-logo.png" alt="Logotipo BEIBE" width="200"
+		<a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp"> <img
+			src="${pageContext.request.contextPath}/images/beibe-logo.png" alt="Logotipo BEIBE" width="200"
 			height="auto" class="p-2 d-inline-block align-text-center ml-3">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -38,7 +51,7 @@
 						de categorias</a></li>
 				<li class="nav-item"><a class="nav-link" href="products.jsp">Listagem
 						de produtos<span class="sr-only"> (atual)</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="../../index.jsp"><b>Sair</b></a></li>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/index.jsp"><b>Sair</b></a></li>
 			</ul>
 		</div>
 	</nav>
@@ -62,7 +75,7 @@
 						</select>
 					</div>
 					<div class="form-group mb-3">
-						<label class="mb-3" for="exampleFormControlTextarea1">Descrição detalhada do caso</label>
+						<label class="mb-3" for="exampleFormControlTextarea1">Descriï¿½ï¿½o detalhada do caso</label>
 						<textarea class="form-control" id="exampleFormControlTextarea1"
 							rows="3" required></textarea>
 					</div>

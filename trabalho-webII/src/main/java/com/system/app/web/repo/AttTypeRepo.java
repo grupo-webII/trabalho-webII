@@ -111,7 +111,7 @@ public class AttTypeRepo implements DAOinterface<AtendType> {
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                type.setType_id(rs.getInt("cat_id"));
+                type.setType_id(rs.getInt("type_id"));
                 type.setName(rs.getString("name"));
             }
         } catch (SQLException e) {

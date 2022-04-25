@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.system.app.web.controllers.employee;
+package com.system.app.web.controllers.employee.supports;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,16 +14,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.system.app.web.beans.Product;
+import com.system.app.web.beans.Atendimento;
+import com.system.app.web.repo.AtendRepo;
 import com.system.app.web.repo.DAOException;
-import com.system.app.web.repo.ProductRepo;
 
 /**
  *
  * @author costiss
  */
-@WebServlet(name = "employeeProducts", urlPatterns = { "/employee/products" })
-public class products extends HttpServlet {
+@WebServlet(name = "employeeSupportdescription", urlPatterns = { "/employee/supportdescription" })
+public class supportdescription extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -50,30 +49,38 @@ public class products extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ProductRepo productRepo = new ProductRepo();
+        AtendRepo attRepo = new AtendRepo();
         try {
-            List<Product> allProd = productRepo.getAll();
-            request.setAttribute("allProducts", allProd);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/products.jsp");
+            Atendimento atendimento = attRepo.getByID(Integer.parseInt(request.getParameter("id")));
+            request.setAttribute("atendimento", atendimento);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/supportdescription.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
             e.printStackTrace();
             // REDIRECT TO ERROR.JSP
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            // REDIRECT TO ERROR.JSP
         }
-
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        AtendRepo attRepo = new AtendRepo();
+
+        try {
+            Atendimento atendimento = attRepo.getByID(Integer.parseInt(request.getParameter("id")));
+            atendimento.setSolution(request.getParameter("solution"));
+            attRepo.update(atendimento);
+        } catch (DAOException e) {
+            e.printStackTrace();
+            // REDIRECT TO ERROR.JSP
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            // REDIRECT TO ERROR.JSP
+        }
+
     }
 
     /**

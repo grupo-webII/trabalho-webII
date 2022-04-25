@@ -121,7 +121,7 @@ public class AtendRepo implements DAOinterface<Atendimento> {
     }
 
     public List<Atendimento> getAllOpen() throws DAOException {
-        sql = "SELECT * FROM att where status=" + "em andamento";
+        sql = "SELECT * FROM att where status=" + "\"em andamento\"";
         List<Atendimento> attlist = new ArrayList<>();
         try (Connection conn = conector.getConn()) {
             Statement statement = conn.createStatement();
