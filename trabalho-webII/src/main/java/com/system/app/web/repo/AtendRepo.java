@@ -29,7 +29,7 @@ public class AtendRepo implements DAOinterface<Atendimento> {
             statement.setInt(2, attend.getClient().getUser_id());
             statement.setString(3, attend.getStatus());
             statement.setInt(4, attend.getProduct().getProduct_id());
-            statement.setString(5, attend.getType().getName());
+            statement.setInt(5, attend.getType().getType_id());
             statement.setString(6, attend.getDescription());
             statement.setString(7, attend.getSolution());
             int rowsInserted = statement.executeUpdate();
@@ -73,7 +73,7 @@ public class AtendRepo implements DAOinterface<Atendimento> {
             statement.setInt(2, attend.getClient().getUser_id());
             statement.setString(3, attend.getStatus());
             statement.setInt(4, attend.getProduct().getProduct_id());
-            statement.setString(5, attend.getType().getName());
+            statement.setInt(5, attend.getType().getType_id());
             statement.setString(6, attend.getDescription());
             statement.setString(7, attend.getSolution());
             int rowsUpdated = statement.executeUpdate();
@@ -90,7 +90,7 @@ public class AtendRepo implements DAOinterface<Atendimento> {
 
     @Override
     public List<Atendimento> getAll() throws DAOException {
-        sql = "SELECT * FROM product";
+        sql = "SELECT * FROM att";
         List<Atendimento> attlist = new ArrayList<>();
         try (Connection conn = conector.getConn()) {
             Statement statement = conn.createStatement();
@@ -105,6 +105,8 @@ public class AtendRepo implements DAOinterface<Atendimento> {
                 attend.setStatus(rs.getString("status"));
                 ProductRepo pRepo = new ProductRepo();
                 attend.setProduct(pRepo.getByID(rs.getInt("product")));
+                AttTypeRepo aTypeRepo = new AttTypeRepo();
+                attend.setType(aTypeRepo.getByID(rs.getInt("type")));
                 attend.setDescription(rs.getString("description"));
                 attend.setSolution(rs.getString("solution"));
                 attlist.add(attend);
@@ -120,7 +122,7 @@ public class AtendRepo implements DAOinterface<Atendimento> {
 
     @Override
     public Atendimento getByID(Integer id) throws DAOException {
-        sql = "SELECT * from user where product_id = ?";
+        sql = "SELECT * att user where att_id = ?";
         Atendimento attend = new Atendimento();
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -135,6 +137,8 @@ public class AtendRepo implements DAOinterface<Atendimento> {
                 attend.setStatus(rs.getString("status"));
                 ProductRepo pRepo = new ProductRepo();
                 attend.setProduct(pRepo.getByID(rs.getInt("product")));
+                AttTypeRepo aTypeRepo = new AttTypeRepo();
+                attend.setType(aTypeRepo.getByID(rs.getInt("type")));
                 attend.setDescription(rs.getString("description"));
                 attend.setSolution(rs.getString("solution"));
             }

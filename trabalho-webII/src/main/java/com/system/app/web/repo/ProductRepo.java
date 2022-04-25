@@ -112,7 +112,7 @@ public class ProductRepo implements DAOinterface<Product> {
 
     @Override
     public Product getByID(Integer id) throws DAOException {
-        sql = "SELECT * from user where product_id = ?";
+        sql = "SELECT * from product where product_id = ?";
         Product product = new Product();
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);

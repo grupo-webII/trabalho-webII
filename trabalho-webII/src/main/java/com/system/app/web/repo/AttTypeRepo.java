@@ -8,42 +8,42 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.system.app.web.beans.ProductCat;
+import com.system.app.web.beans.AtendType;
 import com.system.app.web.config.MySqlConnector;
 
-public class CategoryRepo implements DAOinterface<ProductCat> {
+public class AttTypeRepo implements DAOinterface<AtendType> {
 
     private MySqlConnector conector = null;
     private String sql = null;
 
-    public CategoryRepo() {
+    public AttTypeRepo() {
         this.conector = new MySqlConnector();
     }
 
     @Override
-    public boolean save(ProductCat cat) throws DAOException {
-        sql = "INSERT INTO productCategory (cat_id, name)"
+    public boolean save(AtendType type) throws DAOException {
+        sql = "INSERT INTO attType (type_id, name)"
                 +
                 "VALUES (?,?)";
         boolean isSaved = false;
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, cat.getCat_id());
-            statement.setString(2, cat.getName());
+            statement.setInt(1, type.getType_id());
+            statement.setString(2, type.getName());
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 isSaved = true;
-                System.out.println("INSERTED new Category: " + cat.getName());
+                System.out.println("INSERTED new AttType: " + type.getName());
             }
         } catch (SQLException e) {
-            throw new DAOException("Error INSERTING new Category: " + sql + "/" + cat.toString(), e);
+            throw new DAOException("Error INSERTING new AttType: " + sql + "/" + type.toString(), e);
         }
         return isSaved;
     }
 
     @Override
     public boolean delete(Integer id) throws DAOException {
-        sql = "DELETE FROM productCategory WHERE cat_id = ?";
+        sql = "DELETE FROM attType WHERE type_id = ?";
         boolean isDeleted = false;
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -51,76 +51,76 @@ public class CategoryRepo implements DAOinterface<ProductCat> {
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 isDeleted = true;
-                System.out.println("DELETED CATEGORY " + id.toString() + "!");
+                System.out.println("DELETED AttType " + id.toString() + "!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error DELETING Category by id: " + sql + "/" + id.toString(), e);
+            throw new DAOException("Error DELETING AttType by id: " + sql + "/" + id.toString(), e);
         }
         return isDeleted;
 
     }
 
     @Override
-    public boolean update(ProductCat cat) throws DAOException {
-        String sql = "UPDATE productCategory SET name=? WHERE cat_id = ?";
+    public boolean update(AtendType cat) throws DAOException {
+        String sql = "UPDATE attType SET name=? WHERE type_id = ?";
         boolean isUpdated = false;
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, cat.getName());
-            statement.setInt(2, cat.getCat_id());
+            statement.setInt(2, cat.getType_id());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 isUpdated = true;
-                System.out.println("UPDATED PRODUCT " + cat.getName() + "!");
+                System.out.println("UPDATED AttType " + cat.getName() + "!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error UPDATING Product: " + sql + "/" + cat.toString(), e);
+            throw new DAOException("Error UPDATING AttType: " + sql + "/" + cat.toString(), e);
         }
         return isUpdated;
 
     }
 
     @Override
-    public List<ProductCat> getAll() throws DAOException {
-        sql = "SELECT * FROM productCategory";
-        List<ProductCat> catList = new ArrayList<>();
+    public List<AtendType> getAll() throws DAOException {
+        sql = "SELECT * FROM attType";
+        List<AtendType> typeList = new ArrayList<>();
         try (Connection conn = conector.getConn()) {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sql);
-            ProductCat cat;
+            AtendType type;
             while (rs.next()) {
-                cat = new ProductCat();
-                cat.setCat_id(rs.getInt("cat_id"));
-                cat.setName(rs.getString("name"));
-                catList.add(cat);
-                cat = null;
+                type = new AtendType();
+                type.setType_id(rs.getInt("type_id"));
+                type.setName(rs.getString("name"));
+                typeList.add(type);
+                type = null;
             }
         } catch (SQLException e) {
-            catList = null;
-            throw new DAOException("Error GETTING ALL Products: " + sql, e);
+            typeList = null;
+            throw new DAOException("Error GETTING ALL AttType: " + sql, e);
 
         }
-        return catList;
+        return typeList;
     }
 
     @Override
-    public ProductCat getByID(Integer id) throws DAOException {
-        sql = "SELECT * from productCategory where cat_id = ?";
-        ProductCat cat = new ProductCat();
+    public AtendType getByID(Integer id) throws DAOException {
+        sql = "SELECT * from attType where type_id = ?";
+        AtendType type = new AtendType();
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                cat.setCat_id(rs.getInt("cat_id"));
-                cat.setName(rs.getString("name"));
+                type.setType_id(rs.getInt("cat_id"));
+                type.setName(rs.getString("name"));
             }
         } catch (SQLException e) {
-            cat = null;
-            throw new DAOException("Error GETTING Category by id: " + sql + "/" + id.toString(), e);
+            type = null;
+            throw new DAOException("Error GETTING AttType by id: " + sql + "/" + id.toString(), e);
 
         }
-        return cat;
+        return type;
     }
 
 }
