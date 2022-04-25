@@ -53,13 +53,13 @@ public class MysqlTableInit {
                             // CATEGORIA DOS PRODUTOS
                             "CREATE TABLE IF NOT EXISTS productCategory (" +
                                     "cat_id int not null auto_increment," +
-                                    "name VARCHAR(50)," +
+                                    "name VARCHAR(50) unique," +
                                     "primary key(cat_id)" +
                                     ");",
                             // PRODUTOS
                             "CREATE TABLE IF NOT EXISTS product (" +
                                     "product_id int not null auto_increment," +
-                                    "name VARCHAR(50)," +
+                                    "name VARCHAR(50) unique," +
                                     "category int," +
                                     "description TEXT," +
                                     "weight DECIMAL(10, 2)," +
@@ -70,7 +70,7 @@ public class MysqlTableInit {
                             // TIPO DE ATENDIMENTO
                             "CREATE TABLE IF NOT EXISTS attType (" +
                                     "type_id int not null auto_increment," +
-                                    "name VARCHAR(50)," +
+                                    "name VARCHAR(50) unique," +
                                     "primary key(type_id )" +
                                     ");",
                             // ATENDIMENTOS

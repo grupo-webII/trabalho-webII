@@ -22,14 +22,13 @@ public class CategoryRepo implements DAOinterface<ProductCat> {
 
     @Override
     public boolean save(ProductCat cat) throws DAOException {
-        sql = "INSERT INTO productCategory (cat_id, name)"
+        sql = "INSERT INTO productCategory ( name)"
                 +
-                "VALUES (?,?)";
+                "VALUES (?)";
         boolean isSaved = false;
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, cat.getCat_id());
-            statement.setString(2, cat.getName());
+            statement.setString(1, cat.getName().toLowerCase());
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 isSaved = true;
@@ -66,7 +65,7 @@ public class CategoryRepo implements DAOinterface<ProductCat> {
         boolean isUpdated = false;
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, cat.getName());
+            statement.setString(1, cat.getName().toLowerCase());
             statement.setInt(2, cat.getCat_id());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
@@ -118,6 +117,25 @@ public class CategoryRepo implements DAOinterface<ProductCat> {
         } catch (SQLException e) {
             cat = null;
             throw new DAOException("Error GETTING Category by id: " + sql + "/" + id.toString(), e);
+
+        }
+        return cat;
+    }
+
+    public ProductCat getByName(String name) throws DAOException {
+        sql = "SELECT * from productCategory where name = ?";
+        ProductCat cat = new ProductCat();
+        try (Connection conn = conector.getConn()) {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, name);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                cat.setCat_id(rs.getInt("cat_id"));
+                cat.setName(rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            cat = null;
+            throw new DAOException("Error GETTING Category by id: " + sql + "/" + name.toString(), e);
 
         }
         return cat;

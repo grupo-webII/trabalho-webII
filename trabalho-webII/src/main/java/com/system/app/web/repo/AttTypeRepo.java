@@ -22,14 +22,13 @@ public class AttTypeRepo implements DAOinterface<AtendType> {
 
     @Override
     public boolean save(AtendType type) throws DAOException {
-        sql = "INSERT INTO attType (type_id, name)"
+        sql = "INSERT INTO attType ( name)"
                 +
-                "VALUES (?,?)";
+                "VALUES (?)";
         boolean isSaved = false;
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, type.getType_id());
-            statement.setString(2, type.getName());
+            statement.setString(1, type.getName());
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 isSaved = true;

@@ -27,7 +27,7 @@ public class AtendRepo implements DAOinterface<Atendimento> {
             Timestamp ts = new Timestamp(attend.getData().getTime());
             statement.setTimestamp(1, ts);
             statement.setInt(2, attend.getClient().getUser_id());
-            statement.setString(3, attend.getStatus());
+            statement.setString(3, attend.getStatus().toLowerCase());
             statement.setInt(4, attend.getProduct().getProduct_id());
             statement.setInt(5, attend.getType().getType_id());
             statement.setString(6, attend.getDescription());
@@ -71,7 +71,7 @@ public class AtendRepo implements DAOinterface<Atendimento> {
             Timestamp ts = new Timestamp(attend.getData().getTime());
             statement.setTimestamp(1, ts);
             statement.setInt(2, attend.getClient().getUser_id());
-            statement.setString(3, attend.getStatus());
+            statement.setString(3, attend.getStatus().toLowerCase());
             statement.setInt(4, attend.getProduct().getProduct_id());
             statement.setInt(5, attend.getType().getType_id());
             statement.setString(6, attend.getDescription());
@@ -91,6 +91,37 @@ public class AtendRepo implements DAOinterface<Atendimento> {
     @Override
     public List<Atendimento> getAll() throws DAOException {
         sql = "SELECT * FROM att";
+        List<Atendimento> attlist = new ArrayList<>();
+        try (Connection conn = conector.getConn()) {
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                Atendimento attend = new Atendimento();
+                attend.setAt_id(rs.getInt("at_id"));
+                Timestamp ts = rs.getTimestamp("data");
+                attend.setData(new Date(ts.getTime()));
+                UserRepo uRepo = new UserRepo();
+                attend.setClient(uRepo.getByID(rs.getInt("client")));
+                attend.setStatus(rs.getString("status"));
+                ProductRepo pRepo = new ProductRepo();
+                attend.setProduct(pRepo.getByID(rs.getInt("product")));
+                AttTypeRepo aTypeRepo = new AttTypeRepo();
+                attend.setType(aTypeRepo.getByID(rs.getInt("type")));
+                attend.setDescription(rs.getString("description"));
+                attend.setSolution(rs.getString("solution"));
+                attlist.add(attend);
+                attend = null;
+            }
+        } catch (SQLException e) {
+            attlist = null;
+            throw new DAOException("Error GETTING ALL Attends: " + sql, e);
+
+        }
+        return attlist;
+    }
+
+    public List<Atendimento> getAllOpen() throws DAOException {
+        sql = "SELECT * FROM att where status=" + "em andamento";
         List<Atendimento> attlist = new ArrayList<>();
         try (Connection conn = conector.getConn()) {
             Statement statement = conn.createStatement();
