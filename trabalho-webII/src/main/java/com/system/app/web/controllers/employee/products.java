@@ -15,17 +15,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.system.app.web.beans.Atendimento;
-import com.system.app.web.repo.AtendRepo;
+import com.system.app.web.beans.Product;
 import com.system.app.web.repo.DAOException;
-
+import com.system.app.web.repo.ProductRepo;
 
 /**
  *
  * @author costiss
  */
-@WebServlet(name = "employeeMain", urlPatterns = { "/employee/main" })
-public class main extends HttpServlet {
+@WebServlet(name = "employeeProducts", urlPatterns = { "/employee/products" })
+public class products extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,11 +50,11 @@ public class main extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        AtendRepo attRepo = new AtendRepo();
+        ProductRepo productRepo = new ProductRepo();
         try {
-            List<Atendimento> allAtends = attRepo.getAllOpen();
-            request.setAttribute("atendimentos", allAtends);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/main.jsp");
+            List<Product> allProd = productRepo.getAll();
+            request.setAttribute("allProducts", allProd);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/products.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
             e.printStackTrace();

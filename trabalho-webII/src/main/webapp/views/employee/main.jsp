@@ -20,7 +20,7 @@
                   rel="stylesheet">
             <script src="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
             <script src="${pageContext.request.contextPath}/resources/jquery-3.5.0.min.js"></script>
-            <meta charset="ISO-8859-1">
+            <meta charset="UTF-8">
             <title>Dashboard do Funcionário</title>
         </head>
         <body>

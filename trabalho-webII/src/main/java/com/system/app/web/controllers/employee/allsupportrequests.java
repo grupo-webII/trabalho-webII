@@ -24,8 +24,8 @@ import com.system.app.web.repo.DAOException;
  *
  * @author costiss
  */
-@WebServlet(name = "employeeMain", urlPatterns = { "/employee/main" })
-public class main extends HttpServlet {
+@WebServlet(name = "employeeAllsupportrequests", urlPatterns = { "/employee/allsupportrequests" })
+public class allsupportrequests extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -53,7 +53,7 @@ public class main extends HttpServlet {
 
         AtendRepo attRepo = new AtendRepo();
         try {
-            List<Atendimento> allAtends = attRepo.getAllOpen();
+            List<Atendimento> allAtends = attRepo.getAll();
             request.setAttribute("atendimentos", allAtends);
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/main.jsp");
             rd.forward(request, response);
