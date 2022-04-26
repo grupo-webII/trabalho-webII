@@ -66,8 +66,11 @@ public class asksupport extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/client/asksupport.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
-            // TODO Auto-generated catch block
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         }
 
     }
@@ -99,11 +102,17 @@ public class asksupport extends HttpServlet {
             atendimento.setType(atendType);
             atendRepo.save(atendimento);
         } catch (NumberFormatException e) {
-            // REDIRECT ERROR JSP
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Algum parametro foi passado com o tipo incorreto");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         } catch (DAOException e) {
-            // REDIRECT ERROR JSP
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         }
 
     }

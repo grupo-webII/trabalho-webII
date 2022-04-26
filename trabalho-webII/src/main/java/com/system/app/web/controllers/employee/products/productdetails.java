@@ -62,11 +62,17 @@ public class productdetails extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/productdetails.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
-            // REDIRECT ERROR JSP
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         } catch (NumberFormatException e) {
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Parametro ID Invalido");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
-            // REDIRECT ERROR JSP
+            rd.forward(request, response);
         }
 
     }
@@ -94,11 +100,18 @@ public class productdetails extends HttpServlet {
             product.setWeight(Float.parseFloat(request.getParameter("weight")));
             productRepo.update(product);
         } catch (DAOException e) {
-            // REDIRECT TO ERROR.JSP
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
+            e.printStackTrace();
+            rd.forward(request, response);
             e.printStackTrace();
         } catch (NumberFormatException e) {
-            // REDIRECT TO ERROR.JSP
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Parametro Invalido");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         }
     }
 

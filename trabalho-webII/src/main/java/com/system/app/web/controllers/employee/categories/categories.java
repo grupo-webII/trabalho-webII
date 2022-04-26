@@ -57,8 +57,11 @@ public class categories extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/categories.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
-            // REDIRECT TO ERROR.JSP
+            rd.forward(request, response);
         }
 
     }

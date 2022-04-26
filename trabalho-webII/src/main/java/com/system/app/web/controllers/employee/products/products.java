@@ -57,8 +57,11 @@ public class products extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/products.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
-            // REDIRECT TO ERROR.JSP
+            rd.forward(request, response);
         }
 
     }

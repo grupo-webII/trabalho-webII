@@ -63,8 +63,17 @@ public class updatedata extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/client/updatedata.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
-            // REDIRECT TO ERROR.JSP
+            rd.forward(request, response);
+        } catch (NullPointerException e) {
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "User nao logado");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
+            e.printStackTrace();
+            rd.forward(request, response);
         }
 
     }
@@ -106,11 +115,17 @@ public class updatedata extends HttpServlet {
             userRepo.update(user);
             userDataRepo.update(userData);
         } catch (DAOException e) {
-            // redirect to error.jsp
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         } catch (NumberFormatException e) {
-            // redirect to error.jsp
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Algum Paramtro foi passado com o tipo errado");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         }
 
     }

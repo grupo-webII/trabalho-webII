@@ -64,7 +64,10 @@ public class main extends HttpServlet {
             e.printStackTrace();
             // REDIRECT TO ERROR.JSP
         } catch (NullPointerException e) {
-            // REDIRECT TO ERROR.JSP
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "User não logado");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
+            rd.forward(request, response);
             e.printStackTrace();
         }
 

@@ -59,8 +59,11 @@ public class newproduct extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/newproduct.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
-            // REDIRECT ERROR JSP
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         }
 
     }
@@ -88,11 +91,17 @@ public class newproduct extends HttpServlet {
             product.setWeight(Float.parseFloat(request.getParameter("weight")));
             productRepo.save(product);
         } catch (DAOException e) {
-            // REDIRECT TO ERROR.JSP
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         } catch (NumberFormatException e) {
-            // REDIRECT TO ERROR.JSP
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Parametro Invalido");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         }
     }
 

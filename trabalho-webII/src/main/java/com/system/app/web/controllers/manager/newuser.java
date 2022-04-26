@@ -63,8 +63,11 @@ public class newuser extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/manager/newuser.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
-            // REDIRECT TO ERROR.JSP
+            rd.forward(request, response);
         }
 
     }
@@ -109,11 +112,23 @@ public class newuser extends HttpServlet {
             userRepo.save(user);
             userDataRepo.save(userData);
         } catch (DAOException e) {
-            // redirect to error.jsp
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         } catch (NumberFormatException e) {
-            // redirect to error.jsp
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Parametro Invalido");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
+        } catch (NullPointerException e) {
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Parametro Nulo");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
+            e.printStackTrace();
+            rd.forward(request, response);
         }
 
     }

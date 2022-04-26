@@ -72,8 +72,17 @@ public class newcategory extends HttpServlet {
             category.setName(request.getParameter("name"));
             categoryRepo.save(category);
         } catch (DAOException e) {
-            // REDIRECT TO ERROR.JSP
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
+        } catch (NullPointerException e) {
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Parametro Invalido");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
+            e.printStackTrace();
+            rd.forward(request, response);
         }
     }
 

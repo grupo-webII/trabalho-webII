@@ -174,6 +174,8 @@ public class UserRepo implements DAOinterface<User> {
         } catch (DAOException e) {
             user = null;
             throw new DAOException("Error AUTHENTICATING user: " + sql + "/" + email.toString(), e);
+        } catch (NullPointerException e) {
+            throw new DAOException("USER NOT FOUND");
         }
         return user;
     }

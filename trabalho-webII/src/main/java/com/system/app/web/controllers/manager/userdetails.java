@@ -69,8 +69,23 @@ public class userdetails extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/manager/userdetails.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
-            // REDIRECT TO ERROR.JSP
+            rd.forward(request, response);
+        } catch (NullPointerException e) {
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Parametro Nulo");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
+            e.printStackTrace();
+            rd.forward(request, response);
+        } catch (NumberFormatException e) {
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Parametro ID invalido");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
+            e.printStackTrace();
+            rd.forward(request, response);
         }
 
     }
@@ -115,11 +130,23 @@ public class userdetails extends HttpServlet {
             userRepo.update(user);
             userDataRepo.update(userData);
         } catch (DAOException e) {
-            // redirect to error.jsp
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         } catch (NumberFormatException e) {
-            // redirect to error.jsp
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Parametro Invalido");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
+        } catch (NullPointerException e) {
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Parametro Nulo");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
+            e.printStackTrace();
+            rd.forward(request, response);
         }
 
     }

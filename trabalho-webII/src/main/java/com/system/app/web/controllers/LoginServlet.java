@@ -3,6 +3,7 @@ package com.system.app.web.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -66,15 +67,17 @@ public class LoginServlet extends HttpServlet {
 					response.sendRedirect("client/main");
 				}
 			} else {
-				// redirect to error.jsp
+				request.setAttribute("error", "Atenticacao falhou");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
+				rd.forward(request, response);
 				pwriter.print("Usuário/senha não encontrado!");
 				pwriter.print("<a href=\"index.jsp\">Página inicial</a>");
 			}
 		} catch (DAOException e) {
-			// redirect to error.jsp
-			System.out.println(e);
-			pwriter.print("Usuário/senha não encontrado!");
-			pwriter.print("<a href=\"index.jsp\">Página inicial</a>");
+            request.setAttribute("error", "Autenticacao falhou");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
+            e.printStackTrace();
+            rd.forward(request, response);
 		}
 
 		pwriter.close();

@@ -56,11 +56,17 @@ public class categorydetails extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/categorydetails.jsp");
             rd.forward(request, response);
         } catch (NumberFormatException e) {
-            // REDIRECT TO ERROR.JSP
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Parametro ID invalido");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         } catch (DAOException e) {
-            // REDIRECT TO ERROR.JSP
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         }
 
     }
@@ -83,11 +89,17 @@ public class categorydetails extends HttpServlet {
             category.setName(request.getParameter("name"));
             categoryRepo.update(category);
         } catch (DAOException e) {
-            // REDIRECT TO ERROR.JSP
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Erro no banco de dados");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         } catch (NullPointerException e) {
-            // REDIRECT TO ERROR.JSP
+            request.setAttribute("javaerror", e);
+            request.setAttribute("error", "Parametro invalido");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
+            rd.forward(request, response);
         }
     }
 
