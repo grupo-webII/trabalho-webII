@@ -46,7 +46,7 @@
 							placeholder="******" required>
 					</div>
 					<button type="submit" class="btn btn-dark">Entrar</button>
-					<a href="register.jsp" type="button" class="btn btn-secondary">Não
+					<a href="register" type="button" class="btn btn-secondary">Não
 						tenho cadastro</a>
 
 					<!-- <div class="mb-3">
