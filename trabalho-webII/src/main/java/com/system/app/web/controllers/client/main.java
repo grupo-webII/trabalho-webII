@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.system.app.web.controllers.employee.supports;
+package com.system.app.web.controllers.client;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,8 +14,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.system.app.web.beans.Atendimento;
+import com.system.app.web.beans.User;
 import com.system.app.web.repo.AtendRepo;
 import com.system.app.web.repo.DAOException;
 
@@ -23,8 +25,8 @@ import com.system.app.web.repo.DAOException;
  *
  * @author costiss
  */
-@WebServlet(name = "Allsupportrequests", urlPatterns = { "/employee/allsupportrequests" })
-public class allsupportrequests extends HttpServlet {
+@WebServlet(name = "ClientMain", urlPatterns = { "/client/main" })
+public class main extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,13 +54,18 @@ public class allsupportrequests extends HttpServlet {
 
         AtendRepo attRepo = new AtendRepo();
         try {
-            List<Atendimento> allAtends = attRepo.getAll();
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            List<Atendimento> allAtends = attRepo.getAllByUser(user.getUser_id());
             request.setAttribute("atendimentos", allAtends);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/main.jsp");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/client/main.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
             e.printStackTrace();
             // REDIRECT TO ERROR.JSP
+        } catch (NullPointerException e) {
+            // REDIRECT TO ERROR.JSP
+            e.printStackTrace();
         }
 
     }

@@ -153,7 +153,7 @@ public class AtendRepo implements DAOinterface<Atendimento> {
 
     @Override
     public Atendimento getByID(Integer id) throws DAOException {
-        sql = "SELECT * att user where att_id = ?";
+        sql = "SELECT * from  att where at_id = ?";
         Atendimento attend = new Atendimento();
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -179,6 +179,38 @@ public class AtendRepo implements DAOinterface<Atendimento> {
 
         }
         return attend;
+    }
+
+    public List<Atendimento> getAllByUser(Integer id) throws DAOException {
+        sql = "SELECT * FROM att where client= ?";
+        List<Atendimento> attlist = new ArrayList<>();
+        try (Connection conn = conector.getConn()) {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Atendimento attend = new Atendimento();
+                attend.setAt_id(rs.getInt("at_id"));
+                Timestamp ts = rs.getTimestamp("data");
+                attend.setData(new Date(ts.getTime()));
+                UserRepo uRepo = new UserRepo();
+                attend.setClient(uRepo.getByID(rs.getInt("client")));
+                attend.setStatus(rs.getString("status"));
+                ProductRepo pRepo = new ProductRepo();
+                attend.setProduct(pRepo.getByID(rs.getInt("product")));
+                AttTypeRepo aTypeRepo = new AttTypeRepo();
+                attend.setType(aTypeRepo.getByID(rs.getInt("type")));
+                attend.setDescription(rs.getString("description"));
+                attend.setSolution(rs.getString("solution"));
+                attlist.add(attend);
+                attend = null;
+            }
+        } catch (SQLException e) {
+            attlist = null;
+            throw new DAOException("Error GETTING ALL Attends: " + sql, e);
+
+        }
+        return attlist;
     }
 
 }

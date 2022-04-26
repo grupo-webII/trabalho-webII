@@ -1,23 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet"
-	href="../../resources/bootstrap-5.1.3-dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../../styles/globals.css" />
-<link rel="stylesheet" href="../../styles/index.css" />
+	href="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/globals.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/index.css" />
 <link href="http://fonts.cdnfonts.com/css/helvetica-255"
 	rel="stylesheet">
-<script src="../../resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
-<script src="../../resources/jquery-3.5.0.min.js"></script>
-<meta charset="ISO-8859-1">
+<script src="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/jquery-3.5.0.min.js"></script>
+<meta charset="UTF-8">
 <title>Atendimentos em aberto</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light p-4 mb-5">
-		<a class="navbar-brand" href="../../index.jsp"> <img
-			src="../../images/beibe-logo.png" alt="Logotipo BEIBE" width="200"
+		<a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp"> <img
+			src="${pageContext.request.contextPath}/images/beibe-logo.png" alt="Logotipo BEIBE" width="200"
 			height="auto" class="p-2 d-inline-block align-text-center ml-3">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -29,16 +29,16 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-                                <li class="nav-item active"><a class="nav-link" href="main.jsp">Listagem
-                                        dos usuários
+                                <li class="nav-item active"><a class="nav-link" href="main">Listagem
+                                        dos usuï¿½rios
 				</a></li>
-				<li class="nav-item active"><a class="nav-link" href="openrequests.jsp">Listagem
+				<li class="nav-item active"><a class="nav-link" href="openrequests">Listagem
 						dos atendimentos em aberto
 				<span class="sr-only"> (atual)</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="allsupportrequests.jsp">Listagem
+				<li class="nav-item"><a class="nav-link" href="allsupportrequests">Listagem
 						dos atendimentos</a></li>
-				<li class="nav-item"><a class="nav-link" href="exports.jsp">Relatórios</a></li>
-				<li class="nav-item"><a class="nav-link" href="../../index.jsp"><b>Sair</b></a></li>
+				<li class="nav-item"><a class="nav-link" href="exports.jsp">Relatï¿½rios</a></li>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/index.jsp"><b>Sair</b></a></li>
 			</ul>
 		</div>
 	</nav>
@@ -52,9 +52,9 @@
 							<th scope="col">Hash</th>
 							<th scope="col">Status</th>
 							<th scope="col">Cliente</th>
-							<th scope="col">Descrição</th>
+							<th scope="col">Descriï¿½ï¿½o</th>
 							<th scope="col">Data</th>
-							<th scope="col">Ações</th>
+							<th scope="col">Aï¿½ï¿½es</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -62,12 +62,12 @@
 							<th scope="row">1</th>
 							<td>Em aberto</td>
 							<td>Maria</td>
-							<td>Não recebi o produto no prazo</td>
+							<td>Nï¿½o recebi o produto no prazo</td>
 							<td>09/02/2022</td>
 							<td><a
-								href="supportdescription.jsp"><button type="button"
+								href="supportdescription"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
+										<img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
 											width="20" height="auto" class="">
 									</button></a></td>
 						</tr>
@@ -75,12 +75,12 @@
 							<th scope="row">2</th>
 							<td style="color:red">Em aberto</td>
 							<td>Marcel</td>
-							<td>Produto não entrega o resultado de beleza</td>
+							<td>Produto nï¿½o entrega o resultado de beleza</td>
 							<td>17/08/2021</td>
 							<td><a
-								href="supportdescription.jsp"><button type="button"
+								href="supportdescription"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
+										<img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
 											width="20" height="auto" class="">
 									</button></a></td>
 						</tr>
@@ -88,12 +88,12 @@
 							<th scope="row">3</th>
 							<td style="color:red">Em aberto</td>
 							<td>Monique</td>
-							<td>Não gostei do atendimento</td>
+							<td>Nï¿½o gostei do atendimento</td>
 							<td>01/03/2021</td>
 							<td><a
-								href="supportdescription.jsp"><button type="button"
+								href="supportdescription"><button type="button"
 										class="btn btn-light">
-										<img src="../../images/pen-to-square-solid.svg" alt="Pen icon"
+										<img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
 											width="20" height="auto" class="">
 									</button></a></td>
 						</tr>
@@ -113,12 +113,12 @@
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
-					<div class="modal-body">Este atendimento ainda não foi
+					<div class="modal-body">Este atendimento ainda nï¿½o foi
 						realizado pela empresa. Se decidir esperar, em breve algum de
-						nossos atendentes entrará em contato.</div>
+						nossos atendentes entrarï¿½ em contato.</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-light"
-							data-bs-dismiss="modal">Não, vou aguardar</button>
+							data-bs-dismiss="modal">Nï¿½o, vou aguardar</button>
 						<button type="button" class="btn btn-danger">Sim, excluir</button>
 					</div>
 				</div>

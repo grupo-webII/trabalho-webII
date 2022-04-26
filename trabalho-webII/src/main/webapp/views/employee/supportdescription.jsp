@@ -37,14 +37,14 @@ POST:
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="main.jsp">Listagem
+				<li class="nav-item active"><a class="nav-link" href="main">Listagem
 						dos atendimentos em aberto
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="allsupportrequests.jsp">Listagem
+				<li class="nav-item"><a class="nav-link" href="allsupportrequests">Listagem
 						dos atendimentos <span class="sr-only"> (atual)</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="categories.jsp">Listagem
+				<li class="nav-item"><a class="nav-link" href="categories">Listagem
 						de categorias</a></li>
-				<li class="nav-item"><a class="nav-link" href="products.jsp">Listagem
+				<li class="nav-item"><a class="nav-link" href="products">Listagem
 						de produtos</a></li>
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/index.jsp"><b>Sair</b></a></li>
 			</ul>
@@ -96,7 +96,7 @@ POST:
 					</div>
 				</div>
                                 <button type="submit" class="btn btn-success">Enviar resolu��o</button>
-                                <a href="main.jsp" class="btn btn-dark">Voltar</a>
+                                <a href="main" class="btn btn-dark">Voltar</a>
 			</form>
 		</div>
 	</div>

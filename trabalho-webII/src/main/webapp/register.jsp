@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,15 +14,15 @@
 	src="resources/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
 <script src="resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <script>
-	// Máscara dos inputs
+	// Mï¿½scara dos inputs
 	$(document).ready(
 			function() {
 				$('.cep').mask('00000-000');
 				$('.phone_with_ddd').mask('(00) 00000-0000');
 				$('.cpf').mask('000.000.000-00');
 
-				function limpa_formulário_cep() {
-					// Limpa valores do formulário de cep.
+				function limpa_formulï¿½rio_cep() {
+					// Limpa valores do formulï¿½rio de cep.
 					$("#inputAddress").val("");
 					$("#inputHood").val("");
 					$("#inputCity").val("");
@@ -33,13 +33,13 @@
 				$("#inputZip").blur(
 						function() {
 
-							//Nova variável "cep" somente com dígitos.
+							//Nova variï¿½vel "cep" somente com dï¿½gitos.
 							var cep = $(this).val().replace(/\D/g, '');
 
 							//Verifica se campo cep possui valor informado.
 							if (cep != "") {
 
-								//Expressão regular para validar o CEP.
+								//Expressï¿½o regular para validar o CEP.
 								var validacep = /^[0-9]{8}$/;
 
 								//Valida o formato do CEP.
@@ -66,21 +66,21 @@
 											$("#inputState").val(dados.uf);
 										} //end if.
 										else {
-											//CEP pesquisado não foi encontrado.
-											limpa_formulário_cep();
-											alert("CEP não encontrado.");
+											//CEP pesquisado nï¿½o foi encontrado.
+											limpa_formulï¿½rio_cep();
+											alert("CEP nï¿½o encontrado.");
 										}
 									});
 								} //end if.
 								else {
-									//cep é inválido.
-									limpa_formulário_cep();
-									alert("Formato de CEP inválido.");
+									//cep ï¿½ invï¿½lido.
+									limpa_formulï¿½rio_cep();
+									alert("Formato de CEP invï¿½lido.");
 								}
 							} //end if.
 							else {
-								//cep sem valor, limpa formulário.
-								limpa_formulário_cep();
+								//cep sem valor, limpa formulï¿½rio.
+								limpa_formulï¿½rio_cep();
 							}
 						});
 
@@ -98,7 +98,7 @@
 						var i = t % 11;
 						return i = 2 > i ? 0 : 11 - i
 					}
-					var n = "CPF Inválido", i = "CPF Válido";
+					var n = "CPF Invï¿½lido", i = "CPF Vï¿½lido";
 					this.gera = function() {
 						for (var n = "", i = 0; 9 > i; ++i)
 							n += Math.floor(9 * Math.random()) + "";
@@ -129,7 +129,7 @@
 				});
 			});
 </script>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Registre-se</title>
 </head>
 <body>
@@ -196,19 +196,19 @@
 						</div>
 						<div class="form-group col-md-6 mb-3">
 							<label for="inputAddress">Logradouro</label> <input type="text"
-								class="form-control" id="inputAddress" placeholder="Rua, número"
+								class="form-control" id="inputAddress" placeholder="Rua, nï¿½mero"
 								required>
 						</div>
 					</div>
 					<div class="form-group col-md-2 mb-3">
-						<label for="inputAddress2">Número</label> <input type="text"
+						<label for="inputAddress2">Nï¿½mero</label> <input type="text"
 							class="form-control" id="inputAddress2" placeholder="334"
 							required>
 					</div>
 					<div class="form-group col-md-6 mb-3">
 						<label for="inputAddress3">Complemento</label> <input type="text"
 							class="form-control" id="inputAddress3"
-							placeholder="Apartamento, bloco, estúdio">
+							placeholder="Apartamento, bloco, estï¿½dio">
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6 mb-3">
@@ -225,7 +225,7 @@
 						</div>
 					</div>
 					<button type="submit" class="btn btn-dark">Registrar-me</button>
-					<a href="index.jsp" type="button" class="btn btn-secondary">Já
+					<a href="index.jsp" type="button" class="btn btn-secondary">Jï¿½
 						tenho cadastro</a>
 				</form>
 			</div>

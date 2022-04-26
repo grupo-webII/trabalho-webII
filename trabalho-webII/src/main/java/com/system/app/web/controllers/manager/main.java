@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.system.app.web.controllers.employee.supports;
+package com.system.app.web.controllers.manager;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,16 +15,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.system.app.web.beans.Atendimento;
-import com.system.app.web.repo.AtendRepo;
+import com.system.app.web.beans.User;
 import com.system.app.web.repo.DAOException;
+import com.system.app.web.repo.UserRepo;
 
 /**
  *
  * @author costiss
  */
-@WebServlet(name = "Allsupportrequests", urlPatterns = { "/employee/allsupportrequests" })
-public class allsupportrequests extends HttpServlet {
+@WebServlet(name = "ManagerMain", urlPatterns = { "/manager/main" })
+public class main extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -50,11 +50,11 @@ public class allsupportrequests extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        AtendRepo attRepo = new AtendRepo();
+        UserRepo userRepo = new UserRepo();
         try {
-            List<Atendimento> allAtends = attRepo.getAll();
-            request.setAttribute("atendimentos", allAtends);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/main.jsp");
+            List<User> users = userRepo.getAll();
+            request.setAttribute("users", users);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/manager/main.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
             e.printStackTrace();

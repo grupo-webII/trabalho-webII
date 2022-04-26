@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.system.app.web.controllers.employee.supports;
+package com.system.app.web.controllers.manager;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,8 +22,8 @@ import com.system.app.web.repo.DAOException;
  *
  * @author costiss
  */
-@WebServlet(name = "Allsupportrequests", urlPatterns = { "/employee/allsupportrequests" })
-public class allsupportrequests extends HttpServlet {
+@WebServlet(name = "ManagerSupportdescription", urlPatterns = { "/manager/supportdescription" })
+public class supportdescription extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,28 +51,22 @@ public class allsupportrequests extends HttpServlet {
 
         AtendRepo attRepo = new AtendRepo();
         try {
-            List<Atendimento> allAtends = attRepo.getAll();
-            request.setAttribute("atendimentos", allAtends);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/main.jsp");
+            Atendimento atendimento = attRepo.getByID(Integer.parseInt(request.getParameter("id")));
+            request.setAttribute("atendimento", atendimento);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/manager/supportdescription.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
             e.printStackTrace();
             // REDIRECT TO ERROR.JSP
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            // REDIRECT TO ERROR.JSP
         }
-
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
     }
 
     /**

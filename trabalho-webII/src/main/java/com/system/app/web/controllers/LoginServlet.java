@@ -50,20 +50,20 @@ public class LoginServlet extends HttpServlet {
 
 		String uemail = request.getParameter("uemail");
 		String upass = request.getParameter("upass");
-
+		UserRepo userRepo = new UserRepo();
 		// Database Validation
 		try {
-			User user = new UserRepo().handleLogin(uemail, upass);
+			User user = userRepo.handleLogin(uemail, upass);
 			System.out.println(user.getIsAuthenticated());
 			if (user.getIsAuthenticated()) {
 				HttpSession session = request.getSession();
 				session.setAttribute("user", user);
 				if (user.getRole().isROLE_FUNC()) {
-					response.sendRedirect("views/employee/main.jsp");
+					response.sendRedirect("employee/main");
 				} else if (user.getRole().isROLE_GERENTE()) {
-					response.sendRedirect("views/manager/main.jsp");
+					response.sendRedirect("manager/main");
 				} else {
-					response.sendRedirect("views/client/main.jsp");
+					response.sendRedirect("client/main");
 				}
 			} else {
 				// redirect to error.jsp

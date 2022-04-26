@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.system.app.web.controllers.employee.supports;
+package com.system.app.web.controllers.client;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.system.app.web.beans.Atendimento;
+
 import com.system.app.web.repo.AtendRepo;
 import com.system.app.web.repo.DAOException;
 
@@ -23,8 +23,8 @@ import com.system.app.web.repo.DAOException;
  *
  * @author costiss
  */
-@WebServlet(name = "Allsupportrequests", urlPatterns = { "/employee/allsupportrequests" })
-public class allsupportrequests extends HttpServlet {
+@WebServlet(name = "ClientSupportdescription", urlPatterns = { "/client/supportdescription" })
+public class supportdescription extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,9 +52,9 @@ public class allsupportrequests extends HttpServlet {
 
         AtendRepo attRepo = new AtendRepo();
         try {
-            List<Atendimento> allAtends = attRepo.getAll();
-            request.setAttribute("atendimentos", allAtends);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/main.jsp");
+            Atendimento atendimento = attRepo.getByID(Integer.parseInt(request.getParameter("id")));
+            request.setAttribute("atendimento", atendimento);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/client/supportdescription.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
             e.printStackTrace();

@@ -1,7 +1,6 @@
 package com.system.app.web.repo.tests;
 
 import com.system.app.web.beans.Product;
-import com.system.app.web.beans.ProductCat;
 import com.system.app.web.repo.CategoryRepo;
 import com.system.app.web.repo.DAOException;
 import com.system.app.web.repo.ProductRepo;

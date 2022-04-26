@@ -45,14 +45,14 @@ BEAN:
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active"><a class="nav-link" href="main.jsp">Listagem
+                        <li class="nav-item active"><a class="nav-link" href="main">Listagem
                                 dos atendimentos em aberto<span class="sr-only"> (atual)</span>
                             </a></li>
-                        <li class="nav-item"><a class="nav-link" href="allsupportrequests.jsp">Listagem
+                        <li class="nav-item"><a class="nav-link" href="allsupportrequests">Listagem
                                 dos atendimentos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="categories.jsp">Listagem
+                        <li class="nav-item"><a class="nav-link" href="categories">Listagem
                                 de categorias</a></li>
-                        <li class="nav-item"><a class="nav-link" href="products.jsp">Listagem
+                        <li class="nav-item"><a class="nav-link" href="products">Listagem
                                 de produtos</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/index.jsp"><b>Sair</b></a></li>
                     </ul>
@@ -81,7 +81,7 @@ BEAN:
                                     <td>Não recebi o produto no prazo</td>
                                     <td>09/02/2022</td>
                                     <td><a
-                                            href="supportdescription.jsp"><button type="button"
+                                            href="supportdescription"><button type="button"
                                                                               class="btn btn-light">
                                                 <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
                                                      width="20" height="auto" class="">
@@ -94,7 +94,7 @@ BEAN:
                                     <td>Produto não entrega o resultado de beleza</td>
                                     <td>17/08/2021</td>
                                     <td><a
-                                            href="supportdescription.jsp"><button type="button"
+                                            href="supportdescription"><button type="button"
                                                                               class="btn btn-light">
                                                 <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
                                                      width="20" height="auto" class="">
@@ -107,7 +107,7 @@ BEAN:
                                     <td>Não gostei do atendimento</td>
                                     <td>01/03/2021</td>
                                     <td><a
-                                            href="supportdescription.jsp"><button type="button"
+                                            href="supportdescription"><button type="button"
                                                                               class="btn btn-light">
                                                 <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
                                                      width="20" height="auto" class="">

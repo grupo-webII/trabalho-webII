@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,7 @@
 <script
 	src="resources/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
 <script src="resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>BEIBE - Sistema de Atendimento ao Cliente</title>
 </head>
 <body class="h100Body">
@@ -33,7 +33,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-7 offset-md-4">
-				<form class="form-wrapper p-4" method="post" action="login">
+				<form class="form-wrapper p-4" method="post" action="LoginServlet">
 
 					<div class="form-group col-md-7 mb-3">
 						<label for="inputEmail4">E-mail</label> <input type="email"

@@ -35,14 +35,14 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="main.jsp">Listagem
+				<li class="nav-item active"><a class="nav-link" href="main">Listagem
 						dos atendimentos em aberto
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="allsupportrequests.jsp">Listagem
+				<li class="nav-item"><a class="nav-link" href="allsupportrequests">Listagem
 						dos atendimentos</a></li>
-				<li class="nav-item"><a class="nav-link" href="categories.jsp">Listagem
+				<li class="nav-item"><a class="nav-link" href="categories">Listagem
 						de categorias<span class="sr-only"> (atual)</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="products.jsp">Listagem
+				<li class="nav-item"><a class="nav-link" href="products">Listagem
 						de produtos</a></li>
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/index.jsp"><b>Sair</b></a></li>
 			</ul>
@@ -52,7 +52,7 @@
 		<div class="row">
 			<div class="col-md-8 offset-md-2">
 				<h1 class="h1">Categorias</h1>
-                                <a class="mb-5 btn btn-dark" href="newcategory.jsp" class="btn btn-dark">Adicionar nova</a>
+                                <a class="mb-5 btn btn-dark" href="newcategory" class="btn btn-dark">Adicionar nova</a>
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -66,12 +66,12 @@
 							<td>Maquiagem</td>
 							<td><button type="button" class="btn btn-light"
 									data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-								href="categorydetails.jsp"><button type="button"
+								href="categorydetails"><button type="button"
 										class="btn btn-light">
 										<img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
 											width="20" height="auto" class="">
 									</button></a>&nbsp;<a
-								href="categorydetails.jsp"><button type="button"
+								href="categorydetails"><button type="button"
 										class="btn btn-light">
 										<img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
 											width="20" height="auto" class="">
@@ -82,11 +82,11 @@
 							<td>Maquiagem</td>
 							<td><button type="button" class="btn btn-light"
 									data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-								href="categorydetails.jsp"><button type="button" class="btn btn-light">
+								href="categorydetails"><button type="button" class="btn btn-light">
 										<img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
 											width="20" height="auto" class="">
 									</button></a>&nbsp;<a
-								href="categorydetails.jsp"><button type="button"
+								href="categorydetails"><button type="button"
 										class="btn btn-light">
 										<img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
 											width="20" height="auto" class="">
@@ -96,11 +96,11 @@
 							<th scope="row">3</th>
 							<td>Maquiagem</td>
 							<td><button type="button" class="btn btn-dark">Remover</button>&nbsp;<a
-								href="categorydetails.jsp"><button type="button" class="btn btn-light">
+								href="categorydetails"><button type="button" class="btn btn-light">
 										<img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
 											width="20" height="auto" class="">
 									</button></a>&nbsp;<a
-								href="categorydetails.jsp"><button type="button"
+								href="categorydetails"><button type="button"
 										class="btn btn-light">
 										<img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
 											width="20" height="auto" class="">

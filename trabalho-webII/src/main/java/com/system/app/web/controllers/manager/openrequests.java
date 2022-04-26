@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.system.app.web.controllers.employee.supports;
+package com.system.app.web.controllers.manager;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,8 +23,8 @@ import com.system.app.web.repo.DAOException;
  *
  * @author costiss
  */
-@WebServlet(name = "Allsupportrequests", urlPatterns = { "/employee/allsupportrequests" })
-public class allsupportrequests extends HttpServlet {
+@WebServlet(name = "ManagerOpenrequests", urlPatterns = { "/manager/openrequests" })
+public class openrequests extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,9 +52,9 @@ public class allsupportrequests extends HttpServlet {
 
         AtendRepo attRepo = new AtendRepo();
         try {
-            List<Atendimento> allAtends = attRepo.getAll();
+            List<Atendimento> allAtends = attRepo.getAllOpen();
             request.setAttribute("atendimentos", allAtends);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/main.jsp");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/manager/openrequests.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
             e.printStackTrace();
