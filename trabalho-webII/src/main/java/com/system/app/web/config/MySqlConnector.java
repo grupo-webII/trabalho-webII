@@ -21,7 +21,7 @@ public class MySqlConnector implements AutoCloseable {
         try {
             Class.forName(DRIVER);
             this.prop.load(this.mysqlConf);
-            String connStr = String.format("%s?useSSL=false&" + "user=%s&password=%s",
+            String connStr = String.format("%s?useSSL=false&allowPublicKeyRetrieval=true&" + "user=%s&password=%s",
                     this.prop.getProperty("mysql.url"),
                     this.prop.getProperty("mysql.username"), this.prop.getProperty("mysql.password"), "&useSSL=false");
             this.conn = DriverManager.getConnection(connStr);
