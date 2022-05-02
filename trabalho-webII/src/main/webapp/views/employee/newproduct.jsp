@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!--
 GET:
@@ -58,29 +58,28 @@ REQUEST BEANS:
 	<div class="row">
 		<div class="col-md-8 offset-md-2">
 			<h1 class="mb-3 h1">Adicionar produto</h1>
-			<form action="main.jsp" class="mb-5">
+			<form action="" method="post" class="mb-5" >
 				<div class="form-row">
                                     <div class="form-group col-md-6 mb-3">
-						<label for="inputShortDescriptive">Nome do produto</label> <input
+                                        <label for="name">Nome do produto</label> <input name="name"
 							type="text" class="form-control" id="inputShortDescriptive"
 							required>
 					</div>
 					<div class="form-group col-md-6 mb-3">
                                             <label for="inputCategory">Categoria</label><br/>
-						<select id="inputCategory" class="custom-select">
-							<option value="2">Maquiagem</option>
-							<option value="3">Teste</option>
-							<option value="3">Teste</option>
-							<option value="3">Teste</option>
+                                            <select id="inputCategory" class="custom-select" name="category">
+                                                    <c:forEach var="cat" items="${categories}">
+                                                        <option value="${cat.cat_id}"><c:out value="${cat.name}"></c:out></option>
+                                                    </c:forEach>
 						</select>
 					</div>
 					<div class="form-group mb-3">
-						<label class="mb-3" for="exampleFormControlTextarea1">Descri��o detalhada do caso</label>
-						<textarea class="form-control" id="exampleFormControlTextarea1"
+						<label class="mb-3" for="description">Descrição detalhada do produto</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" name="description"
 							rows="3" required></textarea>
 					</div>
                                         <div class="form-group col-md-6 mb-3">
-						<label for="inputShortDescriptive">Peso</label> <input
+                                            <label for="weight">Peso</label> <input name="weight"
 							type="text" class="form-control" id="inputShortDescriptive"
 							required>
 					</div>

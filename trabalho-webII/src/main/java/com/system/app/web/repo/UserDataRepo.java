@@ -22,7 +22,7 @@ public class UserDataRepo implements DAOinterface<UserData> {
 
     @Override
     public boolean save(UserData data) throws DAOException {
-        sql = "INSERT INTO userData (user_id, name, lastname, cpf, phone, cep, adress, adressNumber, complement, bairro, city, statate)"
+        sql = "INSERT INTO userData (user_id, name, lastname, cpf, phone, cep, address, addressNumber, complement, bairro, city, state)"
                 +
                 "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         boolean isSaved = false;

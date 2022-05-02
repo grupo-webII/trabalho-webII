@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,10 @@
 <meta charset="UTF-8">
 <title>Dashboard do Gerente</title>
 </head>
-<body>
+<body>  
+    <c:forEach var="user" items="${users}" >
+        <c:out value="${user.email}"></c:out>
+    </c:forEach>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light p-4 mb-5">
 		<a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp"> <img
 			src="${pageContext.request.contextPath}/images/beibe-logo.png" alt="Logotipo BEIBE" width="200"

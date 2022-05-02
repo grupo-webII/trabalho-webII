@@ -114,6 +114,7 @@ public class updatedata extends HttpServlet {
             }
             userRepo.update(user);
             userDataRepo.update(userData);
+            response.sendRedirect("updatedata");
         } catch (DAOException e) {
             request.setAttribute("javaerror", e);
             request.setAttribute("error", "Erro no banco de dados");

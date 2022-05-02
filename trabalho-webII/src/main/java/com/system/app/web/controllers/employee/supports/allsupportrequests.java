@@ -54,7 +54,7 @@ public class allsupportrequests extends HttpServlet {
         try {
             List<Atendimento> allAtends = attRepo.getAll();
             request.setAttribute("atendimentos", allAtends);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/main.jsp");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/allsupportrequests.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
             request.setAttribute("javaerror", e);

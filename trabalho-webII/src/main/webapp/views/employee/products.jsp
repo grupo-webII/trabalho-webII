@@ -23,13 +23,6 @@ BEANS:
         <title>Produtos</title>
     </head>
     <body>
-        <c:forEach var="prod" items="${allProducts}">  
-            <c:out value="${prod.product_id}"></c:out>
-            <c:out value="${prod.category.name}"></c:out>
-            <c:out value="${prod.name}"></c:out>
-            <c:out value="${prod.description}"></c:out>
-            <c:out value="${prod.weight}"></c:out>
-        </c:forEach>
         <nav class="navbar navbar-expand-lg navbar-light bg-light p-4 mb-5">
             <a class="navbar-brand" href="../../index.jsp"> <img
                     src="${pageContext.request.contextPath}/images/beibe-logo.png" alt="Logotipo BEIBE" width="200"
@@ -73,6 +66,27 @@ BEANS:
                             </tr>
                         </thead>
                         <tbody>
+                            <c:forEach var="product" items="${allProducts}">
+
+                            <tr>
+                                <th scope="row"><c:out value="${product.product_id}"/></th>
+                                <td><c:out value="${product.name}"/></td>
+                                <td><c:out value="${product.category.name}"/></td>
+                                <td><c:out value="${product.weight}g"/></td>
+                                <td><button type="button" class="btn btn-light"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
+                                            href="productdetails?id=${product.product_id}"><button type="button"
+                                                                  class="btn btn-light">
+                                            <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
+                                                 width="20" height="auto" class="">
+                                        </button></a>&nbsp;<a
+                                        href="productdetails?id=${product.product_id}"><button type="button"
+                                                                  class="btn btn-light">
+                                            <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
+                                                 width="20" height="auto" class="">
+                                        </button></a></td>
+                            </tr>
+                            </c:forEach>
                             <tr>
                                 <th scope="row">1</th>
                                 <td>Pó Facial Mariazinha</td>
@@ -81,12 +95,12 @@ BEANS:
                                 <td><button type="button" class="btn btn-light"
                                             data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
                                             href="productdetails"><button type="button"
-                                                                      class="btn btn-light">
+                                                                  class="btn btn-light">
                                             <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
                                                  width="20" height="auto" class="">
                                         </button></a>&nbsp;<a
                                         href="productdetails"><button type="button"
-                                                                      class="btn btn-light">
+                                                                  class="btn btn-light">
                                             <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
                                                  width="20" height="auto" class="">
                                         </button></a></td>
@@ -103,7 +117,7 @@ BEANS:
                                                  width="20" height="auto" class="">
                                         </button></a>&nbsp;<a
                                         href="productdetails"><button type="button"
-                                                                      class="btn btn-light">
+                                                                  class="btn btn-light">
                                             <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
                                                  width="20" height="auto" class="">
                                         </button></a></td>
@@ -119,7 +133,7 @@ BEANS:
                                                  width="20" height="auto" class="">
                                         </button></a>&nbsp;<a
                                         href="productdetails"><button type="button"
-                                                                      class="btn btn-light">
+                                                                  class="btn btn-light">
                                             <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
                                                  width="20" height="auto" class="">
                                         </button></a></td>

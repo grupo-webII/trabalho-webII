@@ -6,6 +6,8 @@
 package com.system.app.web.controllers.client;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -100,7 +102,12 @@ public class asksupport extends HttpServlet {
             atendimento.setProduct(product);
             AtendType atendType = attTypeRepo.getByID(Integer.parseInt(request.getParameter("type")));
             atendimento.setType(atendType);
+            atendimento.setStatus("em aberto");
+            atendimento.setSolution("");
+            Date date = new Date();
+            atendimento.setData(date);
             atendRepo.save(atendimento);
+            response.sendRedirect("main");
         } catch (NumberFormatException e) {
             request.setAttribute("javaerror", e);
             request.setAttribute("error", "Algum parametro foi passado com o tipo incorreto");

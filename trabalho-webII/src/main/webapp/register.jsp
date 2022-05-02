@@ -98,7 +98,7 @@
 						var i = t % 11;
 						return i = 2 > i ? 0 : 11 - i
 					}
-					var n = "CPF Inv�lido", i = "CPF V�lido";
+					var n = "CPF Inválido", i = "CPF Válido";
 					this.gera = function() {
 						for (var n = "", i = 0; 9 > i; ++i)
 							n += Math.floor(9 * Math.random()) + "";
@@ -150,77 +150,89 @@
 		</div>
 		<div class="row">
 			<div class="col-md-8 offset-md-4">
-				<form method="post" action="#" class="mb-5">
+				<form method="post" action="register" class="mb-5">
 					<div class="form-row">
 						<div class="form-group col-md-6 mb-3">
-							<label for="inputCPF">Primeiro nome</label> <input type="text"
-								class="form-control cpf" id="inputFirstName" placeholder="Maria"
+							<label for="name">Primeiro nome</label> <input type="text"
+								name="name" class="form-control cpf" id="inputFirstName" placeholder="Maria"
 								required>
 						</div>
 						<div class="form-group col-md-6 mb-3">
-							<label for="inputCPF">Sobrenome</label> <input type="text"
-								class="form-control" id="inputLastName" placeholder="Luceia"
+							<label for="lastname">Sobrenome</label> <input type="text"
+								name="lastname" class="form-control" id="inputLastName" placeholder="Luceia"
 								required>
 						</div>
 						<div class="form-group col-md-6 mb-3">
-							<label for="inputCPF">CPF</label> <input type="text"
+							<label for="cpf">CPF</label> <input type="text"
+								name="cpf"
 								class="form-control cpf" id="inputCPF"
 								placeholder="000.000.000-00" required> <span
 								id="resposta"></span>
 						</div>
 						<div class="form-group col-md-6 mb-3">
-							<label for="inputCPF">Telefone</label> <input type="text"
+							<label for="phone">Telefone</label> <input type="text"
+							name="phone"
 								class="form-control phone_with_ddd" id="inputCPF"
 								placeholder="(00) 00000-0000" required>
 						</div>
 						<div class="form-group col-md-6 mb-3">
-							<label for="inputEmail4">E-mail</label> <input type="email"
+							<label for="email">E-mail</label> <input type="email"
+							name="email"
 								class="form-control" id="inputEmail4"
 								placeholder="test@email.com" required>
 						</div>
 						<div class="form-group col-md-6 mb-3">
-							<label for="inputPassword5">Senha</label> <input type="password"
+							<label for="password">Senha</label> <input type="password"
+								name="password"
 								class="form-control" id="inputPassword5" placeholder="Senha"
 								required>
 						</div>
 						<div class="form-group col-md-6 mb-3">
-							<label for="inputPassword6">Confirmar senha</label> <input
+							<label for="confirmPass">Confirmar senha</label> <input
+								name="confirmPass"
 								type="password" class="form-control" id="inputPassword6"
 								placeholder="Senha" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="form-group col-md-2 mb-3">
-							<label for="inputZip">CEP</label> <input type="text"
+							<label for="cep">CEP</label> <input type="text"
+								name="cep"
 								class="form-control cep" id="inputZip" placeholder="00000-000" required>
 						</div>
 						<div class="form-group col-md-6 mb-3">
-							<label for="inputAddress">Logradouro</label> <input type="text"
-								class="form-control" id="inputAddress" placeholder="Rua, n�mero"
+							<label for="address">Logradouro</label> <input type="text"
+								name="address"
+								class="form-control" id="inputAddress" placeholder="Rua, número"
 								required>
 						</div>
 					</div>
 					<div class="form-group col-md-2 mb-3">
-						<label for="inputAddress2">N�mero</label> <input type="text"
+						<label for="addressNumber">Número</label> <input type="text"
+						name="addressNumber"
 							class="form-control" id="inputAddress2" placeholder="334"
 							required>
 					</div>
 					<div class="form-group col-md-6 mb-3">
-						<label for="inputAddress3">Complemento</label> <input type="text"
+						<label for="complement">Complemento</label> <input type="text"
+							name="complement"
 							class="form-control" id="inputAddress3"
 							placeholder="Apartamento, bloco, est�dio">
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6 mb-3">
-							<label for="inputHood">Bairro</label> <input type="text"
+							<label for="bairro">Bairro</label> <input type="text"
+							name="bairro"
 								class="form-control" id="inputHood" required disabled>
 						</div>
 						<div class="form-group col-md-6 mb-3">
-							<label for="inputCity">Cidade</label> <input type="text"
+							<label for="city">Cidade</label> <input type="text"
+								name="city"
 								class="form-control" id="inputCity" required disabled>
 						</div>
 						<div class="form-group col-md-2 mb-3">
-							<label for="inputCity">Estado</label> <input type="text"
+							<label for="state">Estado</label> <input type="text"
+								name="state"
 								class="form-control" id="inputState" required disabled>
 						</div>
 					</div>

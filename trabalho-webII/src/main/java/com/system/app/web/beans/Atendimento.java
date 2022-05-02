@@ -16,7 +16,6 @@ public class Atendimento implements Serializable {
 
 
 
-    
     public Integer getAt_id() {
         return at_id;
     }

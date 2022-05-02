@@ -75,6 +75,11 @@ public class Register extends HttpServlet {
         UserRepo userRepo = new UserRepo();
         UserDataRepo userDataRepo = new UserDataRepo();
         try {
+            User user = new User();
+            user.setEmail(request.getParameter("email").toLowerCase());
+            user.setPassword(request.getParameter("password"));
+            userRepo.save(user);
+            user = userRepo.getUserByEmail(request.getParameter("email").toLowerCase());
             userData.setName(request.getParameter("name"));
             userData.setLastname(request.getParameter("lastname"));
             userData.setCpf(request.getParameter("cpf"));
@@ -83,18 +88,15 @@ public class Register extends HttpServlet {
             userData.setAddress(request.getParameter("address"));
             userData.setAdressNumber(Integer.parseInt(request.getParameter("addressNumber")));
             userData.setComplement(request.getParameter("complement"));
+            userData.setBairro(request.getParameter("bairro"));
+            userData.setCity(request.getParameter("city"));
             userData.setState(request.getParameter("state"));
-            HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
             userData.setUser_id(user.getUser_id());
-            if (!user.getEmail().equals(request.getParameter("email"))) {
-                user.setEmail(request.getParameter("email"));
-            }
-            if (!user.getPassword().equals(request.getParameter("password"))) {
-                user.setPassword(request.getParameter("password"));
-            }
-            userRepo.save(user);
             userDataRepo.save(userData);
+            HttpSession session = request.getSession();
+            user.setIsAuthenticated(true);
+            session.setAttribute("user", user);
+            response.sendRedirect("client/main");
         } catch (DAOException e) {
             request.setAttribute("javaerror", e);
             request.setAttribute("error", "Erro no banco de dados");

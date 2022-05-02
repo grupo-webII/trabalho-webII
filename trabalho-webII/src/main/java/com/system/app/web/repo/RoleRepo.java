@@ -92,10 +92,10 @@ public class RoleRepo implements DAOinterface<Role> {
         boolean isSaved = false;
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(2, role.getUser_id());
+            statement.setInt(1, role.getUser_id());
             statement.setBoolean(2, role.isROLE_CLIENTE());
-            statement.setBoolean(2, role.isROLE_GERENTE());
-            statement.setBoolean(2, role.isROLE_FUNC());
+            statement.setBoolean(3, role.isROLE_GERENTE());
+            statement.setBoolean(4, role.isROLE_FUNC());
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 isSaved = true;
@@ -114,9 +114,9 @@ public class RoleRepo implements DAOinterface<Role> {
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setBoolean(1, role.isROLE_CLIENTE());
-            statement.setBoolean(1, role.isROLE_FUNC());
-            statement.setBoolean(1, role.isROLE_GERENTE());
-            statement.setInt(3, role.getUser_id());
+            statement.setBoolean(2, role.isROLE_FUNC());
+            statement.setBoolean(3, role.isROLE_GERENTE());
+            statement.setInt(4, role.getUser_id());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 isUpdated = true;

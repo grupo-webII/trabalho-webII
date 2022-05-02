@@ -76,7 +76,7 @@ public class newproduct extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException      if an I/O error occurs
      */
-    @Override
+    @Override 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -90,6 +90,7 @@ public class newproduct extends HttpServlet {
             product.setDescription(request.getParameter("description"));
             product.setWeight(Float.parseFloat(request.getParameter("weight")));
             productRepo.save(product);
+            response.sendRedirect("products");
         } catch (DAOException e) {
             request.setAttribute("javaerror", e);
             request.setAttribute("error", "Erro no banco de dados");
