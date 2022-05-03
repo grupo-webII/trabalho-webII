@@ -19,7 +19,7 @@ public class MysqlTableInit {
                     { "CREATE TABLE IF NOT EXISTS user (" +
                             "user_id int not null auto_increment," +
                             "email VARCHAR(100) unique," +
-                            "password VARCHAR(100)," +
+                            "password VARCHAR(200)," +
                             "PRIMARY KEY (user_id)" +
                             ");",
                             // ROLES TABLE
