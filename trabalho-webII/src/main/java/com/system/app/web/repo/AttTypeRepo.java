@@ -35,7 +35,7 @@ public class AttTypeRepo implements DAOinterface<AtendType> {
                 System.out.println("INSERTED new AttType: " + type.getName());
             }
         } catch (SQLException e) {
-            throw new DAOException("Error INSERTING new AttType: " + sql + "/" + type.toString(), e);
+            throw new DAOException("Error INSERTING new AttType: "+  e.toString(), e);
         }
         return isSaved;
     }
@@ -53,7 +53,7 @@ public class AttTypeRepo implements DAOinterface<AtendType> {
                 System.out.println("DELETED AttType " + id.toString() + "!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error DELETING AttType by id: " + sql + "/" + id.toString(), e);
+            throw new DAOException("Error DELETING AttType by id: " + id.toString() +  e.toString(), e);
         }
         return isDeleted;
 
@@ -73,7 +73,7 @@ public class AttTypeRepo implements DAOinterface<AtendType> {
                 System.out.println("UPDATED AttType " + cat.getName() + "!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error UPDATING AttType: " + sql + "/" + cat.toString(), e);
+            throw new DAOException("Error UPDATING AttType: " +  e.toString(), e);
         }
         return isUpdated;
 
@@ -96,7 +96,7 @@ public class AttTypeRepo implements DAOinterface<AtendType> {
             }
         } catch (SQLException e) {
             typeList = null;
-            throw new DAOException("Error GETTING ALL AttType: " + sql, e);
+            throw new DAOException("Error GETTING ALL AttType: "+  e.toString(), e);
 
         }
         return typeList;
@@ -116,7 +116,7 @@ public class AttTypeRepo implements DAOinterface<AtendType> {
             }
         } catch (SQLException e) {
             type = null;
-            throw new DAOException("Error GETTING AttType by id: " + sql + "/" + id.toString(), e);
+            throw new DAOException("Error GETTING AttType by id: "  + id.toString() +  e.toString(), e);
 
         }
         return type;

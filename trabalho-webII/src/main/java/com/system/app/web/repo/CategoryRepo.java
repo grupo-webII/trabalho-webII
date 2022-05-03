@@ -35,7 +35,7 @@ public class CategoryRepo implements DAOinterface<ProductCat> {
                 System.out.println("INSERTED new Category: " + cat.getName());
             }
         } catch (SQLException e) {
-            throw new DAOException("Error INSERTING new Category: " + sql + "/" + cat.toString(), e);
+            throw new DAOException("Error INSERTING new Category: " +  e.toString(), e);
         }
         return isSaved;
     }
@@ -53,7 +53,7 @@ public class CategoryRepo implements DAOinterface<ProductCat> {
                 System.out.println("DELETED CATEGORY " + id.toString() + "!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error DELETING Category by id: " + sql + "/" + id.toString(), e);
+            throw new DAOException("Error DELETING Category by id: "  + id.toString() +  e.toString(), e);
         }
         return isDeleted;
 
@@ -73,7 +73,7 @@ public class CategoryRepo implements DAOinterface<ProductCat> {
                 System.out.println("UPDATED PRODUCT " + cat.getName() + "!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error UPDATING Product: " + sql + "/" + cat.toString(), e);
+            throw new DAOException("Error UPDATING Product: " +  e.toString(), e);
         }
         return isUpdated;
 
@@ -96,7 +96,7 @@ public class CategoryRepo implements DAOinterface<ProductCat> {
             }
         } catch (SQLException e) {
             catList = null;
-            throw new DAOException("Error GETTING ALL Products: " + sql, e);
+            throw new DAOException("Error GETTING ALL Products: " +  e.toString(), e);
 
         }
         return catList;
@@ -116,7 +116,7 @@ public class CategoryRepo implements DAOinterface<ProductCat> {
             }
         } catch (SQLException e) {
             cat = null;
-            throw new DAOException("Error GETTING Category by id: " + sql + "/" + id.toString(), e);
+            throw new DAOException("Error GETTING Category by id: "  + id.toString() +  e.toString(), e);
 
         }
         return cat;
@@ -135,7 +135,7 @@ public class CategoryRepo implements DAOinterface<ProductCat> {
             }
         } catch (SQLException e) {
             cat = null;
-            throw new DAOException("Error GETTING Category by id: " + sql + "/" + name.toString(), e);
+            throw new DAOException("Error GETTING Category by name: "+  e.toString(), e);
 
         }
         return cat;

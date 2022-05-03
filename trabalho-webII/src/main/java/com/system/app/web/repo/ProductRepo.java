@@ -35,7 +35,7 @@ public class ProductRepo implements DAOinterface<Product> {
                 System.out.println("INSERTED NEW PRODUCT!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error INSERTING new Product: " + sql + "/" + product.toString(), e);
+            throw new DAOException("Error INSERTING new Product: "+  e.toString(), e);
         }
         return isSaved;
     }
@@ -53,7 +53,7 @@ public class ProductRepo implements DAOinterface<Product> {
                 System.out.println("DELETED PRODUCT " + id.toString() + "!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error DELETING Product by id: " + sql + "/" + id.toString(), e);
+            throw new DAOException("Error DELETING Product by id: "+  e.toString(), e);
         }
         return isDeleted;
 
@@ -76,7 +76,7 @@ public class ProductRepo implements DAOinterface<Product> {
                 System.out.println("UPDATED PRODUCT " + product.getProduct_id() + "!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error UPDATING Product: " + sql + "/" + product.toString(), e);
+            throw new DAOException("Error UPDATING Product: "+  e.toString(), e);
         }
         return isUpdated;
 
@@ -104,7 +104,7 @@ public class ProductRepo implements DAOinterface<Product> {
             }
         } catch (SQLException e) {
             productlist = null;
-            throw new DAOException("Error GETTING ALL Products: " + sql, e);
+            throw new DAOException("Error GETTING ALL Products: "+  e.toString(), e);
 
         }
         return productlist;
@@ -129,7 +129,7 @@ public class ProductRepo implements DAOinterface<Product> {
             }
         } catch (SQLException e) {
             product = null;
-            throw new DAOException("Error GETTING User by id: " + sql + "/" + id.toString(), e);
+            throw new DAOException("Error GETTING User by id: "  + id.toString() +  e.toString(), e);
 
         }
         return product;

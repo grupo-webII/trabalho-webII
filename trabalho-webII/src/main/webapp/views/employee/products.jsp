@@ -68,26 +68,30 @@ BEANS:
                         <tbody>
                             <c:forEach var="product" items="${allProducts}">
 
-                            <tr>
-                                <th scope="row"><c:out value="${product.product_id}"/></th>
-                                <td><c:out value="${product.name}"/></td>
-                                <td><c:out value="${product.category.name}"/></td>
-                                <td><c:out value="${product.weight}g"/></td>
-                                <td><button type="button" class="btn btn-light"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
+                                <tr>
+                                    <th scope="row"><c:out value="${product.product_id}"/></th>
+                                    <td><c:out value="${product.name}"/></td>
+                                    <td><c:out value="${product.category.name}"/></td>
+                                    <td><c:out value="${product.weight}g"/></td>
+                                    <td>
+
+                                        <a href="deleteProd?id=${product.product_id}" >
+                                            <button type="button" class="btn btn-light"
+                                                    >Remover
+                                            </button>&nbsp;
+                                        </a>
+
+
+
+                                        <a
                                             href="productdetails?id=${product.product_id}"><button type="button"
-                                                                  class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a>&nbsp;<a
-                                        href="productdetails?id=${product.product_id}"><button type="button"
-                                                                  class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a></td>
-                            </tr>
+                                                                                               class="btn btn-light">
+                                                <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Edit"
+                                                     width="20" height="auto" class="">
+                                            </button></a></td>
+                                </tr>
                             </c:forEach>
-                           
+
                         </tbody>
                     </table>
                 </div>

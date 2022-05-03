@@ -37,14 +37,23 @@ public class UserRepo implements DAOinterface<User> {
                 System.out.println("Inserido novo user!");
             }
             User savedUser = getUserByEmail(user.getEmail());
-            Role newRole = new Role();
-            newRole.setUser_id(savedUser.getUser_id());
-            boolean roleRepo = new RoleRepo().save(newRole);
-            if (roleRepo) {
-                System.out.println("Saved default Role for User: " + savedUser.getUser_id().toString());
+            if (user.getRole() == null) {
+                Role newRole = new Role();
+                newRole.setUser_id(savedUser.getUser_id());
+                newRole.setROLE_CLIENTE(true);
+                boolean roleRepo = new RoleRepo().save(newRole);
+                if (roleRepo) {
+                    System.out.println("Saved default Role for User: " + savedUser.getUser_id().toString());
+                }
+            } else {
+                user.getRole().setUser_id(savedUser.getUser_id());
+                boolean roleRepo = new RoleRepo().save(user.getRole());
+                if (roleRepo) {
+                    System.out.println("Saved default Role for User: " + savedUser.getUser_id().toString());
+                }
             }
         } catch (SQLException e) {
-            throw new DAOException("Error INSERTING new User: " + sql + "/" + user.toString(), e);
+            throw new DAOException("Error INSERTING new User: " +  e.toString(), e);
         }
         return isSaved;
     }
@@ -53,18 +62,21 @@ public class UserRepo implements DAOinterface<User> {
     public boolean delete(Integer id) throws DAOException {
         sql = "DELETE FROM user WHERE user_id = ?";
         boolean isDeleted = false;
+        RoleRepo roleRepo = new RoleRepo();
+        roleRepo.delete(id);
+        UserDataRepo userDataRepo = new UserDataRepo();
+        userDataRepo.delete(id);
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, id);
             int rowsInserted = statement.executeUpdate();
-            RoleRepo roleRepo = new RoleRepo();
-            roleRepo.delete(id);
             if (rowsInserted > 0) {
                 isDeleted = true;
                 System.out.println("User deletado!");
             }
+
         } catch (SQLException e) {
-            throw new DAOException("Error DELETING User by id: " + sql + "/" + id.toString(), e);
+            throw new DAOException("Error DELETING User by id: " +  e.toString(), e);
         }
         return isDeleted;
 
@@ -85,7 +97,7 @@ public class UserRepo implements DAOinterface<User> {
                 System.out.println("User atualizado!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error UPDATING User: " + sql + "/" + user.toString(), e);
+            throw new DAOException("Error UPDATING User: "+  e.toString(), e);
         }
         return isUpdated;
 
@@ -110,7 +122,7 @@ public class UserRepo implements DAOinterface<User> {
             }
         } catch (SQLException e) {
             userlist = null;
-            throw new DAOException("Error GETTING ALL Users: " + sql, e);
+            throw new DAOException("Error GETTING ALL Users: "+  e.toString(), e);
 
         }
         return userlist;
@@ -132,7 +144,7 @@ public class UserRepo implements DAOinterface<User> {
             }
         } catch (SQLException e) {
             user = null;
-            throw new DAOException("Error GETTING User by id: " + sql + "/" + id.toString(), e);
+            throw new DAOException("Error GETTING User by id: " +  e.toString(), e);
 
         }
 
@@ -155,7 +167,7 @@ public class UserRepo implements DAOinterface<User> {
             }
         } catch (SQLException e) {
             user = null;
-            throw new DAOException("Error GETTING User by email: " + sql + "/" + email.toString(), e);
+            throw new DAOException("Error GETTING User by email: " +  e.toString(), e);
         }
 
         return user;
@@ -173,13 +185,11 @@ public class UserRepo implements DAOinterface<User> {
             }
         } catch (DAOException e) {
             user = null;
-            throw new DAOException("Error AUTHENTICATING user: " + sql + "/" + email.toString(), e);
+            throw new DAOException("Error AUTHENTICATING user: " +  e.toString(), e);
         } catch (NullPointerException e) {
             throw new DAOException("USER NOT FOUND");
         }
         return user;
     }
-
-
 
 }

@@ -33,7 +33,7 @@ public class RoleRepo implements DAOinterface<Role> {
                 System.out.println("Delted Roles entry for user_id: " + user_id.toString());
             }
         } catch (SQLException e) {
-            throw new DAOException("Error DELETING Role by id: " + sql + "/" + user_id.toString(), e);
+            throw new DAOException("Error DELETING Role by id: " + user_id.toString() + e.toString(), e);
         }
         return isDeleted;
     }
@@ -57,7 +57,7 @@ public class RoleRepo implements DAOinterface<Role> {
             }
         } catch (SQLException e) {
             rolelist = null;
-            throw new DAOException("Error GETTING ALL Roles: " + sql, e);
+            throw new DAOException("Error GETTING ALL Roles: " + e.toString(), e);
 
         }
         return rolelist;
@@ -79,7 +79,7 @@ public class RoleRepo implements DAOinterface<Role> {
             }
         } catch (SQLException e) {
             role = null;
-            throw new DAOException("Error GETTING Role by id: " + sql + "/" + user_id.toString(), e);
+            throw new DAOException("Error GETTING Role by id: " + user_id.toString() + e.toString(), e);
         }
         return role;
     }
@@ -102,7 +102,7 @@ public class RoleRepo implements DAOinterface<Role> {
                 System.out.println("Inserido nova Role para o user_id: " + role.getUser_id().toString());
             }
         } catch (SQLException e) {
-            throw new DAOException("Error INSERTING new User: " + sql + "/" + role.toString(), e);
+            throw new DAOException("Error INSERTING new User: " + e.toString(), e);
         }
         return isSaved;
     }
@@ -123,7 +123,7 @@ public class RoleRepo implements DAOinterface<Role> {
                 System.out.println("Role atualizada para o user_id: " + role.getUser_id().toString());
             }
         } catch (SQLException e) {
-            throw new DAOException("Error UPDATING Role: " + sql + "/" + role.toString(), e);
+            throw new DAOException("Error UPDATING Role: " + e.toString(), e);
         }
         return isUpdated;
     }

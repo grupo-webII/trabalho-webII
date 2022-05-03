@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.system.app.web.controllers.manager;
+package com.system.app.web.controllers.client;
 
 import java.io.IOException;
 
@@ -14,18 +14,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.system.app.web.beans.Atendimento;
-import com.system.app.web.beans.UserData;
 import com.system.app.web.repo.AtendRepo;
 import com.system.app.web.repo.DAOException;
-import com.system.app.web.repo.UserDataRepo;
 
 /**
  *
  * @author costiss
  */
-@WebServlet(name = "ManagerSupportdescription", urlPatterns = { "/manager/supportdescription" })
-public class supportdescription extends HttpServlet {
+@WebServlet(name = "DeleteAtendimento", urlPatterns = { "/client/deleteAtt" })
+public class deleteAtt extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,16 +49,9 @@ public class supportdescription extends HttpServlet {
             throws ServletException, IOException {
 
         AtendRepo attRepo = new AtendRepo();
-        UserDataRepo userDataRepo =  new UserDataRepo();
         try {
-            Atendimento atendimento = attRepo.getByID(Integer.parseInt(request.getParameter("id")));
-            Integer uID = atendimento.getClient().getUser_id();
-            UserData userData = userDataRepo.getByID(uID);
-            System.out.println("--------------------------" + userData.getName());
-            request.setAttribute("atendimento", atendimento);
-            request.setAttribute("userData", userData);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/manager/supportdescription.jsp");
-            rd.forward(request, response);
+            attRepo.delete(Integer.parseInt(request.getParameter("id")));
+            response.sendRedirect("main");
         } catch (DAOException e) {
             request.setAttribute("javaerror", e);
             request.setAttribute("error", "Erro no banco de dados");
@@ -70,22 +60,25 @@ public class supportdescription extends HttpServlet {
             rd.forward(request, response);
         } catch (NullPointerException e) {
             request.setAttribute("javaerror", e);
-            request.setAttribute("error", "Parametro ID Nulo");
+            request.setAttribute("error", "User não logado");
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
-            e.printStackTrace();
             rd.forward(request, response);
-        } catch (NumberFormatException e) {
-            request.setAttribute("javaerror", e);
-            request.setAttribute("error", "Parametro ID Invalido");
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
             e.printStackTrace();
-            rd.forward(request, response);
         }
+
     }
 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request  servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException      if an I/O error occurs
+     */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
     }
 
     /**

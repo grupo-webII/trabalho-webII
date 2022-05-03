@@ -66,91 +66,38 @@
                                     <th scope="row"><c:out value="${uzer.user.user_id}" /></th>
                                     <td>
                                         <c:choose>
+                                            <c:when test="${uzer.user.role.ROLE_GERENTE == true}">
+                                                <c:out value="Gerente"/>
+                                            </c:when>
                                             <c:when test="${uzer.user.role.ROLE_FUNC == true}">
                                                 <c:out value="Funcionário"/>
                                             </c:when>
-                                            <c:when test="${uzer.user.role.ROLE_CLIENTE == true}">
-                                                <c:out value="Cliente"/>
-                                            </c:when>
                                             <c:otherwise>
-                                                <c:out value="Gerente"/>
+                                                <c:out value="Cliente"/>
                                             </c:otherwise>  
                                         </c:choose>
                                     </td>
                                     <td> <c:out value=" ${uzer.userData.name}"/></td>
                                     <td><c:out value="${uzer.user.email}" /></td>
                                     <td><c:out value="${uzer.userData.cpf}"/></td>
-                                    <td><button type="button" class="btn btn-light"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-                                                href="userdetails?id=${uzer.user.user_id}"><button type="button"
-                                                                   class="btn btn-light">
-                                                <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
-                                                     width="20" height="auto" class="">
-                                            </button></a>&nbsp;<a
+                                    <td>
+                                        <a href="deleteUser?id=${uzer.user.user_id}" >
+                                            <button type="button" class="btn btn-light"
+                                                    >Remover
+                                            </button>&nbsp;
+                                        </a>
+
+
+
+                                        <a
                                             href="userdetails?id=${uzer.user.user_id}"><button type="button"
-                                                                   class="btn btn-light">
+                                                                                           class="btn btn-light">
                                                 <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
                                                      width="20" height="auto" class="">
                                             </button></a></td>
                                 </tr>
                             </c:forEach>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Funcion�rio</td>
-                                <td>Jenivaldo Aquidaban</td>
-                                <td>jenivaldo@test.com</td>
-                                <td>000.000.000-00</td>
-                                <td><button type="button" class="btn btn-light"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-                                            href="userdetails"><button type="button"
-                                                               class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a>&nbsp;<a
-                                        href="userdetails"><button type="button"
-                                                               class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Gerente</td>
-                                <td>Jenivaldo Aquidaban</td>
-                                <td>jenivaldo@test.com</td>
-                                <td>000.000.000-00</td>
-                                <td><button type="button" class="btn btn-light"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-                                            href="userdetails"><button type="button"
-                                                               class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a>&nbsp;<a
-                                        href="userdetails"><button type="button"
-                                                               class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Funcion�rio</td>
-                                <td>Jenivaldo Aquidaban</td>
-                                <td>jenivaldo@test.com</td>
-                                <td>000.000.000-00</td>
-                                <td><button type="button" class="btn btn-light"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-                                            href="userdetails"><button type="button"
-                                                               class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a>&nbsp;<a
-                                        href="userdetails"><button type="button"
-                                                               class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a></td>
-                            </tr>
+
                         </tbody>
                     </table>
                 </div>

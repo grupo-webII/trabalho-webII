@@ -62,51 +62,25 @@
                                     <td><c:out value="${atend.status}"/></td>
                                     <td><c:out value="${atend.description}"/></td>
                                     <td><c:out value="${atend.data}"/></td>
-                                    <td><button type="button" class="btn btn-light"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-                                                href="supportdescription"><button type="button"
-                                                                          class="btn btn-light">
+                                    <td>
+                                        <a href="deleteAtt?id=${atend.at_id}" >
+                                            <button type="button" class="btn btn-light"
+                                                    >Remover
+                                            </button>&nbsp;
+                                        </a>
+
+
+                                        <a href="supportdescription?id=${atend.at_id}">
+                                            <button type="button"
+                                                    class="btn btn-light">
                                                 <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
                                                      width="20" height="auto" class="">
-                                            </button></a></td>
+                                            </button>
+                                        </a>
+                                    </td>
                                 </tr>
                             </c:forEach>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Em aberto</td>
-                                <td>Não recebi o produto no prazo</td>
-                                <td>09/02/2022</td>
-                                <td><button type="button" class="btn btn-light"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-                                            href="supportdescription"><button type="button"
-                                                                      class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Em aberto</td>
-                                <td>Produto não entrega o resultado de beleza</td>
-                                <td>17/08/2021</td>
-                                <td><button type="button" class="btn btn-light"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-                                            href="supportdescription"><button type="button" class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Fechado</td>
-                                <td>Não gostei do atendimento</td>
-                                <td>01/03/2021</td>
-                                <td><button type="button" class="btn btn-dark">Remover</button>&nbsp;<a
-                                        href="#"><button type="button" class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a></td>
-                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -123,9 +97,9 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">Este atendimento ainda n�o foi
+                        <div class="modal-body">Este atendimento ainda não foi
                             realizado pela empresa. Se decidir esperar, em breve algum de
-                            nossos atendentes entrar� em contato.</div>
+                            nossos atendentes entrará em contato.</div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light"
                                     data-bs-dismiss="modal">Não, vou aguardar</button>

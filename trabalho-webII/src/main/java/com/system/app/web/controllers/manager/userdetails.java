@@ -14,7 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.system.app.web.beans.Role;
 import com.system.app.web.beans.User;
@@ -64,7 +63,7 @@ public class userdetails extends HttpServlet {
             User user = userRepo.getByID(Integer.parseInt(request.getParameter("id")));
             List<Role> roles = roleRepo.getAll();
             request.setAttribute("roles", roles);
-            request.setAttribute("user", user);
+            request.setAttribute("uzer", user);
             request.setAttribute("userData", userData);
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/manager/userdetails.jsp");
             rd.forward(request, response);
@@ -113,22 +112,31 @@ public class userdetails extends HttpServlet {
             userData.setPhone(request.getParameter("phone"));
             userData.setCep(request.getParameter("cep"));
             userData.setAddress(request.getParameter("address"));
-            userData.setAdressNumber(Integer.parseInt(request.getParameter("addressNumber")));
+            userData.setAdressNumber(Integer.parseInt(request.getParameter("adressNumber")));
             userData.setComplement(request.getParameter("complement"));
             userData.setState(request.getParameter("state"));
-            HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
+            User user = userRepo.getByID(Integer.parseInt(request.getParameter("id")));
             userData.setUser_id(user.getUser_id());
-            Role role = roleRepo.getByID(Integer.parseInt(request.getParameter("role")));
+            String roleP = request.getParameter("role");
+            Role role = roleRepo.getByID(Integer.parseInt(request.getParameter("id")));
+
+            if (roleP.equals("gerente")) {
+                role.setROLE_GERENTE(true);
+            } else if (roleP.equals("funcionario")) {
+                role.setROLE_GERENTE(false);
+                role.setROLE_FUNC(true);
+            } else {
+                role.setROLE_GERENTE(false);
+                role.setROLE_FUNC(false);
+                role.setROLE_CLIENTE(true);
+            }
             user.setRole(role);
-            if (!user.getEmail().equals(request.getParameter("email"))) {
-                user.setEmail(request.getParameter("email"));
-            }
-            if (!user.getPassword().equals(request.getParameter("password"))) {
-                user.setPassword(request.getParameter("password"));
-            }
+            user.setEmail(request.getParameter("email"));
+            user.setPassword(request.getParameter("password"));
+
             userRepo.update(user);
             userDataRepo.update(userData);
+            response.sendRedirect("userdetails?id=" + request.getParameter("id"));
         } catch (DAOException e) {
             request.setAttribute("javaerror", e);
             request.setAttribute("error", "Erro no banco de dados");

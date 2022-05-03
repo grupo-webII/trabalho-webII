@@ -46,7 +46,7 @@ public class UserDataRepo implements DAOinterface<UserData> {
                 System.out.println("INSERTED NEW USER DATA!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error INSERTING new USERDATA: " + sql + "/" + data.toString(), e);
+            throw new DAOException("Error INSERTING new USERDATA: " + e.toString(), e);
         }
         return isSaved;
     }
@@ -66,7 +66,7 @@ public class UserDataRepo implements DAOinterface<UserData> {
                 System.out.println("DELETED USERDATA!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error DELETING USERDATA BY ID: " + sql + "/" + id.toString(), e);
+            throw new DAOException("Error DELETING USERDATA BY ID: " + id.toString() + e.toString(), e);
         }
         return isDeleted;
 
@@ -96,7 +96,7 @@ public class UserDataRepo implements DAOinterface<UserData> {
                 System.out.println("UPDATED USERDATA!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error UPDATING User: " + sql + "/" + data.toString(), e);
+            throw new DAOException("Error UPDATING User: " + e.toString(), e);
         }
         return isUpdated;
 
@@ -129,7 +129,7 @@ public class UserDataRepo implements DAOinterface<UserData> {
             }
         } catch (SQLException e) {
             datalist = null;
-            throw new DAOException("Error GETTING ALL USERDATA: " + sql, e);
+            throw new DAOException("Error GETTING ALL USERDATA: " + e.toString(), e);
 
         }
         return datalist;
@@ -159,7 +159,7 @@ public class UserDataRepo implements DAOinterface<UserData> {
             }
         } catch (SQLException e) {
             data = null;
-            throw new DAOException("Error GETTING USERDATA by id: " + sql + "/" + id.toString(), e);
+            throw new DAOException("Error GETTING USERDATA by ID: " + e.toString(), e);
 
         }
 

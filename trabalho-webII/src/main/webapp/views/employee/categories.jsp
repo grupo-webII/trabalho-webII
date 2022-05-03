@@ -65,21 +65,24 @@
                                 <tr>
                                     <th scope="row"><c:out value="${category.cat_id}" /></th>
                                     <td><c:out value="${category.name}" /></td>
-                                    <td><button type="button" class="btn btn-light"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-                                                    href="categorydetails?id=${category.cat_id}"><button type="button"
-                                                                       class="btn btn-light">
-                                                <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
+                                    <td>
+                                        <a href="deleteCat?id=${category.cat_id}" >
+                                            <button type="button" class="btn btn-light"
+                                                    >Remover
+                                            </button>&nbsp;
+                                        </a>
+
+                                        <a href="categorydetails?id=${category.cat_id}">
+                                            <button type="button"
+                                                    class="btn btn-light">
+                                                <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Edit"
                                                      width="20" height="auto" class="">
-                                            </button></a>&nbsp;<a
-                                            href="categorydetails?id=${category.cat_id}"><button type="button"
-                                                                       class="btn btn-light">
-                                                <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
-                                                     width="20" height="auto" class="">
-                                            </button></a></td>
+                                            </button>
+                                        </a>
+                                    </td>
                                 </tr>
                             </c:forEach>
-                            
+
                         </tbody>
                     </table>
                 </div>

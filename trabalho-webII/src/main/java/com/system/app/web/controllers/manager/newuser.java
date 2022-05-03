@@ -14,7 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.system.app.web.beans.Role;
 import com.system.app.web.beans.User;
@@ -75,10 +74,7 @@ public class newuser extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @param request  servlet requestÃ£o Sallumrror occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -87,7 +83,6 @@ public class newuser extends HttpServlet {
         UserData userData = new UserData();
         UserRepo userRepo = new UserRepo();
         UserDataRepo userDataRepo = new UserDataRepo();
-        RoleRepo roleRepo = new RoleRepo();
         try {
             userData.setName(request.getParameter("name"));
             userData.setLastname(request.getParameter("lastname"));
@@ -95,22 +90,33 @@ public class newuser extends HttpServlet {
             userData.setPhone(request.getParameter("phone"));
             userData.setCep(request.getParameter("cep"));
             userData.setAddress(request.getParameter("address"));
-            userData.setAdressNumber(Integer.parseInt(request.getParameter("addressNumber")));
+            userData.setAdressNumber(Integer.parseInt(request.getParameter("adressNumber")));
             userData.setComplement(request.getParameter("complement"));
             userData.setState(request.getParameter("state"));
-            HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
-            userData.setUser_id(user.getUser_id());
-            Role role = roleRepo.getByID(Integer.parseInt(request.getParameter("role")));
+
+            String roleP = request.getParameter("role");
+            Role role = new Role();
+            if (roleP.equals("gerente")) {
+                role.setROLE_GERENTE(true);
+            } else if (roleP.equals("funcionario")) {
+                role.setROLE_GERENTE(false);
+                role.setROLE_FUNC(true);
+            } else {
+                role.setROLE_GERENTE(false);
+                role.setROLE_FUNC(false);
+                role.setROLE_CLIENTE(true);
+            }
+            User user = new User();
             user.setRole(role);
-            if (!user.getEmail().equals(request.getParameter("email"))) {
-                user.setEmail(request.getParameter("email"));
-            }
-            if (!user.getPassword().equals(request.getParameter("password"))) {
-                user.setPassword(request.getParameter("password"));
-            }
+            user.setEmail(request.getParameter("email"));
+            user.setPassword(request.getParameter("password"));
             userRepo.save(user);
+            user = userRepo.getUserByEmail(request.getParameter("email"));
+
+            userData.setUser_id(user.getUser_id());
             userDataRepo.save(userData);
+            response.sendRedirect("main");
+
         } catch (DAOException e) {
             request.setAttribute("javaerror", e);
             request.setAttribute("error", "Erro no banco de dados");
