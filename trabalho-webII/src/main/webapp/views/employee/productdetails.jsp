@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 
@@ -31,7 +32,7 @@ REQUEST BEANS:
         <script src="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/jquery-3.5.0.min.js"></script>
         <meta charset="UTF-8">
-        <title>Visualiza��o de Produto</title>
+        <title>Visualização de Produto</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light p-4 mb-5">
@@ -63,35 +64,38 @@ REQUEST BEANS:
         </nav>
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <h1 class="mb-3 h1">Produto #1</h1>
-                <form action="main.jsp" class="mb-5">
+                <h1 class="mb-3 h1">Produto <c:out value="${product.product_id}"/> </h1>
+                <form action="" method="post" class="mb-5">
                     <div class="form-row">
                         <div class="form-group col-md-6 mb-3">
                             <label for="inputShortDescriptive">Nome do produto</label> <input
-                                type="text" class="form-control" id="inputShortDescriptive"
+                                type="text" class="form-control" id="inputShortDescriptive" name="name" value="${product.name}"
                                 required>
                         </div>
                         <div class="form-group col-md-6 mb-3">
-                            <label for="inputCategory">Categoria</label><br/>
-                            <select id="inputCategory" class="custom-select">
-                                <option value="2" selected>Maquiagem</option>
-                                <option value="3">Teste</option>
-                                <option value="3">Teste</option>
-                                <option value="3">Teste</option>
+                            <label for="category">Categoria</label><br/>
+                            <select id="inputCategory" class="custom-select" selected="${product.category.cat_id}" name="category">
+                                <c:forEach items="${categories}" var="category"  >
+                                    <option value="${category.cat_id}" ><c:out value="${category.name}"/></option>
+                                    <c:if test="${category.cat_id == product.category.cat_id}"> 
+                                        <option  selected value="${category.cat_id}" ><c:out value="${category.name}"/></option>
+                                    </c:if>
+                                    
+                                </c:forEach>
                             </select>
                         </div>
                         <div class="form-group mb-3">
-                            <label class="mb-3" for="exampleFormControlTextarea1">Descri��o detalhada do caso</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1"
-                                      rows="3" required></textarea>
+                            <label class="mb-3" for="description">Descrição detalhada do caso</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="description" value="${product.description}"
+                                      rows="3" required><c:out value="${product.description}"/></textarea>
                         </div>
                         <div class="form-group col-md-6 mb-3">
-                            <label for="inputShortDescriptive">Peso</label> <input
-                                type="text" class="form-control" id="inputShortDescriptive"
+                            <label for="weight">Peso</label> <input
+                                type="text" class="form-control" id="inputShortDescriptive" name="weight" value="${product.weight}"
                                 required>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success">Salvar edi��o</button>
+                    <button type="submit" class="btn btn-success">Salvar ediçãoo</button>
                     <a href="products" class="btn btn-dark">Voltar</a>
                 </form>
             </div>

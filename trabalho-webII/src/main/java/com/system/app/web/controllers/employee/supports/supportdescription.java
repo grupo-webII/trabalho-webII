@@ -15,8 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.system.app.web.beans.Atendimento;
+import com.system.app.web.beans.UserData;
 import com.system.app.web.repo.AtendRepo;
 import com.system.app.web.repo.DAOException;
+import com.system.app.web.repo.UserDataRepo;
 
 /**
  *
@@ -50,9 +52,12 @@ public class supportdescription extends HttpServlet {
             throws ServletException, IOException {
 
         AtendRepo attRepo = new AtendRepo();
+        UserDataRepo userDataRepo = new UserDataRepo();
         try {
             Atendimento atendimento = attRepo.getByID(Integer.parseInt(request.getParameter("id")));
+            UserData uData = userDataRepo.getByID(atendimento.getClient().getUser_id());
             request.setAttribute("atendimento", atendimento);
+            request.setAttribute("userdata", uData);
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/employee/supportdescription.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
@@ -78,7 +83,9 @@ public class supportdescription extends HttpServlet {
         try {
             Atendimento atendimento = attRepo.getByID(Integer.parseInt(request.getParameter("id")));
             atendimento.setSolution(request.getParameter("solution"));
+            atendimento.setStatus("resolvido");
             attRepo.update(atendimento);
+            response.sendRedirect("main");
         } catch (DAOException e) {
             request.setAttribute("javaerror", e);
             request.setAttribute("error", "Erro no banco de dados");
@@ -98,7 +105,7 @@ public class supportdescription extends HttpServlet {
             e.printStackTrace();
             rd.forward(request, response);
         }
- 
+
     }
 
     /**

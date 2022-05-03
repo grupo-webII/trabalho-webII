@@ -85,9 +85,10 @@ public class categorydetails extends HttpServlet {
 
         CategoryRepo categoryRepo = new CategoryRepo();
         try {
-            ProductCat category = categoryRepo.getByName(request.getParameter("name"));
+            ProductCat category = categoryRepo.getByID(Integer.parseInt(request.getParameter("id")));
             category.setName(request.getParameter("name"));
             categoryRepo.update(category);
+            response.sendRedirect("categories");
         } catch (DAOException e) {
             request.setAttribute("javaerror", e);
             request.setAttribute("error", "Erro no banco de dados");

@@ -82,45 +82,7 @@ BEAN:
                                             </button></a></td>
                                 </tr>
                             </c:forEach>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Em aberto</td>
-                                <td>Maria</td>
-                                <td>Não recebi o produto no prazo</td>
-                                <td>09/02/2022</td>
-                                <td><a
-                                        href="supportdescription"><button type="button"
-                                                                      class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td style="color:red">Em aberto</td>
-                                <td>Marcel</td>
-                                <td>Produto não entrega o resultado de beleza</td>
-                                <td>17/08/2021</td>
-                                <td><a
-                                        href="supportdescription"><button type="button"
-                                                                      class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td style="color:red">Em aberto</td>
-                                <td>Monique</td>
-                                <td>Não gostei do atendimento</td>
-                                <td>01/03/2021</td>
-                                <td><a
-                                        href="supportdescription"><button type="button"
-                                                                      class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a></td>
-                            </tr>
+
                         </tbody>
                     </table>
                 </div>

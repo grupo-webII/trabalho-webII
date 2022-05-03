@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
+<!--
 POST: 
-    name:
+    name:-->
 
 
 
@@ -52,11 +52,11 @@ POST:
 	<div class="row">
 		<div class="col-md-8 offset-md-2">
 			<h1 class="mb-3 h1">Adicionar categoria</h1>
-			<form action="main.jsp" class="mb-5">
+			<form action="" method="post" class="mb-5">
 				<div class="form-row">
                                     <div class="form-group col-md-6 mb-3">
-						<label for="inputShortDescriptive">Nome da categoria</label> <input
-							type="text" class="form-control" id="inputShortDescriptive"
+						<label for="name">Nome da categoria</label> <input
+							type="text" class="form-control" id="inputShortDescriptive" name="name"
 							required>
 					</div>
 				</div>

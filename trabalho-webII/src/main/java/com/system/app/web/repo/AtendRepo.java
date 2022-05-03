@@ -38,7 +38,8 @@ public class AtendRepo implements DAOinterface<Atendimento> {
                 System.out.println("INSERTED NEW ATTEND!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error INSERTING new ATTEND: " + sql + "/" + attend.toString(), e);
+            throw new DAOException("Error INSERTING new ATTEND: " + sql + "/" + attend.toString() + "\n" + e.toString(),
+                    e);
         }
         return isSaved;
     }
@@ -56,7 +57,8 @@ public class AtendRepo implements DAOinterface<Atendimento> {
                 System.out.println("DELETED ATTEND " + id.toString() + "!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error DELETING Attend by id: " + sql + "/" + id.toString(), e);
+            throw new DAOException("Error DELETING Attend by id: " + sql + "/" + id.toString() + "\n" + e.toString(),
+                    e);
         }
         return isDeleted;
 
@@ -76,13 +78,14 @@ public class AtendRepo implements DAOinterface<Atendimento> {
             statement.setInt(5, attend.getType().getType_id());
             statement.setString(6, attend.getDescription());
             statement.setString(7, attend.getSolution());
+            statement.setInt(8, attend.getAt_id());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 isUpdated = true;
                 System.out.println("UPDATED ATTEND " + attend.getAt_id() + "!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error UPDATING ATTEND: " + sql + "/" + attend.toString(), e);
+            throw new DAOException("Error UPDATING ATTEND: " + sql + "/" + attend.toString() + "\n" + e.toString(), e);
         }
         return isUpdated;
 
@@ -114,7 +117,7 @@ public class AtendRepo implements DAOinterface<Atendimento> {
             }
         } catch (SQLException e) {
             attlist = null;
-            throw new DAOException("Error GETTING ALL Attends: " + sql, e);
+            throw new DAOException("Error GETTING ALL Attends: " + sql + "\n" + e.toString(), e);
 
         }
         return attlist;
@@ -145,7 +148,7 @@ public class AtendRepo implements DAOinterface<Atendimento> {
             }
         } catch (SQLException e) {
             attlist = null;
-            throw new DAOException("Error GETTING ALL Attends: " + sql, e);
+            throw new DAOException("Error GETTING ALL Attends: " + sql + "\n" + e.toString(), e);
 
         }
         return attlist;
@@ -175,7 +178,7 @@ public class AtendRepo implements DAOinterface<Atendimento> {
             }
         } catch (SQLException e) {
             attend = null;
-            throw new DAOException("Error GETTING Attend by id: " + sql + "/" + id.toString(), e);
+            throw new DAOException("Error GETTING Attend by id: " + sql + "/" + id.toString() + "\n" + e.toString(), e);
 
         }
         return attend;
@@ -207,7 +210,7 @@ public class AtendRepo implements DAOinterface<Atendimento> {
             }
         } catch (SQLException e) {
             attlist = null;
-            throw new DAOException("Error GETTING ALL Attends: " + sql, e);
+            throw new DAOException("Error GETTING ALL Attends: " + sql + "\n" + e.toString(), e);
 
         }
         return attlist;

@@ -71,6 +71,7 @@ public class newcategory extends HttpServlet {
             ProductCat category = new ProductCat();
             category.setName(request.getParameter("name"));
             categoryRepo.save(category);
+            response.sendRedirect("categories");
         } catch (DAOException e) {
             request.setAttribute("javaerror", e);
             request.setAttribute("error", "Erro no banco de dados");

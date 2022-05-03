@@ -87,57 +87,7 @@ BEANS:
                                         </button></a></td>
                             </tr>
                             </c:forEach>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Pó Facial Mariazinha</td>
-                                <td>Maquiagem</td>
-                                <td>50g</td>
-                                <td><button type="button" class="btn btn-light"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-                                            href="productdetails"><button type="button"
-                                                                  class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a>&nbsp;<a
-                                        href="productdetails"><button type="button"
-                                                                  class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Pó Facial Mariazinha</td>
-                                <td>Maquiagem</td>
-                                <td>50g</td>
-                                <td><button type="button" class="btn btn-light"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>&nbsp;<a
-                                            href="productdetails"><button type="button" class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a>&nbsp;<a
-                                        href="productdetails"><button type="button"
-                                                                  class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Pó Facial Mariazinha</td>
-                                <td>Maquiagem</td>
-                                <td>50g</td>
-                                <td><button type="button" class="btn btn-dark">Remover</button>&nbsp;<a
-                                        href="productdetails"><button type="button" class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/eye-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a>&nbsp;<a
-                                        href="productdetails"><button type="button"
-                                                                  class="btn btn-light">
-                                            <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Eye icon"
-                                                 width="20" height="auto" class="">
-                                        </button></a></td>
-                            </tr>
+                           
                         </tbody>
                     </table>
                 </div>

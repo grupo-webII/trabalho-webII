@@ -99,6 +99,7 @@ public class productdetails extends HttpServlet {
             product.setDescription(request.getParameter("description"));
             product.setWeight(Float.parseFloat(request.getParameter("weight")));
             productRepo.update(product);
+            response.sendRedirect("products");
         } catch (DAOException e) {
             request.setAttribute("javaerror", e);
             request.setAttribute("error", "Erro no banco de dados");

@@ -6,6 +6,7 @@
 package com.system.app.web.controllers.manager;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,8 +16,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.system.app.web.beans.FullUser;
 import com.system.app.web.beans.User;
+import com.system.app.web.beans.UserData;
 import com.system.app.web.repo.DAOException;
+import com.system.app.web.repo.UserDataRepo;
 import com.system.app.web.repo.UserRepo;
 
 /**
@@ -51,9 +55,18 @@ public class main extends HttpServlet {
             throws ServletException, IOException {
 
         UserRepo userRepo = new UserRepo();
+        UserDataRepo userDataRepo = new UserDataRepo();
         try {
             List<User> users = userRepo.getAll();
-            request.setAttribute("users", users);
+            List<FullUser> fullusers = new ArrayList<>();
+            for (User user : users) {
+                UserData userData = userDataRepo.getByID(user.getUser_id());
+                FullUser newFullUser = new FullUser();
+                newFullUser.setUser(user);
+                newFullUser.setUserData(userData);
+                fullusers.add(newFullUser);
+            }
+            request.setAttribute("fullusers", fullusers);
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/views/manager/main.jsp");
             rd.forward(request, response);
         } catch (DAOException e) {
