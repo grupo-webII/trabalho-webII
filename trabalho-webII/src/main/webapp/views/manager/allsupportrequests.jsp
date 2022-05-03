@@ -47,7 +47,7 @@
                     <li class="nav-item"><a class="nav-link" href="allsupportrequests">Listagem
                             dos atendimentos<span class="sr-only"> (atual)</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="exports.jsp">Relatórios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/index.jsp"><b>Sair</b></a></li>
+                    <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/logout"><b>Sair</b></a></li>
                 </ul>
             </div>
         </nav>

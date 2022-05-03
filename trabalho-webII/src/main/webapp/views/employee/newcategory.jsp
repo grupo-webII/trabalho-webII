@@ -52,7 +52,7 @@ POST:
 						de categorias<span class="sr-only"> (atual)</span></a></li>
 				<li class="nav-item"><a class="nav-link" href="products">Listagem
 						de produtos</a></li>
-				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/index.jsp"><b>Sair</b></a></li>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/logout"><b>Sair</b></a></li>
 			</ul>
 		</div>
 	</nav>

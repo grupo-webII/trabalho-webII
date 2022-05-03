@@ -163,7 +163,7 @@
                         </a></li>
                     <li class="nav-item"><a class="nav-link" href="asksupport">Solicitar
                             atendimento</a></li>
-                    <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/index.jsp"><b>Sair</b></a></li>
+                    <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/logout"><b>Sair</b></a></li>
                 </ul>
             </div>
         </nav>
