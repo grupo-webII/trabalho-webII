@@ -150,7 +150,7 @@ CREATE TABLE `role` (
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (1,1,0,1),(6,1,0,0),(7,1,1,0);
+INSERT INTO `role` VALUES (10,1,0,0),(12,1,0,1),(13,1,1,0);
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,7 +167,7 @@ CREATE TABLE `user` (
   `password` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,7 +176,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'gerente@test.com','123'),(6,'cliente@test.com','123'),(7,'funcionario@test.com','123');
+INSERT INTO `user` VALUES (10,'gabricostam@gmail.com','$2a$12$DpykFMtexCQZOV6jFHWt6uLyF1gSRuySrtN8COP61k7A1qstJXfD2'),(12,'gerente@test.com','$2a$12$3.F1lGRWcF0OJu9If6SVLumRwhXcZtaPKtbUyn0bb6JrwbC6Wn6XO'),(13,'funcionario@test.com','$2a$12$lT6BeYdAJwr3xUKRxdIHtuJ4ov8xMx/3Tjp/3UPaZyt3Pxt338.Li');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,6 +213,7 @@ CREATE TABLE `userData` (
 
 LOCK TABLES `userData` WRITE;
 /*!40000 ALTER TABLE `userData` DISABLE KEYS */;
+INSERT INTO `userData` VALUES (12,'Gerente','Gerente','10448730006','4199999999','88888888','Rua Teste','111','teste','Teste','Teste','TE'),(10,'GABRIEL','GANASSIN','12478697920','41991563633','82540050','Rua LeÃ£o Sallum','1345','Casa fundos','Boa Vista','Curitiba','PR'),(13,'Funcionario','Funcionario','47389955023','88888888888','77777777','Rua teste','111','test','teste','teste','teste');
 /*!40000 ALTER TABLE `userData` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -225,4 +226,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-30 16:52:37
+-- Dump completed on 2022-05-03 14:52:13

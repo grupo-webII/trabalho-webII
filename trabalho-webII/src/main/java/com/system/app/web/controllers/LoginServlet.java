@@ -59,10 +59,10 @@ public class LoginServlet extends HttpServlet {
 			if (user.getIsAuthenticated()) {
 				HttpSession session = request.getSession();
 				session.setAttribute("user", user);
-				if (user.getRole().isROLE_FUNC()) {
-					response.sendRedirect("employee/main");
-				} else if (user.getRole().isROLE_GERENTE()) {
+				if (user.getRole().isROLE_GERENTE()) {
 					response.sendRedirect("manager/main");
+				} else if (user.getRole().isROLE_FUNC()) {
+					response.sendRedirect("employee/main");
 				} else {
 					response.sendRedirect("client/main");
 				}
@@ -74,10 +74,10 @@ public class LoginServlet extends HttpServlet {
 				pwriter.print("<a href=\"index.jsp\">Página inicial</a>");
 			}
 		} catch (DAOException e) {
-            request.setAttribute("error", "Autenticacao falhou");
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
-            e.printStackTrace();
-            rd.forward(request, response);
+			request.setAttribute("error", "Autenticacao falhou");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/error.jsp");
+			e.printStackTrace();
+			rd.forward(request, response);
 		}
 
 		pwriter.close();
