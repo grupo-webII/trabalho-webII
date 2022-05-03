@@ -12,6 +12,8 @@ import com.system.app.web.beans.Role;
 import com.system.app.web.beans.User;
 import com.system.app.web.config.MySqlConnector;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 public class UserRepo implements DAOinterface<User> {
 
     private MySqlConnector conector = null;
@@ -27,10 +29,11 @@ public class UserRepo implements DAOinterface<User> {
                 +
                 "VALUES (?,?)";
         boolean isSaved = false;
+        String hashString = BCrypt.withDefaults().hashToString(12,  user.getPassword().toCharArray());
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, user.getEmail());
-            statement.setString(2, user.getPassword());
+            statement.setString(2, hashString);
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 isSaved = true;
@@ -53,7 +56,7 @@ public class UserRepo implements DAOinterface<User> {
                 }
             }
         } catch (SQLException e) {
-            throw new DAOException("Error INSERTING new User: " +  e.toString(), e);
+            throw new DAOException("Error INSERTING new User: " + e.toString(), e);
         }
         return isSaved;
     }
@@ -76,7 +79,7 @@ public class UserRepo implements DAOinterface<User> {
             }
 
         } catch (SQLException e) {
-            throw new DAOException("Error DELETING User by id: " +  e.toString(), e);
+            throw new DAOException("Error DELETING User by id: " + e.toString(), e);
         }
         return isDeleted;
 
@@ -86,10 +89,11 @@ public class UserRepo implements DAOinterface<User> {
     public boolean update(User user) throws DAOException {
         String sql = "UPDATE user SET email=?, password=? WHERE user_id = ?";
         boolean isUpdated = false;
+        String hashString = BCrypt.withDefaults().hashToString(12,  user.getPassword().toCharArray());
         try (Connection conn = conector.getConn()) {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, user.getEmail());
-            statement.setString(2, user.getPassword());
+            statement.setString(2, hashString);
             statement.setInt(3, user.getUser_id());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
@@ -97,7 +101,7 @@ public class UserRepo implements DAOinterface<User> {
                 System.out.println("User atualizado!");
             }
         } catch (SQLException e) {
-            throw new DAOException("Error UPDATING User: "+  e.toString(), e);
+            throw new DAOException("Error UPDATING User: " + e.toString(), e);
         }
         return isUpdated;
 
@@ -122,7 +126,7 @@ public class UserRepo implements DAOinterface<User> {
             }
         } catch (SQLException e) {
             userlist = null;
-            throw new DAOException("Error GETTING ALL Users: "+  e.toString(), e);
+            throw new DAOException("Error GETTING ALL Users: " + e.toString(), e);
 
         }
         return userlist;
@@ -144,7 +148,7 @@ public class UserRepo implements DAOinterface<User> {
             }
         } catch (SQLException e) {
             user = null;
-            throw new DAOException("Error GETTING User by id: " +  e.toString(), e);
+            throw new DAOException("Error GETTING User by id: " + e.toString(), e);
 
         }
 
@@ -167,7 +171,7 @@ public class UserRepo implements DAOinterface<User> {
             }
         } catch (SQLException e) {
             user = null;
-            throw new DAOException("Error GETTING User by email: " +  e.toString(), e);
+            throw new DAOException("Error GETTING User by email: " + e.toString(), e);
         }
 
         return user;
@@ -179,13 +183,14 @@ public class UserRepo implements DAOinterface<User> {
         try {
             user = getUserByEmail(email);
             user.setIsAuthenticated(false);
-            if (user.getPassword().equals(testPassword)) {
+            BCrypt.Result result = BCrypt.verifyer().verify(testPassword.toCharArray(), user.getPassword());
+            if (result.verified) {
                 user.setIsAuthenticated(true);
                 System.out.println("Authenticated User: " + user.getEmail());
             }
         } catch (DAOException e) {
             user = null;
-            throw new DAOException("Error AUTHENTICATING user: " +  e.toString(), e);
+            throw new DAOException("Error AUTHENTICATING user: " + e.toString(), e);
         } catch (NullPointerException e) {
             throw new DAOException("USER NOT FOUND");
         }

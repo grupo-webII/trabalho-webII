@@ -26,7 +26,12 @@
       <version>8.0.28</version>
       <scope>runtime</scope>
     </dependency>
-
+    
+    <dependency>
+      <groupId>at.favre.lib</groupId>
+      <artifactId>bcrypt</artifactId>
+      <version>0.9.0</version>
+    </dependency>
 
     <dependency>
       <groupId>javax</groupId>
