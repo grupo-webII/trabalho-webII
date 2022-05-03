@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:choose>
+    <c:when test="${!user.isAuthenticated}">
+        <c:redirect url="/index.jsp" />
+    </c:when>
+    <c:when test="${!user.role.ROLE_GERENTE}">
+        <c:redirect url="/index.jsp" />
+    </c:when>
+</c:choose>
 <!DOCTYPE html>
 <html>
     <head>

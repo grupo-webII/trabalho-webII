@@ -3,6 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+    <c:choose>
+        <c:when test="${!user.isAuthenticated}">
+            <c:redirect url="/index.jsp" />
+        </c:when>
+        <c:when test="${!user.role.ROLE_GERENTE}">
+            <c:redirect url="/index.jsp" />
+        </c:when>
+    </c:choose>
     <head>
         <link rel="stylesheet"
               href="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/css/bootstrap.min.css" />
@@ -55,25 +63,25 @@
                                 <th scope="col">Cliente</th>
                                 <th scope="col">Descrição</th>
                                 <th scope="col">Data</th>
-                                  <th scope="col">Ações</th>
+                                <th scope="col">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="atend" items="${atendimentos}">
-                            <tr>
-                                <th scope="row"><c:out value="${atend.at_id}" /></th>
-                            <td ><c:out value="${atend.status}" /></td>
-                            <td><c:out value="${atend.client.email}" /></td>
-                            <td><c:out value="${atend.description}" /></td>
-                            <td><c:out value="${atend.data}" /></td>
-                            <td><a
-                                    href="supportdescription?id=${atend.at_id}"><button type="button"
-                                                                                    class="btn btn-light">
-                                        <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
-                                             width="20" height="auto" class="">
-                                    </button></a></td>
-                            </tr>
-                        </c:forEach>
+                            <c:forEach var="atend" items="${atendimentos}">
+                                <tr>
+                                    <th scope="row"><c:out value="${atend.at_id}" /></th>
+                                    <td ><c:out value="${atend.status}" /></td>
+                                    <td><c:out value="${atend.client.email}" /></td>
+                                    <td><c:out value="${atend.description}" /></td>
+                                    <td><c:out value="${atend.data}" /></td>
+                                    <td><a
+                                            href="supportdescription?id=${atend.at_id}"><button type="button"
+                                                                                            class="btn btn-light">
+                                                <img src="${pageContext.request.contextPath}/images/pen-to-square-solid.svg" alt="Pen icon"
+                                                     width="20" height="auto" class="">
+                                            </button></a></td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>

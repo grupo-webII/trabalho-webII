@@ -7,7 +7,14 @@ BEANS:
     allProducts: todos os produtos disponiveis
 -->
 
-
+<c:choose>
+    <c:when test="${!user.isAuthenticated}">
+        <c:redirect url="/index.jsp" />
+    </c:when>
+    <c:when test="${!user.role.ROLE_FUNC}">
+        <c:redirect url="/index.jsp" />
+    </c:when>
+</c:choose>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,6 +30,7 @@ BEANS:
         <title>Produtos</title>
     </head>
     <body>
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light p-4 mb-5">
             <a class="navbar-brand" href="../../index.jsp"> <img
                     src="${pageContext.request.contextPath}/images/beibe-logo.png" alt="Logotipo BEIBE" width="200"

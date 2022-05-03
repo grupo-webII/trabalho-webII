@@ -11,7 +11,14 @@ REQUEST BEANS
     category: bean da cetegoria passada por id
 
 -->
-
+<c:choose>
+    <c:when test="${!user.isAuthenticated}">
+        <c:redirect url="/index.jsp" />
+    </c:when>
+    <c:when test="${!user.role.ROLE_FUNC}">
+        <c:redirect url="/index.jsp" />
+    </c:when>
+</c:choose>
 <!DOCTYPE html>
 <html>
     <head>

@@ -7,7 +7,14 @@
 BEAN:
  atendimentos: todos os atendiimentos abertos
 -->
-
+<c:choose>
+    <c:when test="${!user.isAuthenticated}">
+        <c:redirect url="/index.jsp" />
+    </c:when>
+    <c:when test="${!user.role.ROLE_FUNC}">
+        <c:redirect url="/index.jsp" />
+    </c:when>
+</c:choose>
 <!DOCTYPE html>
 <html>
     <head>
