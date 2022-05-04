@@ -65,6 +65,7 @@ public class GeradorRelatorioEmAberto extends HttpServlet {
       params.put("date1", ts1);
 
       date_string = "04-05-2022  00:00:01"; //todo: Pegar o parametro que veio da chamada
+      //Somar mais um dia na data que vier, ou fazer ela ser 23:59:59
       formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");      
       Date date2 = formatter.parse(date_string);   
       Timestamp ts2 = new Timestamp(date2.getTime());
