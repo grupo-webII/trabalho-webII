@@ -21,7 +21,7 @@
         <script src="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/jquery-3.5.0.min.js"></script>
         <meta charset="UTF-8">
-        <title>Relat�rios</title>
+        <title>Relatórios</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light p-4 mb-5">
@@ -39,14 +39,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active"><a class="nav-link" href="main">Listagem
-                            dos usu�rios
+                            dos usuários
                         </a></li>
                     <li class="nav-item active"><a class="nav-link" href="openrequests">Listagem
                             dos atendimentos em aberto
                         </a></li>
                     <li class="nav-item"><a class="nav-link" href="allsupportrequests">Listagem
                             dos atendimentos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="exports.jsp">Relat�rios<span class="sr-only"> (atual)</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="exports">Relatórios<span class="sr-only"> (atual)</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/logout"><b>Sair</b></a></li>
                 </ul>
             </div>
@@ -54,41 +54,42 @@
         <main>
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h1 class="mb-5 h1">Gerar relat�rios</h1>
+                    <h1 class="mb-5 h1">Gerar relatórios</h1>
                     <table class="table table-hover">
                         <tbody>
                             <tr>
-                                <th scope="row">Relat�rio de funcion�rios</th>
+                                <th scope="row">Relatório de funcionários</th>
                                 <td></td>
                                 <td><a
-                                        href="supportdescription"><button type="button"
+                                        href="GeradorRelatorioFuncionarios"><button type="button"
                                                                       class="btn btn-light">
                                             Gerar
                                         </button></a></td>
                             </tr>
                             <tr>
-                                <th scope="row">Relat�rio de Produtos Mais Reclamados</th>
+                                <th scope="row">Relatório de Produtos Mais Reclamados</th>
                                 <td></td>
                                 <td><a
-                                        href="supportdescription"><button type="button"
+                                        href="GeradorRelatorioReclamados"><button type="button"
                                                                       class="btn btn-light">
                                             Gerar
                                         </button></a></td>
                             </tr>
                             <tr>
-                                <th scope="row">Relat�rio de Atendimentos em Aberto Por Data</th>
-                                <td><label for="inputCategory">Data In�cio</label><br/>
-                                    <input id="date" type="date"><br/><label for="inputCategory">Data Fim</label><br/>
-                                    <input id="date" type="date">
+                                <th scope="row">Relatório de Atendimentos em Aberto Por Data</th>
+                                <td><label for="inputCategory">Data Início</label><br/>
+                                    <input id="date1" type="date"><br/>
+                                    <label for="inputCategory">Data Fim</label><br/>
+                                    <input id="date2" type="date">
                                 </td>
                                 <td><a
-                                        href="supportdescription"><button type="button"
+                                        href="GeradorRelatorioEmAberto"><button type="button"
                                                                       class="btn btn-light">
                                             Gerar
                                         </button></a></td>
                             </tr>
                             <tr>
-                                <th scope="row">Relat�rio de Reclama��es</th>
+                                <th scope="row">Relatório de Reclamações</th>
                                 <td><label for="inputCategory">Categoria</label><br/>
                                     <select id="inputCategory" class="custom-select">
                                         <option value="2">Todas</option>
@@ -96,7 +97,7 @@
                                         <option value="3">Finalizadas</option>
                                     </select></td>
                                 <td><a
-                                        href="supportdescription"><button type="button"
+                                        href="GeradorRelatorioEmAberto"><button type="button"
                                                                       class="btn btn-light">
                                             Gerar
                                         </button></a></td>
