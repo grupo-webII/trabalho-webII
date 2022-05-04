@@ -92,12 +92,12 @@
                                 <th scope="row">Relatório de Reclamações</th>
                                 <td><label for="inputCategory">Categoria</label><br/>
                                     <select id="inputCategory" class="custom-select">
-                                        <option value="2">Todas</option>
-                                        <option value="3">Em aberto</option>
+                                        <option value="1">Todas</option>
+                                        <option value="2">Em aberto</option>
                                         <option value="3">Finalizadas</option>
                                     </select></td>
                                 <td><a
-                                        href="GeradorRelatorioEmAberto"><button type="button"
+                                        href="GeradorRelatorioReclamacoes"><button type="button"
                                                                       class="btn btn-light">
                                             Gerar
                                         </button></a></td>
