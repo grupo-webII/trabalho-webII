@@ -78,25 +78,27 @@ public class Register extends HttpServlet {
             User user = new User();
             user.setEmail(request.getParameter("email").toLowerCase());
             user.setPassword(request.getParameter("password"));
-            userRepo.save(user);
-            user = userRepo.getUserByEmail(request.getParameter("email").toLowerCase());
-            userData.setName(request.getParameter("name"));
-            userData.setLastname(request.getParameter("lastname"));
-            userData.setCpf(request.getParameter("cpf"));
-            userData.setPhone(request.getParameter("phone"));
-            userData.setCep(request.getParameter("cep"));
-            userData.setAddress(request.getParameter("address"));
-            userData.setAdressNumber(Integer.parseInt(request.getParameter("addressNumber")));
-            userData.setComplement(request.getParameter("complement"));
-            userData.setBairro(request.getParameter("bairro"));
-            userData.setCity(request.getParameter("city"));
-            userData.setState(request.getParameter("state"));
-            userData.setUser_id(user.getUser_id());
-            userDataRepo.save(userData);
-            HttpSession session = request.getSession();
-            user.setIsAuthenticated(true);
-            session.setAttribute("user", user);
-            response.sendRedirect("client/main");
+            boolean isSaved = userRepo.save(user);
+            if (isSaved) {
+                user = userRepo.getUserByEmail(request.getParameter("email").toLowerCase());
+                userData.setName(request.getParameter("name"));
+                userData.setLastname(request.getParameter("lastname"));
+                userData.setCpf(request.getParameter("cpf"));
+                userData.setPhone(request.getParameter("phone"));
+                userData.setCep(request.getParameter("cep"));
+                userData.setAddress(request.getParameter("address"));
+                userData.setAdressNumber(Integer.parseInt(request.getParameter("addressNumber")));
+                userData.setComplement(request.getParameter("complement"));
+                userData.setBairro(request.getParameter("bairro"));
+                userData.setCity(request.getParameter("city"));
+                userData.setState(request.getParameter("state"));
+                userData.setUser_id(user.getUser_id());
+                userDataRepo.save(userData);
+                HttpSession session = request.getSession();
+                user.setIsAuthenticated(true);
+                session.setAttribute("user", user);
+                response.sendRedirect("client/main");
+            }
         } catch (DAOException e) {
             request.setAttribute("javaerror", e);
             request.setAttribute("error", "Erro no banco de dados");

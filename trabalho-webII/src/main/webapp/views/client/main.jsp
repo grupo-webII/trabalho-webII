@@ -58,7 +58,7 @@
                             <tr>
                                 <th scope="col">Hash</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Descriãoo</th>
+                                <th scope="col">Descrição</th>
                                 <th scope="col">Data</th>
                                 <th scope="col">Ações</th>
                             </tr>
