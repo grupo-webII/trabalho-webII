@@ -1,4 +1,4 @@
-package com.system.app.web.repo;
+package com.system.app.web.controllers.manager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,7 +30,7 @@ import javax.servlet.http.HttpSession;
 
 import com.system.app.web.beans.AtendType;
 import com.system.app.web.config.MySqlConnector;
-
+import com.system.app.web.repo.DAOException;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
@@ -49,6 +49,8 @@ public class GeradorRelatorioReclamacoes extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) 
     throws ServletException, IOException {
 
+      String optionP = request.getParameter("option");
+
     try (Connection conn = conector.getConn()) {// Host onde o servletesta executando 
       String host = "http://"+ request.getServerName() + ":" + request.getServerPort();  
       // Caminho contextualizado do relatório compilado
@@ -57,7 +59,7 @@ public class GeradorRelatorioReclamacoes extends HttpServlet {
       URL jasperURL = new URL(host + jasper);
 
       // Parâmetros do relatório
-      Integer option = 1; //Todo: Trocar pelo paramtro que vem do front
+      Integer option = Integer.parseInt(optionP); //Todo: Trocar pelo paramtro que vem do front
       HashMap params = new HashMap<String, Object>();
       if (option == 1){
         params.put("status1", "Em aberto");

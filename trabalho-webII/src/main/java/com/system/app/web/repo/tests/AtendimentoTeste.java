@@ -6,7 +6,7 @@ import com.system.app.web.repo.AttTypeRepo;
 public class AtendimentoTeste {
     public static void main(String[] args) {
         AtendType atendType = new AtendType();
-        atendType.setName("tipo");
+        atendType.setName("tipoAtendimento3");
 
         try {
             AttTypeRepo atendRepo = new AttTypeRepo();

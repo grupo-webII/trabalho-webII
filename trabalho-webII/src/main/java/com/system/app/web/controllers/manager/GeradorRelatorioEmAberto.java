@@ -1,4 +1,4 @@
-package com.system.app.web.repo;
+package com.system.app.web.controllers.manager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,7 +30,7 @@ import javax.servlet.http.HttpSession;
 
 import com.system.app.web.beans.AtendType;
 import com.system.app.web.config.MySqlConnector;
-
+import com.system.app.web.repo.DAOException;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
@@ -48,7 +48,10 @@ public class GeradorRelatorioEmAberto extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) 
     throws ServletException, IOException {
-
+      String data1 = request.getParameter("date1");
+      String data2 =  request.getParameter("date2");
+      System.out.println(data1);
+      
     try (Connection conn = conector.getConn()) {// Host onde o servletesta executando 
       String host = "http://"+ request.getServerName() + ":" + request.getServerPort();  
       // Caminho contextualizado do relatório compilado
@@ -57,16 +60,16 @@ public class GeradorRelatorioEmAberto extends HttpServlet {
       URL jasperURL = new URL(host + jasper);
       // Parâmetros do relatório
       
-      String date_string = "03-05-2022 00:00:01"; //todo: Pegar o parametro que veio da chamada
-      SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+      String date_string = data1; //todo: Pegar o parametro que veio da chamada
+      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
       Date date1 = formatter.parse(date_string);   
       Timestamp ts1 = new Timestamp(date1.getTime());  
       HashMap params = new HashMap<String, Object>();
       params.put("date1", ts1);
 
-      date_string = "04-05-2022  00:00:01"; //todo: Pegar o parametro que veio da chamada
+      date_string =  data2; //todo: Pegar o parametro que veio da chamada
       //Somar mais um dia na data que vier, ou fazer ela ser 23:59:59
-      formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");      
+      formatter = new SimpleDateFormat("yyyy-MM-dd");      
       Date date2 = formatter.parse(date_string);   
       Timestamp ts2 = new Timestamp(date2.getTime());
       params.put("date2", ts2);

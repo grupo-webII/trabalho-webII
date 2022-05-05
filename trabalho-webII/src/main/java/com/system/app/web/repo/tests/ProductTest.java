@@ -12,12 +12,12 @@ public class ProductTest {
         CategoryRepo categoryRepo = new CategoryRepo();
 
         Product product = new Product();
-        product.setDescription("descricao");
-        product.setName("nome");
+        product.setDescription("descricao1");
+        product.setName("produto3");
         product.setWeight((float) 50.00);
         ProductRepo productRepo = new ProductRepo();
         try {
-            product.setCategory(categoryRepo.getByName("beleza"));
+            product.setCategory(categoryRepo.getByName("categoria2"));
             productRepo.save(product);
         } catch (DAOException e) {
             e.printStackTrace();

@@ -62,7 +62,7 @@
                                 <td></td>
                                 <td><a
                                         href="GeradorRelatorioFuncionarios"><button type="button"
-                                                                      class="btn btn-light">
+                                                                                class="btn btn-light">
                                             Gerar
                                         </button></a></td>
                             </tr>
@@ -71,37 +71,43 @@
                                 <td></td>
                                 <td><a
                                         href="GeradorRelatorioReclamados"><button type="button"
-                                                                      class="btn btn-light">
+                                                                              class="btn btn-light">
                                             Gerar
                                         </button></a></td>
                             </tr>
                             <tr>
                                 <th scope="row">Relatório de Atendimentos em Aberto Por Data</th>
-                                <td><label for="inputCategory">Data Início</label><br/>
-                                    <input id="date1" type="date"><br/>
-                                    <label for="inputCategory">Data Fim</label><br/>
-                                    <input id="date2" type="date">
-                                </td>
-                                <td><a
-                                        href="GeradorRelatorioEmAberto"><button type="button"
-                                                                      class="btn btn-light">
-                                            Gerar
-                                        </button></a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Relatório de Reclamações</th>
-                                <td><label for="inputCategory">Categoria</label><br/>
-                                    <select id="inputCategory" class="custom-select">
-                                        <option value="1">Todas</option>
-                                        <option value="2">Em aberto</option>
-                                        <option value="3">Finalizadas</option>
-                                    </select></td>
-                                <td><a
-                                        href="GeradorRelatorioReclamacoes"><button type="button"
-                                                                      class="btn btn-light">
-                                            Gerar
-                                        </button></a></td>
-                            </tr>
+                        <form method="get" action="GeradorRelatorioEmAberto" >
+                            <td>
+
+                                <label for="inputCategory">Data Início</label><br/>
+                                <input id="date1" name="date1" type="date"><br/>
+                                <label for="inputCategory">Data Fim</label><br/>
+                                <input id="date2" name="date2" type="date" >
+
+                            </td>
+                            <td>
+                                <button type="submit"
+                                        class="btn btn-light">
+                                    Gerar
+                                </button></a></td>
+                        </form>
+                        </tr>
+                        <tr>
+                            <th scope="row">Relatório de Reclamações</th>
+                        <form method="get" action="GeradorRelatorioReclamacoes" >
+                            <td><label for="inputCategory">Categoria</label><br/>
+                                <select id="inputCategory" class="custom-select" name="option">
+                                    <option value="1">Todas</option>
+                                    <option value="2">Em aberto</option>
+                                    <option value="3">Finalizadas</option>
+                                </select></td>
+                            <td><button type="submit"
+                                                                           class="btn btn-light">
+                                        Gerar
+                                    </button></a></td>
+                        </form>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

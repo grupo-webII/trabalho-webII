@@ -7,7 +7,7 @@ public class CategoryTest {
     public static void main(String[] args) {
         ProductCat category = new ProductCat();
 
-        category.setName("beleza");
+        category.setName("categoria2");
         
         try {
             CategoryRepo categoryRepo = new CategoryRepo();

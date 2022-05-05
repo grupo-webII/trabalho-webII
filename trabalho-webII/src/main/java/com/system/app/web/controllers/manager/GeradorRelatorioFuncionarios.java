@@ -1,4 +1,4 @@
-package com.system.app.web.repo;
+package com.system.app.web.controllers.manager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
 
 import com.system.app.web.beans.AtendType;
 import com.system.app.web.config.MySqlConnector;
-
+import com.system.app.web.repo.DAOException;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
